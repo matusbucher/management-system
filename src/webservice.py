@@ -12,7 +12,7 @@ from typing import Optional
 from .constants import *
 
 
-class WebserviceCaller:
+class WebserviceAPI:
     """
     Wrapper class for EUR-Lex SOAP webservice.
     """
@@ -282,7 +282,7 @@ def main() -> None:
             return
         payload = request_path.read_text(encoding="utf-8")
     else:
-        caller = WebserviceCaller()
+        caller = WebserviceAPI()
 
         query = get_str_value(args.query, "expert query", default=None)
         page = get_int_value(args.page, "page", default=1)
@@ -306,9 +306,9 @@ def main() -> None:
             Path(args.save_request).write_text(payload, encoding="utf-8")
 
     try:
-        response_xml = WebserviceCaller.call_eurlex_webservice(payload)
+        response_xml = WebserviceAPI.call_eurlex_webservice(payload)
         if args.references_only:
-            references = WebserviceCaller.extract_references(response_xml)
+            references = WebserviceAPI.extract_references(response_xml)
             if references:
                 for reference in references:
                     print(reference)

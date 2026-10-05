@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -166,10 +165,10 @@ class WebserviceAPI:
             Exception: For other unexpected errors.
         """
         if isinstance(celex_numbers, str):
-            query = f'DN = "{celex_numbers}"'
+            query = f'DN="{celex_numbers}"'
         else:
-            quoted = [f'"{celex}"' for celex in celex_numbers]
-            query = f'DN IN ({", ".join(quoted)})'
+            subqueries = [f'DN="{celex}"' for celex in celex_numbers]
+            query = " OR ".join(subqueries)
         
         return self.search(
             query=query,

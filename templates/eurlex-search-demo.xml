@@ -1,0 +1,21 @@
+<soap:Envelope xmlns:sear="http://eur-lex.europa.eu/search" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+    <soap:Header>
+        <wsse:Security soap:mustUnderstand="true" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-3" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>FILL_IN_USERNAME</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">FILL_IN_PASSWORD</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <sear:searchRequest>
+            <sear:expertQuery>${query}</sear:expertQuery>
+            <sear:page>${page}</sear:page>
+            <sear:pageSize>${page_size}</sear:pageSize>
+            <sear:searchLanguage>${language}</sear:searchLanguage>
+            <sear:excludeAllConsleg>${exclude_consleg}</sear:excludeAllConsleg>
+            <sear:limitToLatestConsleg>${latest_consleg}</sear:limitToLatestConsleg>
+            <sear:showDocumentsAvailableIn>${available_in}</sear:showDocumentsAvailableIn>
+        </sear:searchRequest>
+    </soap:Body>
+</soap:Envelope>

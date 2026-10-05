@@ -7,7 +7,17 @@ from enum import Enum
 
 SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
 SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
+
 TEMPLATE_FILENAME = "templates/eurlex-search.xml"
+
+class SearchPlaceholder(Enum):
+    QUERY = "query"
+    PAGE = "page"
+    PAGE_SIZE = "page_size"
+    LANGUAGE = "language"
+    EXCLUDE_CONSLEG = "exclude_consleg"
+    LATEST_CONSLEG = "latest_consleg"
+    AVAILABLE_IN = "available_in"
 
 AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 

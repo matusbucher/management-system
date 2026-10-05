@@ -20,7 +20,6 @@ class WebserviceAPI:
     """
     
     def __init__(self):
-        """Initialize the webservice caller."""
         template_path = Path(__file__).parent.parent.parent / TEMPLATE_FILENAME
         if not template_path.exists():
             raise FileNotFoundError(f"SOAP template file not found: {template_path}")
@@ -51,13 +50,13 @@ class WebserviceAPI:
             The final SOAP payload as a string.
         """
         values = {
-            "query": query,
-            "page": str(page),
-            "page_size": str(page_size),
-            "language": language,
-            "exclude_consleg": "true" if exclude_consleg else "false",
-            "latest_consleg": "true" if latest_consleg else "false",
-            "available_in": available_in if available_in else "",
+            SearchPlaceholder.QUERY.value: query,
+            SearchPlaceholder.PAGE.value: str(page),
+            SearchPlaceholder.PAGE_SIZE.value: str(page_size),
+            SearchPlaceholder.LANGUAGE.value: language,
+            SearchPlaceholder.EXCLUDE_CONSLEG.value: "true" if exclude_consleg else "false",
+            SearchPlaceholder.LATEST_CONSLEG.value: "true" if latest_consleg else "false",
+            SearchPlaceholder.AVAILABLE_IN.value: available_in if available_in else "",
         }
         
         payload = self.template_text
@@ -257,7 +256,7 @@ def webservice_cli() -> None:
             return
         payload = request_path.read_text(encoding="utf-8")
     else:
-        caller = WebserviceAPI()
+        webservice = WebserviceAPI()
 
         query = get_str_value(args.query, "expert query", default=None)
         page = get_int_value(args.page, "page", default=1)
@@ -267,7 +266,7 @@ def webservice_cli() -> None:
         latest_consleg = args.latest_consleg
         available_in = args.available_in
 
-        payload = caller.build_soap_payload(
+        payload = webservice.build_soap_payload(
             query=query,
             page=page,
             page_size=page_size,

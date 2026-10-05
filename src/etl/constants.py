@@ -3,6 +3,24 @@ from pathlib import Path
 
 from enum import Enum
 
+
+########## WEMI HIERARCHY LEVELS ##########
+
+class WEMILevel(Enum):
+    """WEMI hierarchy levels for document loading."""
+    WORK = "work"
+    EXPRESSION = "expression"
+    MANIFESTATION = "manifestation"
+    ITEM = "item"
+
+
+# Default WEMI levels to load (Work only)
+DEFAULT_WEMI_LEVELS = {WEMILevel.WORK}
+
+# All WEMI levels
+ALL_WEMI_LEVELS = {WEMILevel.WORK, WEMILevel.EXPRESSION, WEMILevel.MANIFESTATION, WEMILevel.ITEM}
+
+
 ########## WEBSERVICE ##########
 
 SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
@@ -11,6 +29,7 @@ SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
 TEMPLATE_FILENAME = "templates/eurlex-search.xml"
 
 class SearchPlaceholder(Enum):
+    """Placeholders used in the EUR-Lex search XML template."""
     QUERY = "query"
     PAGE = "page"
     PAGE_SIZE = "page_size"
@@ -70,6 +89,7 @@ MAX_CS_SIZE = 9223372036854775807 # 2^63 - 1
 
 
 class CellarPS(Enum):
+    """Identifiers for different Cellar production systems."""
     CELLAR = "cellar"
     CELLEX = "cellex"
     OJ = "oj"
@@ -102,6 +122,7 @@ class CellarPS(Enum):
 
 
 class MimeType(Enum):
+    """MIME types for different document formats."""
     PDF1X = "application/pdf;type=pdf1x"
     XHTML_XML = "application/xhtml+xml"
     XHTML_XML_SIMPLIFIED = "application/xhtml+xml;type=simplified"
@@ -144,8 +165,87 @@ class MimeType(Enum):
 
 
 class CollectionType(Enum):
+    """Types of content stream collection formats."""
     LIST = "list"
     ZIP = "zip"
+
+
+########## RDF PARSER ##########
+
+# Namespace mappings for EURLex RDF
+EURLEX_RDF_NAMESPACES = {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "cdm": "http://publications.europa.eu/ontology/cdm#",
+    "annotation": "http://publications.europa.eu/ontology/annotation#",
+    "cmr": "http://publications.europa.eu/ontology/cdm/cmr#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+}
+
+# RDF/XML Element Names
+class RDFElement(Enum):
+    """RDF/XML element names for parsing."""
+    DESCRIPTION = "Description"
+    TYPE = "type"
+    RESOURCE = "resource"
+    ABOUT = "about"
+    SAME_AS = "sameAs"
+
+
+# RDF Property Names
+class RDFProperty(Enum):
+    """RDF property names used in CDM ontology."""
+    # CMR properties
+    CREATION_DATE = "creationDate"
+    LAST_MODIFICATION_DATE = "lastModificationDate"
+    LANG = "lang"
+    MANIFESTATION_MIME_TYPE = "manifestationMimeType"
+    
+    # CDM properties
+    EXPRESSION_TITLE = "expression_title"
+    EXPRESSION_SUBTITLE = "expression_subtitle"
+    EXPRESSION_BELONGS_TO_WORK = "expression_belongs_to_work"
+    EXPRESSION_USES_LANGUAGE = "expression_uses_language"
+    MANIFESTATION_TYPE = "manifestation_type"
+    MANIFESTATION_MANIFESTS_EXPRESSION = "manifestation_manifests_expression"
+    MANIFESTATION_PART_OF_MANIFESTATION = "manifestation_part_of_manifestation"
+    ITEM_IDENTIFIER = "item_identifier"
+    ITEM_BELONGS_TO_MANIFESTATION = "item_belongs_to_manifestation"
+    
+    # OWL properties
+    ANNOTATED_SOURCE = "annotatedSource"
+    ANNOTATED_TARGET = "annotatedTarget"
+    ANNOTATED_PROPERTY = "annotatedProperty"
+    
+    # Annotation properties
+    START_OF_VALIDITY = "start_of_validity"
+    COMMENT_ON_DATE = "comment_on_date"
+    TYPE_OF_LINK_TARGET = "type_of_link_target"
+
+
+# Resource Type Identifiers
+class ResourceType:
+    """Resource type identifiers found in rdf:type URIs."""
+    ITEM = "item"
+    MANIFESTATION = "manifestation"
+    EXPRESSION = "expression"
+    WORK = "work"
+    AXIOM = "Axiom"
+
+
+# Validation patterns
+UUID_PATTERN_LENGTH = 36
+UUID_PATTERN_DASH_COUNT = 4
+LANGUAGE_CODE_LENGTH = 3
+
+# URI patterns
+LANGUAGE_URI_MARKER = "language/"
+URI_PART_SEPARATOR = "."
+URI_PATH_SEPARATOR = "/"
+PROPERTY_NAMESPACE_MARKER = "#"
 
 
 ########## NEO4J DATABASE LOADER ##########
@@ -235,11 +335,13 @@ ISO_639_3_TO_639_1 = {
     "gle": "ga",
     "hrv": "hr",
     "hun": "hu",
+    "isl": "is",
     "ita": "it",
     "lav": "lv",
     "lit": "lt",
     "mlt": "mt",
     "nld": "nl",
+    "nor": "no",
     "pol": "pl",
     "por": "pt",
     "ron": "ro",
@@ -268,101 +370,3 @@ NEO4J_INDEXES = [
     "CREATE INDEX version_language IF NOT EXISTS FOR (v:DocumentVersion) ON (v.language)",
     "CREATE INDEX file_mime_type IF NOT EXISTS FOR (f:DocumentFile) ON (f.mime_type)",
 ]
-
-
-########## WEMI HIERARCHY LEVELS ##########
-
-class WEMILevel(Enum):
-    """WEMI hierarchy levels for document loading.
-    
-    WEMI = Work, Expression, Manifestation, Item
-    """
-    WORK = "work"
-    EXPRESSION = "expression"
-    MANIFESTATION = "manifestation"
-    ITEM = "item"
-
-
-# Default WEMI levels to load (Work only)
-DEFAULT_WEMI_LEVELS = {WEMILevel.WORK}
-
-# All WEMI levels
-ALL_WEMI_LEVELS = {WEMILevel.WORK, WEMILevel.EXPRESSION, WEMILevel.MANIFESTATION, WEMILevel.ITEM}
-
-
-########## RDF PARSER ##########
-
-# Namespace mappings for EURLex RDF
-EURLEX_RDF_NAMESPACES = {
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "cdm": "http://publications.europa.eu/ontology/cdm#",
-    "annotation": "http://publications.europa.eu/ontology/annotation#",
-    "cmr": "http://publications.europa.eu/ontology/cdm/cmr#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "xml": "http://www.w3.org/XML/1998/namespace",
-}
-
-# RDF/XML Element Names
-class RDFElement(Enum):
-    """RDF/XML element names for parsing."""
-    DESCRIPTION = "Description"
-    TYPE = "type"
-    RESOURCE = "resource"
-    ABOUT = "about"
-    SAME_AS = "sameAs"
-
-
-# RDF Property Names
-class RDFProperty(Enum):
-    """RDF property names used in CDM ontology."""
-    # CMR properties
-    CREATION_DATE = "creationDate"
-    LAST_MODIFICATION_DATE = "lastModificationDate"
-    LANG = "lang"
-    MANIFESTATION_MIME_TYPE = "manifestationMimeType"
-    
-    # CDM properties
-    EXPRESSION_TITLE = "expression_title"
-    EXPRESSION_SUBTITLE = "expression_subtitle"
-    EXPRESSION_BELONGS_TO_WORK = "expression_belongs_to_work"
-    EXPRESSION_USES_LANGUAGE = "expression_uses_language"
-    MANIFESTATION_TYPE = "manifestation_type"
-    MANIFESTATION_MANIFESTS_EXPRESSION = "manifestation_manifests_expression"
-    MANIFESTATION_PART_OF_MANIFESTATION = "manifestation_part_of_manifestation"
-    ITEM_IDENTIFIER = "item_identifier"
-    ITEM_BELONGS_TO_MANIFESTATION = "item_belongs_to_manifestation"
-    
-    # OWL properties
-    ANNOTATED_SOURCE = "annotatedSource"
-    ANNOTATED_TARGET = "annotatedTarget"
-    ANNOTATED_PROPERTY = "annotatedProperty"
-    
-    # Annotation properties
-    START_OF_VALIDITY = "start_of_validity"
-    COMMENT_ON_DATE = "comment_on_date"
-    TYPE_OF_LINK_TARGET = "type_of_link_target"
-
-
-# Resource Type Identifiers
-class ResourceType:
-    """Resource type identifiers found in rdf:type URIs."""
-    ITEM = "item"
-    MANIFESTATION = "manifestation"
-    EXPRESSION = "expression"
-    WORK = "work"
-    AXIOM = "Axiom"
-
-
-# Validation patterns
-UUID_PATTERN_LENGTH = 36
-UUID_PATTERN_DASH_COUNT = 4
-LANGUAGE_CODE_LENGTH = 3
-
-# URI patterns
-LANGUAGE_URI_MARKER = "language/"
-URI_PART_SEPARATOR = "."
-URI_PATH_SEPARATOR = "/"
-PROPERTY_NAMESPACE_MARKER = "#"

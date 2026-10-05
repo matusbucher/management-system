@@ -6,7 +6,7 @@ workspace_root = Path(__file__).parent.parent
 if str(workspace_root) not in sys.path:
     sys.path.insert(0, str(workspace_root))
 
-from src.etl.webservice import WebserviceAPI
+from etl.webservice_api import WebserviceAPI
 
 RATE_LIMIT_DELAY = 1
 

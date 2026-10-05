@@ -9,7 +9,8 @@ from urllib.request import Request, urlopen
 
 from typing import Optional
 
-from .constants import *
+from constants import *
+from utils import *
 
 
 class WebserviceAPI:
@@ -177,7 +178,12 @@ class WebserviceAPI:
         )
 
 
-def parse_args() -> argparse.Namespace:
+def webservice_parse_args() -> argparse.Namespace:
+    """Parse command-line arguments for the EUR-Lex SOAP web service wrapper.
+    
+    Returns:
+        Parsed command-line arguments as argparse.Namespace.
+    """
     parser = argparse.ArgumentParser(
         description="Wrapper for calling the EUR-Lex SOAP web service."
     )
@@ -237,43 +243,10 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
-def get_str_value(cli_value: Optional[str], label: str, default: Optional[str]) -> str:
-    if cli_value is not None and cli_value.strip() != "":
-        return cli_value
 
-    if default is not None:
-        return default
-    
-    while True:
-        value = input(f"{label}: ").strip()
-        if not value:
-            print("This field is required.")
-            continue
-        return value
-
-def get_int_value(cli_value: Optional[str], label: str, default: Optional[int]) -> int:
-    if cli_value is not None and cli_value.strip() != "":
-        if not cli_value.isdigit():
-            print(f"Invalid integer value for {label}: {cli_value}")
-            exit(1)
-        return int(cli_value)
-
-    if default is not None:
-        return default
-    
-    while True:
-        value = input(f"{label}: ").strip()
-        if not value:
-            print("This field is required.")
-            continue
-        if not value.isdigit():
-            print(f"Invalid integer value for {label}: {value}")
-            continue
-        return int(value)
-
-
-def main() -> None:
-    args = parse_args()
+def webservice_cli() -> None:
+    """Main entry point for the Webservice API CLI."""
+    args = webservice_parse_args()
 
     if args.input_request:
         request_path = Path(args.input_request)
@@ -329,4 +302,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    webservice_cli()

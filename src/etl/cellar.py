@@ -5,8 +5,8 @@ from typing import Optional
 from urllib.parse import urlencode
 from urllib.request import Request
 
-from constants import *
-from utils import *
+from .constants import *
+from .utils import *
 
 
 class CellarAPI:

@@ -7,7 +7,7 @@ from enum import Enum
 
 SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
 SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
-TEMPLATE_FILE = Path(__file__).parent.parent / "templates" / "eurlex-search.xml"
+TEMPLATE_FILENAME = "templates/eurlex-search.xml"
 
 AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 

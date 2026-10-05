@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -9,8 +10,8 @@ from urllib.request import Request, urlopen
 
 from typing import Optional
 
-from constants import *
-from utils import *
+from .constants import *
+from .utils import *
 
 
 class WebserviceAPI:
@@ -20,9 +21,10 @@ class WebserviceAPI:
     
     def __init__(self):
         """Initialize the webservice caller."""
-        if not TEMPLATE_FILE.exists():
-            raise FileNotFoundError(f"SOAP template file not found: {TEMPLATE_FILE}")
-        self.template_text = TEMPLATE_FILE.read_text(encoding="utf-8")
+        template_path = Path(__file__).parent.parent.parent / TEMPLATE_FILENAME
+        if not template_path.exists():
+            raise FileNotFoundError(f"SOAP template file not found: {template_path}")
+        self.template_text = template_path.read_text(encoding="utf-8")
 
     def build_soap_payload(
         self,

@@ -8,9 +8,7 @@ if str(workspace_root) not in sys.path:
 
 from src.etl.webservice import WebserviceAPI
 
-# Rate limiting to prevent EUR-Lex server spam
-RATE_LIMIT_DELAY = 1  # One second delay between tests
-
+RATE_LIMIT_DELAY = 1
 
 NIS2_CELEX = "32022L2555"
 DORA_CELEX = "32022R2554"

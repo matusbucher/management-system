@@ -1,8 +1,8 @@
 import argparse
 from urllib.request import Request
 
-from .etl.cellar_api import CellarAPI, CellarPS
-from .etl.constants import MimeType, CollectionType, MAX_CS_SIZE
+from .eurlex.cellar_api import CellarAPI, CellarPS
+from .eurlex.constants import MimeType, CollectionType, MAX_CS_SIZE
 
 
 def cellar_parse_args() -> argparse.Namespace:

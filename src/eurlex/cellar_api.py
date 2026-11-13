@@ -1,43 +1,76 @@
 from __future__ import annotations
 
 from typing import Optional
+from dataclasses import dataclass
 from urllib.parse import urlencode
 from urllib.request import Request
 
 from .constants import *
-from ..utils import *
 
 
-class CellarAPI:
+@dataclass
+class CellarResourceId:
     """
-    Wrapper class for Cellar API operations.
-    
-    Provides methods for constructing production system IDs, URIs, and HTTP requests
-    for accessing Cellar resources through various endpoints.
+    Represents a CELLAR resource's unique identifier.
+
+    The structure of the identifier depends on the production system (CELLAR or other).
+
+    Args:
+        ps: The production system name
+        work_id: Work ID
+        expr_id: Expression ID (optional)
+        man_id: Manifestation ID (optional)
+        cs_id: Content stream ID (optional)
     """
-    
+    ps: CellarPS
+    work_id: str
+    expr_id: Optional[str] = None
+    man_id: Optional[str] = None
+    cs_id: Optional[str] = None
+
+    def __post_init__(self):
+        if self.man_id and not self.expr_id:
+            raise ValueError("Manifestation ID requires an Expression ID.")
+        if self.cs_id and not self.man_id:
+            raise ValueError("Content stream ID requires a Manifestation ID.")
+
+        if self.ps == CellarPS.CELLAR:
+            self._check_cellar_uri(self.work_id, self.expr_id, self.man_id, self.cs_id)
+        else:
+            self._check_other_uri(self.work_id, self.expr_id, self.man_id, self.cs_id)
+
+    def __str__(self) -> str:
+        uri = f"{self.ps.value}/{self.work_id}"
+        if self.expr_id:
+            uri += f".{self.expr_id}"
+        if self.man_id:
+            uri += f".{self.man_id}"
+        if self.cs_id:
+            if self.ps == CellarPS.CELLAR:
+                uri += f"/{self.cs_id}"
+            else:
+                uri += f".{self.cs_id}"
+        return uri
+
     @classmethod
-    def cellar_ps_id(
+    def _check_cellar_uri(
         cls,
         work_id: str,
         expr_id: Optional[str] = None,
         man_id: Optional[str] = None,
         cs_id: Optional[str] = None
-    ) -> str:
+    ) -> None:
         """
-        Build a Cellar production system ID for a resource.
-        
+        Validate a CELLAR production system resource identifier according to CELLAR-specific rules.
+
         Args:
             work_id: Work ID (must be a valid UUID)
             expr_id: Expression ID (optional, 4-character numeric)
             man_id: Manifestation ID (optional, 2-character numeric)
             cs_id: Content stream ID (optional, pattern DOC_x where x is numeric)
-        
-        Returns:
-            The complete Cellar production system ID string.
-        
+
         Raises:
-            ValueError: If any ID parameter has invalid format or invalid hierarchy.
+            ValueError: If any ID parameter has invalid format.
         """
         if not UUID_PATTERN.match(work_id):
             raise ValueError("Work ID must be a valid UUID.")
@@ -48,43 +81,25 @@ class CellarAPI:
         if cs_id and not CELLAR_CS_ID_PATTERN.match(cs_id):
             raise ValueError("Content stream ID must follow the pattern DOC_x where x is numeric.")
 
-        if man_id and not expr_id:
-            raise ValueError("Manifestation ID requires an Expression ID.")
-        if cs_id and not man_id:
-            raise ValueError("Content stream ID requires a Manifestation ID.")
-
-        ps_id = work_id
-        if expr_id:
-            ps_id += f".{expr_id}"
-        if man_id:
-            ps_id += f".{man_id}"
-        if cs_id:
-            ps_id += f"/{cs_id}"
-
-        return ps_id
-
     @classmethod
-    def others_ps_id(
+    def _check_other_uri(
         cls,
         work_id: str,
         expr_id: Optional[str] = None,
         man_id: Optional[str] = None,
         cs_id: Optional[str] = None
-    ) -> str:
+    ) -> None:
         """
-        Build a production system ID for non-Cellar resources.
-        
+        Validate a non-CELLAR production system resource identifier according to general rules.
+
         Args:
-            work_id: Work ID (must be alphanumeric)
-            expr_id: Expression ID (optional, valid 3-character ISO 639-3 language code)
+            work_id: Work ID (alphanumeric)
+            expr_id: Expression ID (optional, 3-character ISO 639-3 language code)
             man_id: Manifestation ID (optional, valid file format)
-            cs_id: Content stream ID (optional)
-        
-        Returns:
-            The complete production system ID string.
-        
+            cs_id: Content stream ID (optional, alphanumeric)
+
         Raises:
-            ValueError: If any ID parameter has invalid format or invalid hierarchy.
+            ValueError: If any ID parameter has invalid format.
         """
         if not work_id.isalnum():
             raise ValueError("Work ID must be an alphanumeric value.")
@@ -92,45 +107,35 @@ class CellarAPI:
             raise ValueError("Expression ID must be a valid 3-character ISO 639-3 language code.")
         if man_id and man_id not in MANIFESTATION_FORMATS:
             raise ValueError("Manifestation ID must be a valid file format.")
-         
-        if man_id and not expr_id:
-            raise ValueError("Manifestation ID requires an Expression ID.")
-        if cs_id and not man_id:
-            raise ValueError("Content stream ID requires a Manifestation ID.")
+        if cs_id and not cs_id.isalnum():
+            raise ValueError("Content stream ID must be an alphanumeric value.")
 
-        ps_id = work_id
-        if expr_id:
-            ps_id += f".{expr_id}"
-        if man_id:
-            ps_id += f".{man_id}"
-        if cs_id:
-            ps_id += f".{cs_id}"
 
-        return ps_id
+class CellarAPI:
+    """
+    Wrapper class for CELLAR API services.
+    """
 
     @classmethod
     def construct_resource_uri(
         cls,
-        ps: CellarPS,
-        ps_id: str
+        resource_id: CellarResourceId
     ) -> str:
         """
-        Construct the full resource URI for a Cellar resource.
+        Construct the full resource URI for a CELLAR resource.
         
         Args:
-            ps: The CellarPS production system type (CELLAR or OTHERS)
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
         
         Returns:
             The complete resource URI string.
         """
-        return f"{RESOURCE_BASE_URL}/{ps.value}/{ps_id}"
+        return f"{RESOURCE_BASE_URL}/{resource_id}"
 
     @classmethod
     def tree_notice_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None
     ) -> Request:
         """
@@ -141,8 +146,7 @@ class CellarAPI:
         expressions.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
         
         Returns:
@@ -154,7 +158,7 @@ class CellarAPI:
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/xml;notice=tree"
         }
@@ -168,8 +172,7 @@ class CellarAPI:
     @classmethod
     def branch_notice_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         acc_lang: str = "eng"
     ) -> Request:
@@ -181,8 +184,7 @@ class CellarAPI:
         to the expression.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             acc_lang: Accept language (default: "eng", valid 3-character ISO 639-3 code)
         
@@ -198,7 +200,7 @@ class CellarAPI:
         if acc_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Accept language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/xml;notice=branch",
             "Accept-Language": acc_lang.lower()
@@ -213,8 +215,7 @@ class CellarAPI:
     @classmethod
     def object_notice_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         acc_lang: Optional[str] = None,
         alternates: bool = False
@@ -225,8 +226,7 @@ class CellarAPI:
         Only the metadata of the one level (work/expression/manifestation) are returned in the notice.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             acc_lang: Accept language (optional, valid 3-character ISO 639-3 code)
             alternates: Include alternate representations (default: False)
@@ -243,7 +243,7 @@ class CellarAPI:
         if acc_lang and acc_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Accept language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/xml;notice=object",
         }
@@ -263,8 +263,7 @@ class CellarAPI:
     @classmethod
     def indentifiers_notice_request(
         cls,
-        ps: CellarPS,
-        ps_id: str
+        resource_id: CellarResourceId
     ) -> Request:
         """
         Create an identifiers notice HTTP request for a resource.
@@ -272,13 +271,12 @@ class CellarAPI:
         This service allows the user to retrieve the synonyms of a given resource URI.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
         
         Returns:
             An HTTP Request object configured for identifiers notice retrieval.
         """
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/xml;notice=identifiers"
         }
@@ -288,8 +286,7 @@ class CellarAPI:
     @classmethod
     def metadata_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         normalized: bool = False,
         non_inferred: bool = False,
@@ -303,8 +300,7 @@ class CellarAPI:
         a dossier, an event, a top level event or an agent.
 
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             normalized: Request normalized metadata (default: False)
             non_inferred: Exclude inferred triples (default: False)
@@ -319,7 +315,7 @@ class CellarAPI:
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/rdf+xml"
         }
@@ -343,8 +339,7 @@ class CellarAPI:
     @classmethod
     def metadata_tree_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         normalized: bool = False,
         non_inferred: bool = False
@@ -356,8 +351,7 @@ class CellarAPI:
         The object to search for can be a work, a dossier, a top level event or an agent.
 
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             normalized: Request normalized metadata (default: False)
             non_inferred: Exclude inferred triples (default: False)
@@ -371,7 +365,7 @@ class CellarAPI:
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": "application/rdf+xml"
         }
@@ -394,8 +388,7 @@ class CellarAPI:
     @classmethod
     def content_stream_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         mime_type: MimeType = MimeType.XML,
         acc_lang: str = "eng",
@@ -409,8 +402,7 @@ class CellarAPI:
         at least one content stream of the given accept format.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             mime_type: MIME type for content (default: MimeType.XML)
             acc_lang: Accept language (default: "eng", valid 3-character ISO 639-3 code)
@@ -425,7 +417,7 @@ class CellarAPI:
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": mime_type.value,
             "Accept-Language": acc_lang.lower(),
@@ -441,8 +433,7 @@ class CellarAPI:
     @classmethod
     def content_stream_collection_request(
         cls,
-        ps: CellarPS,
-        ps_id: str,
+        resource_id: CellarResourceId,
         dec_lang: Optional[str] = None,
         collection_type: CollectionType = CollectionType.LIST,
         mime_type: MimeType = MimeType.XML,
@@ -457,8 +448,7 @@ class CellarAPI:
         given accept format.
         
         Args:
-            ps: The CellarPS production system type
-            ps_id: The production system ID
+            resource_id: The CELLAR resource identifier object
             dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
             collection_type: Collection format type (default: CollectionType.LIST)
             mime_type: MIME type for content (default: MimeType.XML)
@@ -473,7 +463,7 @@ class CellarAPI:
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
         
-        url = cls.construct_resource_uri(ps, ps_id)
+        url = cls.construct_resource_uri(resource_id)
         headers = {
             "Accept": f"application/{collection_type.value};mtype={mime_type.value}",
             "Accept-Language": acc_lang.lower()

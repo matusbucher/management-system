@@ -1,0 +1,6 @@
+########## NEO4J DATABASE ##########
+
+NEO4J_DEFAULT_HOST = "localhost"
+NEO4J_DEFAULT_PORT = 7687
+NEO4J_DEFAULT_USER = "neo4j"
+NEO4J_DEFAULT_PASSWORD = "password"

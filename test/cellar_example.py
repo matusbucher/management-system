@@ -4,12 +4,12 @@ from pathlib import Path
 from urllib.request import urlopen
 from urllib.error import HTTPError
 
-# workspace_root = Path(__file__).parent.parent
-# if str(workspace_root) not in sys.path:
-#     sys.path.insert(0, str(workspace_root))
+workspace_root = Path(__file__).parent.parent
+if str(workspace_root) not in sys.path:
+    sys.path.insert(0, str(workspace_root))
 
 from src.eurlex.cellar_api import CellarAPI, CellarPS
-from src.eurlex.constants import MimeType
+from src.eurlex.constants import *
 
 # Fill in the ps_id components for your target document
 WORK_ID = "35e93bb4-8905-11e9-9369-01aa75ed71a1"

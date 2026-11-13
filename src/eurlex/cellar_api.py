@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 from urllib.request import Request
 
 from .constants import *
-from .utils import *
+from ..utils import *
 
 
 class CellarAPI:
@@ -109,7 +109,11 @@ class CellarAPI:
         return ps_id
 
     @classmethod
-    def construct_resource_uri(cls, ps: CellarPS, ps_id: str) -> str:
+    def construct_resource_uri(
+        cls,
+        ps: CellarPS,
+        ps_id: str
+    ) -> str:
         """
         Construct the full resource URI for a Cellar resource.
         
@@ -257,7 +261,11 @@ class CellarAPI:
         return Request(url=url, headers=headers, method="GET")
 
     @classmethod
-    def indentifiers_notice_request(cls, ps: CellarPS, ps_id: str) -> Request:
+    def indentifiers_notice_request(
+        cls,
+        ps: CellarPS,
+        ps_id: str
+    ) -> Request:
         """
         Create an identifiers notice HTTP request for a resource.
 

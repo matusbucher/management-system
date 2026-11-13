@@ -31,7 +31,8 @@ class WebserviceAPI:
         latest_consleg: bool = False,
         available_in: Optional[str] = None,
     ) -> str:
-        """Build the SOAP payload by replacing placeholders in the template with actual values.
+        """
+        Build the SOAP payload by replacing placeholders in the template with actual values.
         
         Args:
             query: The search query string.
@@ -69,8 +70,19 @@ class WebserviceAPI:
         return payload
 
     @classmethod
-    def call_eurlex_webservice(cls, payload: str) -> str:
-        """Call the EUR-Lex SOAP webservice with the given payload and return the response XML as a string."""
+    def call_eurlex_webservice(
+        cls,
+        payload: str
+    ) -> str:
+        """
+        Call the EUR-Lex SOAP webservice with the given payload and return the response XML as a string.
+
+        Args:
+            payload: The SOAP payload to send in the request.
+
+        Returns:
+            The response XML as a string.
+        """
         request = Request(
             url=SOAP_ENDPOINT,
             data=payload.encode("utf-8"),
@@ -85,8 +97,19 @@ class WebserviceAPI:
             return response.read().decode("utf-8", errors="replace")
 
     @classmethod
-    def extract_references(cls, response_xml: str) -> list[str]:
-        """Extract reference IDs from SOAP response XML."""
+    def extract_references(
+        cls,
+        response_xml: str
+    ) -> list[str]:
+        """
+        Extract reference IDs from SOAP response XML.
+
+        Args:
+            response_xml: The SOAP response XML as a string.
+
+        Returns:
+            A list of reference IDs extracted from the response.
+        """
         root = ET.fromstring(response_xml)
         references: list[str] = []
         for element in root.iter():

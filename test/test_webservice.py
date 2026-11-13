@@ -1,5 +1,6 @@
 import sys
 import time
+import unittest
 from pathlib import Path
 
 workspace_root = Path(__file__).parent.parent
@@ -15,147 +16,40 @@ DORA_CELEX = "32022R2554"
 CRA_CELEX = "32024R2847"
 
 
-def test_single_celex():
-    """Test searching for a single document by CELEX number."""
-    print("=" * 80)
-    print("TEST 1: Search by Single CELEX Number")
-    print("=" * 80)
+class TestWebserviceAPI(unittest.TestCase):
+    """Integration tests for the WebserviceAPI."""
     
-    try:
-        webservice = WebserviceAPI()
-        celex = NIS2_CELEX  # NIS2 Directive
-        
-        print(f"\n[SEARCH] Searching for: {celex}")
-        references = webservice.search_by_celex(celex, page_size=10)
-        
-        if references:
-            print(f"[OK] Found {len(references)} result(s)")
-            print(f"   First reference: {references[0][:50]}")
-            return True
-        else:
-            print("[WARNING]  No results found")
-            return False
-            
-    except Exception as e:
-        print(f"[ERROR] Error: {str(e)}")
-        return False
+    _has_run_test = None
 
-
-def test_multiple_celex():
-    """Test searching for multiple documents by CELEX numbers."""
-    print("\n" + "=" * 80)
-    print("TEST 2: Search by Multiple CELEX Numbers")
-    print("=" * 80)
-    
-    try:
-        webservice = WebserviceAPI()
-        celex_list = [NIS2_CELEX, DORA_CELEX, CRA_CELEX]
-        names = ["NIS2", "DORA", "CRA"]
-        
-        print(f"\n[SEARCH] Searching for: {', '.join(names)}")
-        references = webservice.search_by_celex(celex_list, page_size=10)
-        
-        if references:
-            print(f"[OK] Found {len(references)} result(s)")
-            for i, ref in enumerate(references):
-                print(f"   {i+1}. {ref[:50]}")
-            return True
-        else:
-            print("[WARNING]  No results found")
-            return False
-            
-    except Exception as e:
-        print(f"[ERROR] Error: {str(e)}")
-        return False
-
-
-def test_expert_query():
-    """Test searching with expert query format."""
-    print("\n" + "=" * 80)
-    print("TEST 3: Expert Query Format")
-    print("=" * 80)
-    
-    try:
-        webservice = WebserviceAPI()
-        query = 'DN="32022L2555"'
-        
-        print(f"\n[SEARCH] Expert query: {query}")
-        references = webservice.search(query, page_size=10)
-        
-        if references:
-            print(f"[OK] Found {len(references)} result(s)")
-            print(f"   First reference: {references[0][:50]}")
-            return True
-        else:
-            print("[WARNING]  No results found")
-            return False
-            
-    except Exception as e:
-        print(f"[ERROR] Error: {str(e)}")
-        return False
-
-
-def test_pagination():
-    """Test pagination with page and page_size parameters."""
-    print("\n" + "=" * 80)
-    print("TEST 4: Pagination")
-    print("=" * 80)
-    
-    try:
-        webservice = WebserviceAPI()
-        celex = "32022*"
-        
-        print(f"\n[SEARCH] Searching with pagination (page=1, page_size=10)")
-        refs_page1 = webservice.search_by_celex(celex, page=1, page_size=10)
-        
-        if refs_page1:
-            print(f"[OK] Page 1: Found {len(refs_page1)} result(s)")
-            for i, ref in enumerate(refs_page1):
-                print(f"   {i+1}. {ref[:50]}")
-            return True
-        else:
-            print("[WARNING]  No results found")
-            return False
-            
-    except Exception as e:
-        print(f"[ERROR] Error: {str(e)}")
-        return False
-
-
-def main():
-    print("\nWebserviceAPI Test Suite")
-    print("=" * 80)
-    
-    tests = [
-        ("Single CELEX", test_single_celex),
-        ("Multiple CELEX", test_multiple_celex),
-        ("Expert Query", test_expert_query),
-        ("Pagination", test_pagination),
-    ]
-
-    results = []
-    for test_name, test_func in tests:
-        result = test_func()
-        results.append((test_name, result))
-        # Add delay between tests to prevent server spam
-        if test_func != tests[-1][1]:
+    def setUp(self):
+        # Keep a delay between requests to avoid exceeding the service rate limit.
+        if getattr(self.__class__, "_has_run_test", False):
             time.sleep(RATE_LIMIT_DELAY)
-    
-    print("\n" + "=" * 80)
-    print("TEST SUMMARY")
-    print("=" * 80)
-    passed = sum(1 for _, v in results if v)
-    total = len(results)
+        self.__class__._has_run_test = True
 
-    for test_name, passed_test in results:
-        status = "[OK] PASS" if passed_test else "[ERROR] FAIL"
-        print(f"{status}: {test_name}")
-    
-    print(f"\nTotal: {passed}/{total} tests passed")
-    print("=" * 80)
-    
-    return 0 if passed == total else 1
+    def test_single_celex(self):
+        """Test searching for a single document by CELEX number."""
+        references = WebserviceAPI().search_by_celex(NIS2_CELEX, page_size=10)
+        self.assertTrue(references, "No results found for the CELEX number")
+
+    def test_multiple_celex(self):
+        """Test searching for multiple documents by CELEX numbers."""
+        celex_list = [NIS2_CELEX, DORA_CELEX, CRA_CELEX]
+        references = WebserviceAPI().search_by_celex(celex_list, page_size=10)
+        self.assertTrue(references, "No results found for the CELEX numbers")
+
+    def test_expert_query(self):
+        """Test searching with expert query format."""
+        references = WebserviceAPI().search('DN="32022L2555"', page_size=10)
+        self.assertTrue(references, "No results found for the expert query")
+
+    def test_pagination(self):
+        """Test pagination with page and page_size parameters."""
+        references = WebserviceAPI().search_by_celex(
+            "32022*", page=1, page_size=10
+        )
+        self.assertTrue(references, "No results found on page 1")
 
 
 if __name__ == "__main__":
-    main()
+    unittest.main()

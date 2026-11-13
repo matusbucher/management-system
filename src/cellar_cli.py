@@ -6,7 +6,8 @@ from .eurlex.constants import MimeType, CollectionType, MAX_CS_SIZE
 
 
 def cellar_parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for Cellar API.
+    """
+    Parse command-line arguments for Cellar API.
     
     Returns:
         Parsed command-line arguments as argparse.Namespace.

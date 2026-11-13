@@ -4,11 +4,12 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 
 from .eurlex.webservice_api import WebserviceAPI
-from .eurlex.utils import get_int_value, get_str_value
+from .utils import get_int_value, get_str_value
 
 
 def webservice_parse_args() -> argparse.Namespace:
-    """Parse command-line arguments for the EUR-Lex SOAP web service wrapper.
+    """
+    Parse command-line arguments for the EUR-Lex SOAP web service wrapper.
     
     Returns:
         Parsed command-line arguments as argparse.Namespace.

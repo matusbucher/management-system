@@ -20,13 +20,15 @@ CS_ID   = "DOC_3"
 ps_id_fmx = CellarAPI.cellar_ps_id(WORK_ID, EXPR_ID, MAN_ID, CS_ID)
 ps_id_xml = CellarAPI.cellar_ps_id(WORK_ID, EXPR_ID)
 ps_id_pdf = CellarAPI.cellar_ps_id(WORK_ID, EXPR_ID)
+ps_id_rdf = CellarAPI.cellar_ps_id(WORK_ID, EXPR_ID)
 ps_id_tree = CellarAPI.cellar_ps_id(WORK_ID)
 
 req_fmx = CellarAPI.content_stream_request(CellarPS.CELLAR, ps_id_fmx, mime_type=MimeType.XML_FMX4)
 req_xml = CellarAPI.content_stream_request(CellarPS.CELLAR, ps_id_xml, mime_type=MimeType.XHTML_XML)
 req_pdf = CellarAPI.content_stream_request(CellarPS.CELLAR, ps_id_pdf, mime_type=MimeType.PDF)
+req_rdf = CellarAPI.content_stream_request(CellarPS.CELLAR, ps_id_rdf, mime_type=MimeType.RDF_XML)
 req_tree = CellarAPI.metadata_tree_request(CellarPS.CELLAR, ps_id_tree, normalized=True, non_inferred=True)
-req = req_tree
+req = req_rdf
 
 try:
     with urlopen(req) as response:

@@ -35,16 +35,16 @@ class WebserviceAPI:
         Build the SOAP payload by replacing placeholders in the template with actual values.
         
         Args:
-            query: The search query string.
-            page: The page index for results.
-            page_size: The number of results per page.
-            language: The search language code.
-            exclude_consleg: Whether to exclude consolidated legislation.
-            latest_consleg: Whether to limit to the latest consolidated legislation.
-            available_in: The specific language to limit the search to (optional).
+            query (str): The search query string.
+            page (int): The page index for results.
+            page_size (int): The number of results per page.
+            language (str): The search language code.
+            exclude_consleg (bool): Whether to exclude consolidated legislation.
+            latest_consleg (bool): Whether to limit to the latest consolidated legislation.
+            available_in (Optional[str]): The specific language to limit the search to (optional).
 
         Returns:
-            The final SOAP payload as a string.
+            str: The final SOAP payload as a string.
         """
         values = {
             SearchPlaceholder.QUERY.value: query,
@@ -78,10 +78,10 @@ class WebserviceAPI:
         Call the EUR-Lex SOAP webservice with the given payload and return the response XML as a string.
 
         Args:
-            payload: The SOAP payload to send in the request.
+            payload (str): The SOAP payload to send in the request.
 
         Returns:
-            The response XML as a string.
+            str: The response XML as a string.
         """
         request = Request(
             url=SOAP_ENDPOINT,
@@ -105,10 +105,10 @@ class WebserviceAPI:
         Extract reference IDs from SOAP response XML.
 
         Args:
-            response_xml: The SOAP response XML as a string.
+            response_xml (str): The SOAP response XML as a string.
 
         Returns:
-            A list of reference IDs extracted from the response.
+            list[str]: A list of reference IDs extracted from the response.
         """
         root = ET.fromstring(response_xml)
         references: list[str] = []
@@ -131,16 +131,16 @@ class WebserviceAPI:
         Search for documents using the EUR-Lex SOAP webservice.
         
         Args:
-            query: Expert query string
-            page: Page index for results (default: 1)
-            page_size: Number of results per page (default: 1)
-            language: Search language code (default: "en")
-            exclude_consleg: Exclude consolidated legislation (default: False)
-            latest_consleg: Limit to latest consolidated legislation (default: False)
-            available_in: Limit to specific languages (optional)
+            query (str): Expert query string
+            page (int): Page index for results (default: 1)
+            page_size (int): Number of results per page (default: 1)
+            language (str): Search language code (default: "en")
+            exclude_consleg (bool): Exclude consolidated legislation (default: False)
+            latest_consleg (bool): Limit to latest consolidated legislation (default: False)
+            available_in (Optional[str]): Limit to specific languages (optional)
         
         Returns:
-            List of reference IDs (work UUIDs) from the search results.
+            list[str]: List of reference IDs (work UUIDs) from the search results.
         
         Raises:
             HTTPError: If the webservice returns an HTTP error.
@@ -171,13 +171,13 @@ class WebserviceAPI:
         Search for documents by CELEX number(s).
         
         Args:
-            celex_numbers: Single CELEX number or list of CELEX numbers
-            page: Page index for results (default: 1)
-            page_size: Number of results per page (default: 1)
-            language: Search language code (default: "en")
+            celex_numbers (str | list[str]): Single CELEX number or list of CELEX numbers
+            page (int): Page index for results (default: 1)
+            page_size (int): Number of results per page (default: 1)
+            language (str): Search language code (default: "en")
         
         Returns:
-            List of reference IDs (work UUIDs) matching the CELEX numbers.
+            list[str]: List of reference IDs (work UUIDs) matching the CELEX numbers.
         
         Raises:
             HTTPError: If the webservice returns an HTTP error.

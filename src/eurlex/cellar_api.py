@@ -16,11 +16,11 @@ class CellarResourceId:
     The structure of the identifier depends on the production system (CELLAR or other).
 
     Args:
-        ps: The production system name
-        work_id: Work ID
-        expr_id: Expression ID (optional)
-        man_id: Manifestation ID (optional)
-        cs_id: Content stream ID (optional)
+        ps (CellarPS): The production system name
+        work_id (str): Work ID
+        expr_id (Optional[str]): Expression ID (optional)
+        man_id (Optional[str]): Manifestation ID (optional)
+        cs_id (Optional[str]): Content stream ID (optional)
     """
     ps: CellarPS
     work_id: str
@@ -64,10 +64,10 @@ class CellarResourceId:
         Validate a CELLAR production system resource identifier according to CELLAR-specific rules.
 
         Args:
-            work_id: Work ID (must be a valid UUID)
-            expr_id: Expression ID (optional, 4-character numeric)
-            man_id: Manifestation ID (optional, 2-character numeric)
-            cs_id: Content stream ID (optional, pattern DOC_x where x is numeric)
+            work_id (str): Work ID (must be a valid UUID)
+            expr_id (Optional[str]): Expression ID (optional, 4-character numeric)
+            man_id (Optional[str]): Manifestation ID (optional, 2-character numeric)
+            cs_id (Optional[str]): Content stream ID (optional, pattern DOC_x where x is numeric)
 
         Raises:
             ValueError: If any ID parameter has invalid format.
@@ -93,10 +93,10 @@ class CellarResourceId:
         Validate a non-CELLAR production system resource identifier according to general rules.
 
         Args:
-            work_id: Work ID (alphanumeric)
-            expr_id: Expression ID (optional, 3-character ISO 639-3 language code)
-            man_id: Manifestation ID (optional, valid file format)
-            cs_id: Content stream ID (optional, alphanumeric)
+            work_id (str): Work ID (alphanumeric)
+            expr_id (Optional[str]): Expression ID (optional, 3-character ISO 639-3 language code)
+            man_id (Optional[str]): Manifestation ID (optional, valid file format)
+            cs_id (Optional[str]): Content stream ID (optional, alphanumeric)
 
         Raises:
             ValueError: If any ID parameter has invalid format.
@@ -125,7 +125,7 @@ class CellarAPI:
         Construct the full resource URI for a CELLAR resource.
         
         Args:
-            resource_id: The CELLAR resource identifier object
+            resource_id (CellarResourceId): The CELLAR resource identifier object
         
         Returns:
             The complete resource URI string.
@@ -146,8 +146,8 @@ class CellarAPI:
         expressions.
         
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
         
         Returns:
             An HTTP Request object configured for tree notice retrieval.
@@ -184,9 +184,9 @@ class CellarAPI:
         to the expression.
         
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            acc_lang: Accept language (default: "eng", valid 3-character ISO 639-3 code)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            acc_lang (str): Accept language (default: "eng", valid 3-character ISO 639-3 code)
         
         Returns:
             An HTTP Request object configured for branch notice retrieval.
@@ -226,10 +226,10 @@ class CellarAPI:
         Only the metadata of the one level (work/expression/manifestation) are returned in the notice.
         
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            acc_lang: Accept language (optional, valid 3-character ISO 639-3 code)
-            alternates: Include alternate representations (default: False)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            acc_lang (Optional[str]): Accept language (optional, valid 3-character ISO 639-3 code)
+            alternates (bool): Include alternate representations (default: False)
         
         Returns:
             An HTTP Request object configured for object notice retrieval.
@@ -271,7 +271,7 @@ class CellarAPI:
         This service allows the user to retrieve the synonyms of a given resource URI.
         
         Args:
-            resource_id: The CELLAR resource identifier object
+            resource_id (CellarResourceId): The CELLAR resource identifier object
         
         Returns:
             An HTTP Request object configured for identifiers notice retrieval.
@@ -300,11 +300,11 @@ class CellarAPI:
         a dossier, an event, a top level event or an agent.
 
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            normalized: Request normalized metadata (default: False)
-            non_inferred: Exclude inferred triples (default: False)
-            alternates: Include alternate representations (default: False)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            normalized (bool): Request normalized metadata (default: False)
+            non_inferred (bool): Exclude inferred triples (default: False)
+            alternates (bool): Include alternate representations (default: False)
         
         Returns:
             An HTTP Request object configured for metadata retrieval in RDF/XML format.
@@ -351,13 +351,13 @@ class CellarAPI:
         The object to search for can be a work, a dossier, a top level event or an agent.
 
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            normalized: Request normalized metadata (default: False)
-            non_inferred: Exclude inferred triples (default: False)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            normalized (bool): Request normalized metadata (default: False)
+            non_inferred (bool): Exclude inferred triples (default: False)
         
         Returns:
-            An HTTP Request object configured for metadata tree retrieval in RDF/XML format.
+            Request: An HTTP Request object configured for metadata tree retrieval in RDF/XML format.
         
         Raises:
             ValueError: If dec_lang is not a valid ISO 639-3 code.
@@ -402,20 +402,22 @@ class CellarAPI:
         at least one content stream of the given accept format.
         
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            mime_type: MIME type for content (default: MimeType.XML)
-            acc_lang: Accept language (default: "eng", valid 3-character ISO 639-3 code)
-            size: Maximum content stream size in bytes (default: MAX_CS_SIZE)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            mime_type (MimeType): MIME type for content (default: MimeType.XML)
+            acc_lang (str): Accept language (default: "eng", valid 3-character ISO 639-3 code, must be in ISO_639_3_CODES)
+            size (int): Maximum content stream size in bytes (default: MAX_CS_SIZE)
         
         Returns:
-            An HTTP Request object configured for content stream retrieval.
+            Request: An HTTP Request object configured for content stream retrieval.
         
         Raises:
-            ValueError: If dec_lang is not a valid ISO 639-3 code.
+            ValueError: If dec_lang or acc_lang is not a valid ISO 639-3 code.
         """
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
+        if acc_lang.upper() not in ISO_639_3_CODES:
+            raise ValueError("Accept language must be a valid 3-character ISO 639-3 code.")
         
         url = cls.construct_resource_uri(resource_id)
         headers = {
@@ -448,20 +450,22 @@ class CellarAPI:
         given accept format.
         
         Args:
-            resource_id: The CELLAR resource identifier object
-            dec_lang: Decoding language (optional, valid 3-character ISO 639-3 code)
-            collection_type: Collection format type (default: CollectionType.LIST)
-            mime_type: MIME type for content (default: MimeType.XML)
-            acc_lang: Accept language (default: "eng", valid 3-character ISO 639-3 code)
+            resource_id (CellarResourceId): The CELLAR resource identifier object
+            dec_lang (Optional[str]): Decoding language (optional, valid 3-character ISO 639-3 code)
+            collection_type (CollectionType): Collection format type (default: CollectionType.LIST)
+            mime_type (MimeType): MIME type for content (default: MimeType.XML)
+            acc_lang (str): Accept language (default: "eng", valid 3-character ISO 639-3 code, must be in ISO_639_3_CODES)
         
         Returns:
-            An HTTP Request object configured for content stream collection retrieval.
+            Request: An HTTP Request object configured for content stream collection retrieval.
         
         Raises:
-            ValueError: If dec_lang is not a valid ISO 639-3 code.
+            ValueError: If dec_lang or acc_lang is not a valid ISO 639-3 code.
         """
         if dec_lang and dec_lang.upper() not in ISO_639_3_CODES:
             raise ValueError("Decoding language must be a valid 3-character ISO 639-3 code.")
+        if acc_lang.upper() not in ISO_639_3_CODES:
+            raise ValueError("Accept language must be a valid 3-character ISO 639-3 code.")
         
         url = cls.construct_resource_uri(resource_id)
         headers = {

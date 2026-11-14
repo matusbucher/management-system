@@ -29,6 +29,11 @@ def webservice_parse_args() -> argparse.Namespace:
         help="Optional path where the request XML should be saved"
     )
     parser.add_argument(
+        "-c", "--celex",
+        dest="celex",
+        help="When specified, search by CELEX identifier instead of using an expert query"
+    )
+    parser.add_argument(
         "-q", "--query",
         dest="query",
         help="Expert query string for the search request"
@@ -49,14 +54,14 @@ def webservice_parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "-e", "--exclude-consleg",
-        dest="exclude_consleg",
         action="store_true",
+        dest="exclude_consleg",
         help="Exclude all consolidated legislation (default: false)"
     )
     parser.add_argument(
         "-t", "--latest-consleg",
-        dest="latest_consleg",
         action="store_true",
+        dest="latest_consleg",
         help="Limit to the latest consolidated legislation (default: false)"
     )
     parser.add_argument(
@@ -66,8 +71,8 @@ def webservice_parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "-r", "--references-only",
-        dest="references_only",
         action="store_true",
+        dest="references_only",
         help="Print only reference IDs from the SOAP response"
     )
 
@@ -87,13 +92,24 @@ def main() -> None:
     else:
         webservice = WebserviceAPI()
 
-        query = get_str_value(args.query, "expert query", default=None)
         page = get_int_value(args.page, "page", default=1)
         page_size = get_int_value(args.page_size, "page size", default=1)
         language = get_str_value(args.language, "search language", default="en")
         exclude_consleg = args.exclude_consleg
         latest_consleg = args.latest_consleg
         available_in = args.available_in
+
+        if args.celex:
+            try:
+                references = webservice.search_by_celex(args.celex, page=page, page_size=page_size, language=language)
+            except Exception as e:
+                print(f"Error searching by CELEX: {e}")
+                return
+            for reference in references:
+                print(reference)
+            return
+        
+        query = get_str_value(args.query, "expert query", default=None)
 
         payload = webservice.build_soap_payload(
             query=query,

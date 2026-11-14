@@ -30,23 +30,28 @@ def cellar_parse_args() -> argparse.Namespace:
         "-p", "--ps",
         choices=[ps.value for ps in CellarPS],
         required=True,
+        dest="ps",
         help="Production system type"
     )
     ps_id_parser.add_argument(
         "-w", "--work-id",
         required=True,
+        dest="work_id",
         help="Work ID (UUID for cellar PS; alphanumeric for others)"
     )
     ps_id_parser.add_argument(
         "-e", "--expr-id",
+        dest="expr_id",
         help="Expression ID (4-character numeric for cellar PS; ISO 639-3 for others)"
     )
     ps_id_parser.add_argument(
         "-m", "--man-id",
+        dest="man_id",
         help="Manifestation ID (2-character numeric for cellar PS; valid file format for others)"
     )
     ps_id_parser.add_argument(
         "-c", "--cs-id",
+        dest="cs_id",
         help="Content stream ID (DOC_x for cellar PS, where x is a number; alphanumeric for others)"
     )
     
@@ -58,6 +63,7 @@ def cellar_parse_args() -> argparse.Namespace:
     req_parser.add_argument(
         "-r", "--rid",
         required=True,
+        dest="rid",
         help="Resource ID"
     )
     req_parser.add_argument(
@@ -73,46 +79,55 @@ def cellar_parse_args() -> argparse.Namespace:
             "content-stream-collection"
         ],
         required=True,
+        dest="type",
         help="Request type"
     )
     req_parser.add_argument(
         "--dec-lang",
+        dest="dec_lang",
         help="Decoding language (ISO 639-3 code)"
     )
     req_parser.add_argument(
         "--acc-lang",
+        dest="acc_lang",
         help="Accept language (ISO 639-3 code)"
     )
     req_parser.add_argument(
         "--normalized",
         action="store_true",
+        dest="normalized",
         help="Request normalized metadata"
     )
     req_parser.add_argument(
         "--non-inferred",
         action="store_true",
+        dest="non_inferred",
         help="Exclude inferred triples"
     )
     req_parser.add_argument(
         "--alternates",
         action="store_true",
+        dest="alternates",
         help="Include alternate representations"
     )
     req_parser.add_argument(
         "--mime-type",
         choices=["xml", "html", "pdf", "rdf_xml"],
         default="xml",
+        dest="mime_type",
         help="MIME type"
     )
     req_parser.add_argument(
         "--collection-type",
         choices=["list", "zip"],
         default="list",
+        dest="collection_type",
         help="Collection type"
     )
     req_parser.add_argument(
         "--size",
         type=int,
+        dest="size",
         help="Maximum content stream size"
     )
     

@@ -110,6 +110,37 @@ class CellarResourceId:
         if cs_id and not cs_id.isalnum():
             raise ValueError("Content stream ID must be an alphanumeric value.")
 
+    @classmethod
+    def from_string(
+        cls,
+        uri: str
+    ) -> CellarResourceId:
+        """
+        Create a CellarResourceId object from a resource URI.
+
+        Args:
+            uri (str): The resource URI string
+
+        Returns:
+            CellarResourceId: The corresponding CELLAR resource identifier object
+
+        Raises:
+            ValueError: If the URI format is invalid.
+        """
+        try:
+            ps_name, resource_id = uri.rsplit("/", 1)
+            ps = CellarPS.from_string(ps_name)
+            parts = resource_id.split("/")
+            work_id = parts[0]
+            expr_id = parts[1] if len(parts) > 1 else None
+            man_id = parts[2] if len(parts) > 2 else None
+            cs_id = parts[3] if len(parts) > 3 else None
+            return CellarResourceId(ps, work_id, expr_id, man_id, cs_id)
+
+        except Exception as e:
+            raise ValueError(f"Invalid URI format: {uri}") from e
+
+
 
 class CellarAPI:
     """

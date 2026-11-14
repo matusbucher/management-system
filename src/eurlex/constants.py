@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 from pathlib import Path
 
@@ -118,6 +120,13 @@ class CellarPS(Enum):
     ELI = "eli"
     IMMC = "immc"
     PLANJO = "planjo"
+
+    @classmethod
+    def from_string(cls, ps_value: str) -> CellarPS:
+        for ps in cls:
+            if ps.value == ps_value:
+                return ps
+        raise ValueError(f"Unknown CellarPS value: {ps_value}")
 
 
 class MimeType(Enum):

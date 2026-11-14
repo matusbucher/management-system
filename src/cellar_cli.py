@@ -1,8 +1,8 @@
 import argparse
 from urllib.request import Request
 
-from .eurlex.cellar_api import CellarAPI, CellarPS
-from .eurlex.constants import MimeType, CollectionType, MAX_CS_SIZE
+from eurlex.cellar_api import CellarResourceId, CellarAPI
+from eurlex.constants import CellarPS, MimeType, CollectionType, MAX_CS_SIZE
 
 
 def cellar_parse_args() -> argparse.Namespace:
@@ -23,48 +23,31 @@ def cellar_parse_args() -> argparse.Namespace:
     
     # Subcommand: build-ps-id
     ps_id_parser = subparsers.add_parser(
-        "build-ps-id",
-        help="Build a production system ID"
+        "build-rid",
+        help="Build a resource ID"
     )
     ps_id_parser.add_argument(
         "-p", "--ps",
-        choices=["cellar", "others"],
+        choices=[ps.value for ps in CellarPS],
         required=True,
         help="Production system type"
     )
     ps_id_parser.add_argument(
         "-w", "--work-id",
         required=True,
-        help="Work ID (UUID for Cellar, alphanumeric for Others)"
+        help="Work ID (UUID for cellar PS; alphanumeric for others)"
     )
     ps_id_parser.add_argument(
         "-e", "--expr-id",
-        help="Expression ID (4-digit for Cellar, ISO 639-3 for Others)"
+        help="Expression ID (4-character numeric for cellar PS; ISO 639-3 for others)"
     )
     ps_id_parser.add_argument(
         "-m", "--man-id",
-        help="Manifestation ID (2-digit for Cellar, format name for Others)"
+        help="Manifestation ID (2-character numeric for cellar PS; valid file format for others)"
     )
     ps_id_parser.add_argument(
         "-c", "--cs-id",
-        help="Content stream ID"
-    )
-    
-    # Subcommand: build-uri
-    uri_parser = subparsers.add_parser(
-        "build-uri",
-        help="Build a resource URI"
-    )
-    uri_parser.add_argument(
-        "-p", "--ps",
-        choices=["cellar", "others"],
-        required=True,
-        help="Production system type"
-    )
-    uri_parser.add_argument(
-        "-i", "--ps-id",
-        required=True,
-        help="Production system ID"
+        help="Content stream ID (DOC_x for cellar PS, where x is a number; alphanumeric for others)"
     )
     
     # Subcommand: build-request
@@ -73,18 +56,12 @@ def cellar_parse_args() -> argparse.Namespace:
         help="Build an HTTP request"
     )
     req_parser.add_argument(
-        "-p", "--ps",
-        choices=["cellar", "others"],
+        "-r", "--rid",
         required=True,
-        help="Production system type"
+        help="Resource ID"
     )
     req_parser.add_argument(
-        "-i", "--ps-id",
-        required=True,
-        help="Production system ID"
-    )
-    req_parser.add_argument(
-        "--type",
+        "-t", "--type",
         choices=[
             "tree-notice",
             "branch-notice",
@@ -150,41 +127,37 @@ def main() -> None:
         return
     
     try:
-        ps_enum = getattr(CellarPS, args.ps.upper())
+        ps = CellarPS.from_string(args.ps)
         
-        if args.command == "build-ps-id":
-            if args.ps == "cellar":
-                result = CellarAPI.cellar_ps_id(args.work_id, args.expr_id, args.man_id, args.cs_id)
-            else:
-                result = CellarAPI.others_ps_id(args.work_id, args.expr_id, args.man_id, args.cs_id)
-            print(result)
-        
-        elif args.command == "build-uri":
-            result = CellarAPI.construct_resource_uri(ps_enum, args.ps_id)
-            print(result)
+        if args.command == "build-rid":
+            rid = CellarResourceId(ps, args.work_id, args.expr_id, args.man_id, args.cs_id)
+            print(rid)
         
         elif args.command == "build-request":
             req = Request("")
+            rid = CellarResourceId.from_string(args.rid)
 
             if args.type == "tree-notice":
-                req = CellarAPI.tree_notice_request(ps_enum, args.ps_id, args.dec_lang)
+                req = CellarAPI.tree_notice_request(rid, args.dec_lang)
             elif args.type == "branch-notice":
-                req = CellarAPI.branch_notice_request(ps_enum, args.ps_id, args.dec_lang, args.acc_lang or "eng")
+                req = CellarAPI.branch_notice_request(rid, args.dec_lang, args.acc_lang or "eng")
             elif args.type == "object-notice":
-                req = CellarAPI.object_notice_request(ps_enum, args.ps_id, args.dec_lang, args.acc_lang, args.alternates)
+                req = CellarAPI.object_notice_request(rid, args.dec_lang, args.acc_lang, args.alternates)
             elif args.type == "identifiers-notice":
-                req = CellarAPI.indentifiers_notice_request(ps_enum, args.ps_id)
+                req = CellarAPI.indentifiers_notice_request(rid)
             elif args.type == "metadata":
-                req = CellarAPI.metadata_request(ps_enum, args.ps_id, args.dec_lang, args.normalized, args.non_inferred, args.alternates)
+                req = CellarAPI.metadata_request(rid, args.dec_lang, args.normalized, args.non_inferred, args.alternates)
             elif args.type == "metadata-tree":
-                req = CellarAPI.metadata_tree_request(ps_enum, args.ps_id, args.dec_lang, args.normalized, args.non_inferred)
+                req = CellarAPI.metadata_tree_request(rid, args.dec_lang, args.normalized, args.non_inferred)
             elif args.type == "content-stream":
                 mime_type = getattr(MimeType, args.mime_type.upper())
-                req = CellarAPI.content_stream_request(ps_enum, args.ps_id, args.dec_lang, mime_type, args.acc_lang or "eng", args.size or MAX_CS_SIZE)
+                req = CellarAPI.content_stream_request(rid, args.dec_lang, mime_type, args.acc_lang or "eng", args.size or MAX_CS_SIZE)
             elif args.type == "content-stream-collection":
                 mime_type = getattr(MimeType, args.mime_type.upper())
                 collection_type = getattr(CollectionType, args.collection_type.upper())
-                req = CellarAPI.content_stream_collection_request(ps_enum, args.ps_id, args.dec_lang, collection_type, mime_type, args.acc_lang or "eng")
+                req = CellarAPI.content_stream_collection_request(rid, args.dec_lang, collection_type, mime_type, args.acc_lang or "eng")
+            else:
+                raise ValueError(f"Unsupported request type: {args.type}")
             
             print(f"Method: {req.get_method()}")
             print(f"URL: {req.full_url}")

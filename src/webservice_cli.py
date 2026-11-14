@@ -3,8 +3,8 @@ import argparse
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 
-from .eurlex.webservice_api import WebserviceAPI
-from .utils import get_int_value, get_str_value
+from eurlex.webservice_api import WebserviceAPI
+from utils.utils import get_int_value, get_str_value
 
 
 def webservice_parse_args() -> argparse.Namespace:

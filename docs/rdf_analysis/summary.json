@@ -1,0 +1,303 @@
+{
+ "files": 14,
+ "triples_total": 1030506,
+ "distinct_predicates": 331,
+ "triples_by_action": [
+  [
+   "KEEP-FOLD",
+   299212
+  ],
+  [
+   "KEEP",
+   246088
+  ],
+  [
+   "FOLD",
+   187100
+  ],
+  [
+   "KEEP-EDGE-PROPERTY",
+   130383
+  ],
+  [
+   "KEEP-FILTERED",
+   83548
+  ],
+  [
+   "DROP",
+   63164
+  ],
+  [
+   "OPTIONAL",
+   21011
+  ]
+ ],
+ "triples_by_category": [
+  [
+   "edge-annotation",
+   193212
+  ],
+  [
+   "work-relation-generic",
+   186473
+  ],
+  [
+   "work-relation",
+   174074
+  ],
+  [
+   "reification",
+   153972
+  ],
+  [
+   "identity",
+   145240
+  ],
+  [
+   "structural",
+   83548
+  ],
+  [
+   "work-classification",
+   48515
+  ],
+  [
+   "work-agent",
+   23055
+  ],
+  [
+   "context-entity-link",
+   12750
+  ],
+  [
+   "work-context-entity",
+   6176
+  ],
+  [
+   "work-context-relation",
+   1318
+  ],
+  [
+   "work-attribute-generic",
+   627
+  ],
+  [
+   "work-relation-other",
+   467
+  ],
+  [
+   "work-attribute",
+   444
+  ],
+  [
+   "wemi-link",
+   335
+  ],
+  [
+   "vocabulary",
+   275
+  ],
+  [
+   "system",
+   25
+  ]
+ ],
+ "predicates_by_category": [
+  [
+   "work-relation-generic",
+   58
+  ],
+  [
+   "work-attribute-generic",
+   48
+  ],
+  [
+   "work-attribute",
+   46
+  ],
+  [
+   "work-relation",
+   45
+  ],
+  [
+   "work-context-entity",
+   35
+  ],
+  [
+   "edge-annotation",
+   28
+  ],
+  [
+   "context-entity-link",
+   25
+  ],
+  [
+   "work-classification",
+   13
+  ],
+  [
+   "work-relation-other",
+   10
+  ],
+  [
+   "work-agent",
+   7
+  ],
+  [
+   "work-context-relation",
+   7
+  ],
+  [
+   "reification",
+   3
+  ],
+  [
+   "system",
+   2
+  ],
+  [
+   "identity",
+   1
+  ],
+  [
+   "structural",
+   1
+  ],
+  [
+   "wemi-link",
+   1
+  ],
+  [
+   "vocabulary",
+   1
+  ]
+ ],
+ "per_file": [
+  {
+   "file": "AI-Act.rdf",
+   "size_bytes": 4700544,
+   "triples": 36622,
+   "subjects_uri": 7747,
+   "subjects_bnode": 660,
+   "distinct_predicates": 217,
+   "sameas_groups": 3675
+  },
+  {
+   "file": "CER-Directive.rdf",
+   "size_bytes": 5487198,
+   "triples": 44659,
+   "subjects_uri": 6774,
+   "subjects_bnode": 2392,
+   "distinct_predicates": 201,
+   "sameas_groups": 3118
+  },
+  {
+   "file": "Cyber-Resilience-Act.rdf",
+   "size_bytes": 2277768,
+   "triples": 17666,
+   "subjects_uri": 3741,
+   "subjects_bnode": 407,
+   "distinct_predicates": 200,
+   "sameas_groups": 1774
+  },
+  {
+   "file": "Cybersecurity-Act.rdf",
+   "size_bytes": 4934482,
+   "triples": 39714,
+   "subjects_uri": 6246,
+   "subjects_bnode": 1527,
+   "distinct_predicates": 205,
+   "sameas_groups": 2808
+  },
+  {
+   "file": "Data-Governance-Act.rdf",
+   "size_bytes": 2314840,
+   "triples": 17971,
+   "subjects_uri": 3936,
+   "subjects_bnode": 251,
+   "distinct_predicates": 179,
+   "sameas_groups": 1796
+  },
+  {
+   "file": "DORA-Amending-Directive.rdf",
+   "size_bytes": 1896524,
+   "triples": 16339,
+   "subjects_uri": 1295,
+   "subjects_bnode": 1408,
+   "distinct_predicates": 162,
+   "sameas_groups": 594
+  },
+  {
+   "file": "DORA.rdf",
+   "size_bytes": 2327508,
+   "triples": 18033,
+   "subjects_uri": 3478,
+   "subjects_bnode": 637,
+   "distinct_predicates": 190,
+   "sameas_groups": 1575
+  },
+  {
+   "file": "eIDAS-1.rdf",
+   "size_bytes": 12333728,
+   "triples": 105077,
+   "subjects_uri": 13652,
+   "subjects_bnode": 3172,
+   "distinct_predicates": 220,
+   "sameas_groups": 6146
+  },
+  {
+   "file": "eIDAS-2.rdf",
+   "size_bytes": 1698504,
+   "triples": 13587,
+   "subjects_uri": 2416,
+   "subjects_bnode": 507,
+   "distinct_predicates": 173,
+   "sameas_groups": 1111
+  },
+  {
+   "file": "ENISA-Reg-526-2013.rdf",
+   "size_bytes": 1545385,
+   "triples": 12066,
+   "subjects_uri": 2441,
+   "subjects_bnode": 288,
+   "distinct_predicates": 164,
+   "sameas_groups": 1114
+  },
+  {
+   "file": "EU-Cybersecurity-Competence-Centre-Regulation.rdf",
+   "size_bytes": 1043612,
+   "triples": 7852,
+   "subjects_uri": 2005,
+   "subjects_bnode": 133,
+   "distinct_predicates": 147,
+   "sameas_groups": 908
+  },
+  {
+   "file": "GDPR.rdf",
+   "size_bytes": 63847326,
+   "triples": 528338,
+   "subjects_uri": 39334,
+   "subjects_bnode": 33745,
+   "distinct_predicates": 259,
+   "sameas_groups": 17279
+  },
+  {
+   "file": "NIS1.rdf",
+   "size_bytes": 11515222,
+   "triples": 98460,
+   "subjects_uri": 12083,
+   "subjects_bnode": 4000,
+   "distinct_predicates": 199,
+   "sameas_groups": 5547
+  },
+  {
+   "file": "NIS2.rdf",
+   "size_bytes": 8855898,
+   "triples": 74122,
+   "subjects_uri": 8907,
+   "subjects_bnode": 4083,
+   "distinct_predicates": 205,
+   "sameas_groups": 4111
+  }
+ ]
+}

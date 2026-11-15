@@ -1,0 +1,635 @@
+{
+ "per_file": {
+  "AI-Act": {
+   "raw_object_triples": 20918,
+   "unique_edges": 10266
+  },
+  "CER-Directive": {
+   "raw_object_triples": 18329,
+   "unique_edges": 8980
+  },
+  "Cyber-Resilience-Act": {
+   "raw_object_triples": 9154,
+   "unique_edges": 4460
+  },
+  "Cybersecurity-Act": {
+   "raw_object_triples": 19714,
+   "unique_edges": 9749
+  },
+  "Data-Governance-Act": {
+   "raw_object_triples": 10475,
+   "unique_edges": 5220
+  },
+  "DORA-Amending-Directive": {
+   "raw_object_triples": 4094,
+   "unique_edges": 2045
+  },
+  "DORA": {
+   "raw_object_triples": 8713,
+   "unique_edges": 4226
+  },
+  "eIDAS-1": {
+   "raw_object_triples": 57085,
+   "unique_edges": 28292
+  },
+  "eIDAS-2": {
+   "raw_object_triples": 5938,
+   "unique_edges": 2926
+  },
+  "ENISA-Reg-526-2013": {
+   "raw_object_triples": 4762,
+   "unique_edges": 2377
+  },
+  "EU-Cybersecurity-Competence-Centre-Regulation": {
+   "raw_object_triples": 4002,
+   "unique_edges": 1989
+  },
+  "GDPR": {
+   "raw_object_triples": 208582,
+   "unique_edges": 103361
+  },
+  "NIS1": {
+   "raw_object_triples": 48860,
+   "unique_edges": 24389
+  },
+  "NIS2": {
+   "raw_object_triples": 32537,
+   "unique_edges": 16071
+  }
+ },
+ "raw_total": 453163,
+ "sum_unique_per_file": 224351,
+ "unique_edges_overall": 142535,
+ "edges_in_more_than_one_file": 43094,
+ "distinct_nodes": 26951,
+ "node_kinds": [
+  [
+   "celex-preparatory act",
+   6474
+  ],
+  [
+   "celex-legislation",
+   6168
+  ],
+  [
+   "cellar",
+   4645
+  ],
+  [
+   "celex-case-law",
+   3744
+  ],
+  [
+   "http",
+   1637
+  ],
+  [
+   "celex-national implementing measure",
+   957
+  ],
+  [
+   "celex-treaty",
+   830
+  ],
+  [
+   "authority",
+   639
+  ],
+  [
+   "celex-international agreement",
+   531
+  ],
+  [
+   "oj",
+   355
+  ],
+  [
+   "celex",
+   239
+  ],
+  [
+   "consil",
+   134
+  ],
+  [
+   "celex-OJ C",
+   126
+  ],
+  [
+   "ep",
+   108
+  ],
+  [
+   "consolidation",
+   73
+  ],
+  [
+   "celex-complementary legislation",
+   71
+  ],
+  [
+   "celex-consolidated text",
+   65
+  ],
+  [
+   "intproc-event",
+   56
+  ],
+  [
+   "pi_eesc",
+   47
+  ],
+  [
+   "celex-EFTA",
+   18
+  ],
+  [
+   "case",
+   11
+  ],
+  [
+   "pegase",
+   6
+  ],
+  [
+   "immc",
+   3
+  ],
+  [
+   "intproc",
+   3
+  ],
+  [
+   "dossier",
+   3
+  ],
+  [
+   "nim",
+   2
+  ],
+  [
+   "budget",
+   2
+  ],
+  [
+   "procedure-event",
+   2
+  ],
+  [
+   "internal_proc-event",
+   1
+  ],
+  [
+   "internal_proc",
+   1
+  ]
+ ],
+ "citing_node_kinds_of_cited_by_edges": [
+  [
+   "celex-preparatory act",
+   62752
+  ],
+  [
+   "celex-legislation",
+   12658
+  ],
+  [
+   "celex-case-law",
+   7508
+  ],
+  [
+   "celex-OJ C",
+   1613
+  ],
+  [
+   "celex-treaty",
+   1346
+  ],
+  [
+   "celex-international agreement",
+   1078
+  ],
+  [
+   "celex-EFTA",
+   46
+  ]
+ ],
+ "roots_with_several_inverse_roots": {
+  "cdm:part_of": [
+   "cdm:contains",
+   "cdm:has_part"
+  ],
+  "cdm:contains": [
+   "cdm:initiates",
+   "cdm:part_of"
+  ],
+  "cdm:based_on": [
+   "cdm:basis_for",
+   "cdm:reference-data_asset_release_basis_for_reference-data_asset_prerelease"
+  ],
+  "cdm:initiates": [
+   "cdm:contains",
+   "cdm:initiated_by"
+  ],
+  "cdm:publishes": [
+   "cdm:issn-serial_published-by_agent",
+   "cdm:prereleased-in",
+   "cdm:prereleased_in",
+   "cdm:published_by",
+   "cdm:published_in",
+   "cdm:reference-data_asset_published_in_reference-data_publication",
+   "cdm:reference-data_asset_release_published_in_reference-data_publication",
+   "cdm:reference-data_asset_released_in_reference-data_asset_release"
+  ],
+  "cdm:requests": [
+   "cdm:annulment_requested_by",
+   "cdm:establishes_failure_to_fulfill_obligation_requested_by",
+   "cdm:interpretation_requested_by",
+   "cdm:opinion_requested_by",
+   "cdm:requested_by",
+   "cdm:validation_requested_by"
+  ],
+  "cdm:explained_by": [
+   "cdm:documents",
+   "cdm:explains"
+  ],
+  "cdm:defended_by": [
+   "cdm:defends",
+   "cdm:defends_in"
+  ],
+  "cdm:suspends": [
+   "cdm:application_suspended_by",
+   "cdm:suspended_by"
+  ],
+  "cdm:is_type_of": [
+   "cdm:has_media_type",
+   "cdm:has_type"
+  ],
+  "cdm:incorporates": [
+   "cdm:expression_is_incorporated_in_expression",
+   "cdm:incorporated_by"
+  ],
+  "cdm:contributed_to_by": [
+   "cdm:contributes",
+   "cdm:edits",
+   "cdm:illustrates",
+   "cdm:translates"
+  ]
+ },
+ "edge_types": [
+  [
+   "cdm:cited_by",
+   87001
+  ],
+  [
+   "cdm:subject_of",
+   18027
+  ],
+  [
+   "cdm:created_by",
+   7672
+  ],
+  [
+   "cdm:based_on",
+   6473
+  ],
+  [
+   "cdm:implemented_by",
+   6156
+  ],
+  [
+   "cdm:contains",
+   5635
+  ],
+  [
+   "cdm:commented_by",
+   1228
+  ],
+  [
+   "cdm:issn-serial_published-by_agent",
+   1091
+  ],
+  [
+   "cdm:related_to",
+   955
+  ],
+  [
+   "cdm:responsibility_of",
+   942
+  ],
+  [
+   "cdm:consolidated_by",
+   610
+  ],
+  [
+   "cdm:amendment_proposed_by",
+   579
+  ],
+  [
+   "cdm:is_another_publication_of",
+   578
+  ],
+  [
+   "cdm:delivered_by",
+   560
+  ],
+  [
+   "cdm:amended_by",
+   496
+  ],
+  [
+   "cdm:produced_by",
+   418
+  ],
+  [
+   "cdm:implicitly_repealed_by",
+   386
+  ],
+  [
+   "cdm:belongs_to",
+   351
+  ],
+  [
+   "cdm:adopted_by",
+   326
+  ],
+  [
+   "cdm:submits",
+   305
+  ],
+  [
+   "cdm:has_successor",
+   300
+  ],
+  [
+   "cdm:repealed_by",
+   282
+  ],
+  [
+   "cdm:defended_by",
+   218
+  ],
+  [
+   "cdm:used_by",
+   214
+  ],
+  [
+   "cdm:interpreted_by",
+   187
+  ],
+  [
+   "cdm:is_about",
+   161
+  ],
+  [
+   "cdm:influenced_by",
+   146
+  ],
+  [
+   "cdm:annulment_requested_by",
+   140
+  ],
+  [
+   "cdm:contains_ep_opinion_on",
+   124
+  ],
+  [
+   "cdm:contains_eesc_opinion_on",
+   117
+  ],
+  [
+   "cdm:initiated_by",
+   104
+  ],
+  [
+   "cdm:reported_by",
+   102
+  ],
+  [
+   "cdm:communicated_on_by",
+   96
+  ],
+  [
+   "cdm:corrected_by",
+   72
+  ],
+  [
+   "cdm:completed_by",
+   61
+  ],
+  [
+   "cdm:replaced_by",
+   49
+  ],
+  [
+   "cdm:addressed_by",
+   46
+  ],
+  [
+   "cdm:requested_by",
+   44
+  ],
+  [
+   "cdm:has_media_type",
+   42
+  ],
+  [
+   "cdm:contains_cor_opinion_on",
+   35
+  ],
+  [
+   "cdm:co-reported_by",
+   32
+  ],
+  [
+   "cdm:published_in",
+   30
+  ],
+  [
+   "cdm:subject_to_appeal_in",
+   26
+  ],
+  [
+   "cdm:stated_by",
+   21
+  ],
+  [
+   "cdm:used_for_drafting",
+   16
+  ],
+  [
+   "cdm:summarized_by",
+   14
+  ],
+  [
+   "cdm:has_member",
+   14
+  ],
+  [
+   "cdm:validated_by",
+   12
+  ],
+  [
+   "cdm:derogated_by",
+   7
+  ],
+  [
+   "cdm:declared_void_by",
+   6
+  ],
+  [
+   "cdm:associated_to",
+   5
+  ],
+  [
+   "cdm:depositary_for",
+   5
+  ],
+  [
+   "cdm:extends_validity_of",
+   4
+  ],
+  [
+   "cdm:declared_valid_by",
+   3
+  ],
+  [
+   "cdm:confirmed_by",
+   3
+  ],
+  [
+   "cdm:incorporated_by",
+   3
+  ],
+  [
+   "cdm:resource_legal_domain_reference_oj-act",
+   2
+  ],
+  [
+   "cdm:documents",
+   2
+  ],
+  [
+   "cdm:partially_adopted_by",
+   1
+  ]
+ ],
+ "edge_types_shared_between_files": [
+  [
+   "cdm:cited_by",
+   30421
+  ],
+  [
+   "cdm:subject_of",
+   3845
+  ],
+  [
+   "cdm:implemented_by",
+   2645
+  ],
+  [
+   "cdm:created_by",
+   1537
+  ],
+  [
+   "cdm:contains",
+   1513
+  ],
+  [
+   "cdm:based_on",
+   1436
+  ],
+  [
+   "cdm:related_to",
+   350
+  ],
+  [
+   "cdm:amendment_proposed_by",
+   227
+  ],
+  [
+   "cdm:responsibility_of",
+   202
+  ],
+  [
+   "cdm:produced_by",
+   126
+  ],
+  [
+   "cdm:amended_by",
+   121
+  ],
+  [
+   "cdm:issn-serial_published-by_agent",
+   114
+  ],
+  [
+   "cdm:is_another_publication_of",
+   108
+  ],
+  [
+   "cdm:adopted_by",
+   79
+  ],
+  [
+   "cdm:implicitly_repealed_by",
+   75
+  ],
+  [
+   "cdm:repealed_by",
+   52
+  ],
+  [
+   "cdm:initiated_by",
+   44
+  ],
+  [
+   "cdm:consolidated_by",
+   27
+  ],
+  [
+   "cdm:has_successor",
+   26
+  ],
+  [
+   "cdm:reported_by",
+   26
+  ],
+  [
+   "cdm:contains_eesc_opinion_on",
+   24
+  ],
+  [
+   "cdm:contains_ep_opinion_on",
+   22
+  ],
+  [
+   "cdm:influenced_by",
+   20
+  ],
+  [
+   "cdm:completed_by",
+   15
+  ],
+  [
+   "cdm:contains_cor_opinion_on",
+   10
+  ],
+  [
+   "cdm:replaced_by",
+   10
+  ],
+  [
+   "cdm:co-reported_by",
+   9
+  ],
+  [
+   "cdm:addressed_by",
+   9
+  ],
+  [
+   "cdm:associated_to",
+   1
+  ]
+ ]
+}

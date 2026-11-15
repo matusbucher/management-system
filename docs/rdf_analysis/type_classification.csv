@@ -1,0 +1,96 @@
+class,wemi_levels,triples,subject_levels,category,action,rationale
+owl:Axiom,,53210,"{""axiom-bnode"": 53210}",reification,KEEP-FOLD,container of edge annotations; flattened
+cdm:work,work,9776,"{""work"": 9776}",technical-class,DROP,super-class that carries no document-type information
+cdm:resource_legal,work,8615,"{""work"": 8615}",technical-class,DROP,super-class that carries no document-type information
+cdm:act_preparatory,work,2303,"{""work"": 2303}",technical-class,DROP,super-class that carries no document-type information
+cdm:legislation_secondary,work,1580,"{""work"": 1580}",technical-class,DROP,super-class that carries no document-type information
+cdm:official-journal-act,work,1208,"{""work"": 1208}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:measure_national_implementing,work,1026,"{""work"": 1026}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:communication_cjeu,work,514,"{""work"": 514}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:communication_case_new,work,306,"{""work"": 306}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:case-law,work,273,"{""work"": 273}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:document_cjeu,work,261,"{""work"": 261}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:evolutive_work,work,256,"{""work"": 256}",technical-class,DROP,super-class that carries no document-type information
+cdm:serial_work,work,256,"{""work"": 256}",technical-class,DROP,super-class that carries no document-type information
+cdm:complex_work,work,256,"{""work"": 256}",technical-class,DROP,super-class that carries no document-type information
+skos:Concept,,244,"{""vocabulary"": 244}",vocabulary,OPTIONAL,SKOS concept / scheme
+cdm:act_preparatory_ec,work,224,"{""work"": 224}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:proposal_act,work,213,"{""work"": 213}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:regulation_implementing,work,198,"{""work"": 198}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:concept,other:skos:Concept,195,"{""vocabulary"": 195}",vocabulary,OPTIONAL,reference-data concept
+cdm:regulation,work,174,"{""work"": 174}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:proposal_regulation_ec,work,152,"{""work"": 152}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:act_consolidated,work,145,"{""work"": 145}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:judgement,work,129,"{""work"": 129}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:directive,work,111,"{""work"": 111}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:concept_eurovoc,other:skos:Concept,110,"{""vocabulary"": 110}",vocabulary,OPTIONAL,reference-data concept
+cdm:opinion_advocate-general,work,104,"{""work"": 104}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:opinion_consultation_eesc,work,98,"{""work"": 98}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:communication_judgement,work,93,"{""work"": 93}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:resolution,work,91,"{""work"": 91}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:entity_temporal,other:cdm:entity_temporal,83,"{""untyped"": 79, ""work"": 4}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:period,other:cdm:entity_temporal,83,"{""untyped"": 79, ""work"": 4}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:resolution_other_ep,work,82,"{""work"": 82}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:regulation_delegated,work,73,"{""work"": 73}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:dossier,other:cdm:entity_temporal,69,"{""untyped"": 65, ""work"": 4}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:resolution_legislative_ep,work,66,"{""work"": 66}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:opinion,work,64,"{""work"": 64}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:document-ec,work,55,"{""work"": 55}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:institution,other:cdm:agent,46,"{""vocabulary"": 46}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:agent,other:cdm:agent,46,"{""vocabulary"": 46}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:procedure_internal,other:cdm:entity_temporal,46,"{""untyped"": 46}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:procedure_internal-ec,other:cdm:entity_temporal,39,"{""untyped"": 39}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:order_cjeu,work,37,"{""work"": 37}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:proposal_decision_ec,work,36,"{""work"": 36}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:opinion_other_eesc,work,32,"{""work"": 32}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:agreement_international,work,31,"{""work"": 31}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:subject-matter,other:skos:Concept,29,"{""vocabulary"": 29}",vocabulary,OPTIONAL,reference-data concept
+cdm:communication_joint,work,28,"{""work"": 28}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:document_budget_ep,work,26,"{""work"": 26}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:proposal_directive_ec,work,25,"{""work"": 25}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:opinion_other_cor,work,22,"{""work"": 22}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:concept_directory-code,other:skos:Concept,22,"{""vocabulary"": 22}",vocabulary,OPTIONAL,reference-data concept
+cdm:act_preparatory_joint,work,22,"{""work"": 22}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:summary,work,20,"{""work"": 20}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:auxiliary-work,work,20,"{""work"": 20}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:agent-conceptual,other:cdm:agent,19,"{""vocabulary"": 19}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:decision_implementing,work,19,"{""work"": 19}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:procedure_code_interinstitutional,other:cdm:entity_temporal,19,"{""untyped"": 19}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:opinion_consultation_cor,work,16,"{""work"": 16}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:event,other:cdm:entity_temporal,14,"{""untyped"": 14}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+skos:ConceptScheme,,14,"{""vocabulary"": 14}",vocabulary,OPTIONAL,SKOS concept / scheme
+cdm:concept_treaty,other:skos:Concept,14,"{""vocabulary"": 14}",vocabulary,OPTIONAL,reference-data concept
+cdm:event_procedural,other:cdm:entity_temporal,14,"{""untyped"": 14}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:resource-type,other:skos:Concept,14,"{""vocabulary"": 14}",vocabulary,OPTIONAL,reference-data concept
+cdm:procedure_interinstitutional,other:cdm:entity_temporal,14,"{""untyped"": 14}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:event_legal,other:cdm:entity_temporal,14,"{""untyped"": 14}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:summary_legislation_eu,work,13,"{""work"": 13}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:publication_general,work,13,"{""work"": 13}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:act_preparatory_ec_document-budgetary,work,11,"{""work"": 11}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:document-budgetary,work,11,"{""work"": 11}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:official-journal,work,11,"{""work"": 11}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:concept_decoding,other:skos:Concept,10,"{""vocabulary"": 10}",vocabulary,OPTIONAL,reference-data concept
+cdm:budget-general-draft,work,9,"{""work"": 9}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:treaty,work,9,"{""work"": 9}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:question_parliamentary,work,8,"{""work"": 8}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:collection_document,other:skos:Concept,7,"{""vocabulary"": 7}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:collection,other:skos:Concept,7,"{""vocabulary"": 7}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:group_parliamentary,other:cdm:agent+other:skos:Concept,5,"{""vocabulary"": 5}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+http://publications.europa.eu/ontology/euvoc#Corporate,,5,"{""vocabulary"": 5}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:act_preparatory_ep,work,5,"{""work"": 5}",work-class,KEEP,document type of the work (use most specific class as docType)
+http://xmlns.com/foaf/0.1/Agent,,4,"{""vocabulary"": 4}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+http://www.w3.org/ns/org#Organization,,4,"{""vocabulary"": 4}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:communication_order_cjeu,work,3,"{""work"": 3}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:legal-act-domain,other:skos:Concept,2,"{""vocabulary"": 2}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:budget-amending-draft,work,2,"{""work"": 2}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:budget-amending-draft-explanation,work,2,"{""work"": 2}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:special-official-journal,work,2,"{""work"": 2}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:atto_fd,other:skos:Concept,2,"{""vocabulary"": 2}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:concept_type_act,other:skos:Concept,2,"{""vocabulary"": 2}",other-entity,OPTIONAL,"non-WEMI entity (agent, event, dossier, period...)"
+cdm:decision,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:act_body_agreement_international,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:report_eca,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:position_council,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:act_preparatory_council,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:opinion_ecb,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)
+cdm:report_joint,work,1,"{""work"": 1}",work-class,KEEP,document type of the work (use most specific class as docType)

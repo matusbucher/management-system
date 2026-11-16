@@ -1,11 +1,105 @@
 from __future__ import annotations
 
+from enum import Enum
 from typing import Optional
+
+import re
 from dataclasses import dataclass
 from urllib.parse import urlencode
 from urllib.request import Request
 
-from .constants import *
+from .constants import MimeType, CollectionType, ISO_639_3_CODES, MANIFESTATION_FORMATS
+
+
+RESOURCE_BASE_URL = "https://publications.europa.eu/resource"
+WEBAPI_BASE_URL = "https://publications.europa.eu/webapi"
+
+UUID_PATTERN = re.compile(
+    r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+)
+
+CELLAR_EXPR_ID_PATTERN = re.compile(r"^\d{4}$")
+CELLAR_MAN_ID_PATTERN = re.compile(r"^\d{2}$")
+CELLAR_CS_ID_PATTERN = re.compile(r"^DOC_\d+$")
+
+# CELLAR production system pattern
+# format: {uuid}.{4-digits}.{2-digits}/DOC_{digits}
+CELLAR_PROD_PATTERN = re.compile(
+    r"^(?P<work_id>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"
+    r"(?:\.(?P<expr_id>\d{4})"
+    r"(?:\.(?P<man_id>\d{2})"
+    r"(?:/(?P<cs_id>DOC_\d+))?"
+    r")?"
+    r")?$"
+)
+
+# non-CELLAR production system pattern
+# format: {alphanumeric}.{3-char ISO-639-3}.{alphanumeric}.{alphanumeric}
+NON_CELLAR_PATTERN = re.compile(
+    r"^(?P<work_id>[A-Za-z0-9_-]+)"
+    r"(?:\.(?P<expr_id>[A-Za-z]{3})"
+    r"(?:\.(?P<man_id>[A-Za-z0-9_-]+)"
+    r"(?:\.(?P<cs_id>[A-Za-z0-9_-]+))?"
+    r")?"
+    r")?$"
+)
+
+MAX_CS_SIZE = 9223372036854775807 # 2^63 - 1
+
+
+class CellarPS(Enum):
+    """CELLAR production systems."""
+    CELLAR = "cellar"
+    CELLEX = "cellex"
+    OJ = "oj"
+    COM = "com"
+    GENPUB = "genpub"
+    EP = "ep"
+    JURISPRUDENCE = "jurisprudence"
+    DD = "dd"
+    MTF = "mtf"
+    CONSOLIDATION = "consolidation"
+    EUROSTAT = "eurostat"
+    EESC = "eesc"
+    COR = "cor"
+    NIM = "nim"
+    PEGASE = "pegase"
+    TRANSJAI = "transjai"
+    AGENT = "agent"
+    URISERV = "uriserv"
+    JOIN = "join"
+    SWD = "swd"
+    COMNAT = "comnat"
+    MDR = "mdr"
+    LEGISSUM = "legissum"
+    ECLI = "ecli"
+    PROCEDURE = "procedure"
+    PROCEDURE_EVENT = "procedure-event"
+    ELI = "eli"
+    IMMC = "immc"
+    PLANJO = "planjo"
+
+    @classmethod
+    def from_string(
+        cls,
+        ps_value: str
+    ) -> CellarPS:
+        """
+        Create a CellarPS enum member from its string representation.
+
+        Args:
+            ps_value (str): The string representation of the production system
+
+        Returns:
+            CellarPS: The corresponding CellarPS enum member
+
+        Raises:
+            ValueError: If the string does not match any known CellarPS value.
+        """
+        for ps in cls:
+            if ps.value == ps_value:
+                return ps
+        raise ValueError(f"Unknown CellarPS value: {ps_value}")
 
 
 @dataclass
@@ -152,7 +246,6 @@ class CellarResourceId:
 
         except Exception as e:
             raise ValueError(f"Error parsing URI: {uri}") from e
-
 
 
 class CellarAPI:

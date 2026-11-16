@@ -8,8 +8,8 @@ workspace_root = Path(__file__).parent.parent
 if str(workspace_root) not in sys.path:
     sys.path.insert(0, str(workspace_root))
 
-from src.eurlex.cellar_api import CellarResourceId, CellarAPI
-from src.eurlex.constants import CellarPS, MimeType
+from src.eurlex.cellar_api import CellarPS, CellarResourceId, CellarAPI
+from src.eurlex.constants import MimeType
 
 
 DOCUMENTS = {

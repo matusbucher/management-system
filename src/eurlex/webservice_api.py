@@ -1,13 +1,31 @@
 from __future__ import annotations
 
-from pathlib import Path
-import re
-import xml.etree.ElementTree as ET
-from urllib.request import Request, urlopen
-
+from enum import Enum
 from typing import Optional
 
-from .constants import *
+import re
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+
+    
+SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
+SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
+
+TEMPLATE_FILENAME = "templates/eurlex-search.xml"
+
+class SearchPlaceholder(Enum):
+    """Placeholders used in the EUR-Lex search XML template."""
+    QUERY = "query"
+    PAGE = "page"
+    PAGE_SIZE = "page_size"
+    LANGUAGE = "language"
+    EXCLUDE_CONSLEG = "exclude_consleg"
+    LATEST_CONSLEG = "latest_consleg"
+    AVAILABLE_IN = "available_in"
+
+AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 
 
 class WebserviceAPI:

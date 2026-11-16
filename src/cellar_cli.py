@@ -9,8 +9,8 @@ Examples (from the repository root):
 
 import argparse
 
-from eurlex.cellar_api import CellarResourceId, CellarAPI
-from eurlex.constants import CellarPS, MimeType, CollectionType, MAX_CS_SIZE
+from eurlex.cellar_api import CellarPS, CellarResourceId, CellarAPI, MAX_CS_SIZE
+from eurlex.constants import MimeType, CollectionType
 
 
 def cellar_parse_args() -> argparse.Namespace:

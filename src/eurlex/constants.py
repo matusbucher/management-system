@@ -47,6 +47,36 @@ AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 RESOURCE_BASE_URL = "https://publications.europa.eu/resource"
 WEBAPI_BASE_URL = "https://publications.europa.eu/webapi"
 
+# CELLAR production system pattern
+# Format: {uuid}.{4-digits}.{2-digits}/DOC_{digits}
+CELLAR_PROD_PATTERN = re.compile(
+    r"^(?P<work_id>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"
+    r"(?:\.(?P<expr_id>\d{4})"
+    r"(?:\.(?P<man_id>\d{2})"
+    r"(?:/(?P<cs_id>DOC_\d+))?"
+    r")?"
+    r")?$"
+)
+
+# non-CELLAR production system pattern
+# Format: {alphanumeric}.{3-char ISO-639-3}.{alphanumeric}.{alphanumeric}
+NON_CELLAR_PATTERN = re.compile(
+    r"^(?P<work_id>[A-Za-z0-9_-]+)"
+    r"(?:\.(?P<expr_id>[A-Za-z]{3})"
+    r"(?:\.(?P<man_id>[A-Za-z0-9_-]+)"
+    r"(?:\.(?P<cs_id>[A-Za-z0-9_-]+))?"
+    r")?"
+    r")?$"
+)
+
+UUID_PATTERN = re.compile(
+    r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+)
+
+CELLAR_EXPR_ID_PATTERN = re.compile(r"^\d{4}$")
+CELLAR_MAN_ID_PATTERN = re.compile(r"^\d{2}$")
+CELLAR_CS_ID_PATTERN = re.compile(r"^DOC_\d+$")
+
 ISO_639_3_CODES = {
     "BUL": "Bulgarian",
     "CES": "Czech",
@@ -77,14 +107,6 @@ ISO_639_3_CODES = {
 }
 
 MANIFESTATION_FORMATS = ["pdf", "html", "xml", "fmx", "fmx4"]
-
-UUID_PATTERN = re.compile(
-    r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
-)
-
-CELLAR_EXPR_ID_PATTERN = re.compile(r"^\d{4}$")
-CELLAR_MAN_ID_PATTERN = re.compile(r"^\d{2}$")
-CELLAR_CS_ID_PATTERN = re.compile(r"^DOC_\d+$")
 
 MAX_CS_SIZE = 9223372036854775807 # 2^63 - 1
 

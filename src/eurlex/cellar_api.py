@@ -130,15 +130,28 @@ class CellarResourceId:
         try:
             ps_name, resource_id = uri.rsplit("/", 1)
             ps = CellarPS.from_string(ps_name)
-            parts = resource_id.split("/")
-            work_id = parts[0]
-            expr_id = parts[1] if len(parts) > 1 else None
-            man_id = parts[2] if len(parts) > 2 else None
-            cs_id = parts[3] if len(parts) > 3 else None
+
+            if ps == CellarPS.CELLAR:
+                cellar_match = CELLAR_PROD_PATTERN.match(resource_id)
+                if not cellar_match:
+                    raise ValueError("Invalid CELLAR resource ID format.")
+                work_id = cellar_match.group("work_id")
+                expr_id = cellar_match.group("expr_id")
+                man_id = cellar_match.group("man_id")
+                cs_id = cellar_match.group("cs_id")
+                return CellarResourceId(ps, work_id, expr_id, man_id, cs_id)
+
+            non_cellar_match = NON_CELLAR_PATTERN.match(resource_id)
+            if not non_cellar_match:
+                raise ValueError("Invalid non-CELLAR resource ID format.")
+            work_id = non_cellar_match.group("work_id")
+            expr_id = non_cellar_match.group("expr_id")
+            man_id = non_cellar_match.group("man_id")
+            cs_id = non_cellar_match.group("cs_id")
             return CellarResourceId(ps, work_id, expr_id, man_id, cs_id)
 
         except Exception as e:
-            raise ValueError(f"Invalid URI format: {uri}") from e
+            raise ValueError(f"Error parsing URI: {uri}") from e
 
 
 

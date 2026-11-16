@@ -1,5 +1,13 @@
+"""
+Command-line interface for the Cellar API request builder.
+
+Examples (from the repository root):
+    python src/cellar_cli.py -h                                                                                 # show help message
+    python src/cellar_cli.py build-rid -p cellar -w 9b84d482-85bd-11ed-9887-01aa75ed71a1 -e 0001                # build a resource ID, given the production system, work ID, and expression ID
+    python src/cellar_cli.py build-request -r cellar/9b84d482-85bd-11ed-9887-01aa75ed71a1.0001 -t tree-notice   # build an HTTP request for a tree notice
+"""
+
 import argparse
-from urllib.request import Request
 
 from eurlex.cellar_api import CellarResourceId, CellarAPI
 from eurlex.constants import CellarPS, MimeType, CollectionType, MAX_CS_SIZE
@@ -21,35 +29,35 @@ def cellar_parse_args() -> argparse.Namespace:
         help="Command to execute"
     )
     
-    # Subcommand: build-ps-id
-    ps_id_parser = subparsers.add_parser(
+    # Subcommand: build-rid
+    rid_parser = subparsers.add_parser(
         "build-rid",
         help="Build a resource ID"
     )
-    ps_id_parser.add_argument(
+    rid_parser.add_argument(
         "-p", "--ps",
         choices=[ps.value for ps in CellarPS],
         required=True,
         dest="ps",
         help="Production system type"
     )
-    ps_id_parser.add_argument(
+    rid_parser.add_argument(
         "-w", "--work-id",
         required=True,
         dest="work_id",
         help="Work ID (UUID for cellar PS; alphanumeric for others)"
     )
-    ps_id_parser.add_argument(
+    rid_parser.add_argument(
         "-e", "--expr-id",
         dest="expr_id",
         help="Expression ID (4-character numeric for cellar PS; ISO 639-3 for others)"
     )
-    ps_id_parser.add_argument(
+    rid_parser.add_argument(
         "-m", "--man-id",
         dest="man_id",
         help="Manifestation ID (2-character numeric for cellar PS; valid file format for others)"
     )
-    ps_id_parser.add_argument(
+    rid_parser.add_argument(
         "-c", "--cs-id",
         dest="cs_id",
         help="Content stream ID (DOC_x for cellar PS, where x is a number; alphanumeric for others)"
@@ -142,15 +150,14 @@ def main() -> None:
         return
     
     try:
-        ps = CellarPS.from_string(args.ps)
-        
         if args.command == "build-rid":
+            ps = CellarPS.from_string(args.ps)
             rid = CellarResourceId(ps, args.work_id, args.expr_id, args.man_id, args.cs_id)
             print(rid)
         
         elif args.command == "build-request":
-            req = Request("")
             rid = CellarResourceId.from_string(args.rid)
+            req = None
 
             if args.type == "tree-notice":
                 req = CellarAPI.tree_notice_request(rid, args.dec_lang)

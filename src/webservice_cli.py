@@ -1,3 +1,13 @@
+"""
+Command-line interface for the EUR-Lex SOAP web service wrapper.
+
+Examples (from the repository root):
+    python src/webservice_cli.py -h                                                 # show help message
+    python src/webservice_cli.py -c 32022L2555                                      # search document with CELEX identifier 32022L2555
+    python src/webservice_cli.py -q "Title ~ 'information security'" -p 1 -s 10 -r  # search documents using an expert query and print only reference IDs of the first 10 results
+    python src/webservice_cli.py -i request.xml -o response.xml                     # send a SOAP request from a file and save the response
+"""
+
 import argparse
 
 from pathlib import Path

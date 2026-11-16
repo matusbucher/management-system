@@ -11,20 +11,19 @@ from urllib.request import Request
 from .constants import MimeType, CollectionType, ISO_639_3_CODES, MANIFESTATION_FORMATS
 
 
-RESOURCE_BASE_URL = "https://publications.europa.eu/resource"
-WEBAPI_BASE_URL = "https://publications.europa.eu/webapi"
+_RESOURCE_BASE_URL = "https://publications.europa.eu/resource"
 
-UUID_PATTERN = re.compile(
+_UUID_PATTERN = re.compile(
     r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
 )
 
-CELLAR_EXPR_ID_PATTERN = re.compile(r"^\d{4}$")
-CELLAR_MAN_ID_PATTERN = re.compile(r"^\d{2}$")
-CELLAR_CS_ID_PATTERN = re.compile(r"^DOC_\d+$")
+_CELLAR_EXPR_ID_PATTERN = re.compile(r"^\d{4}$")
+_CELLAR_MAN_ID_PATTERN = re.compile(r"^\d{2}$")
+_CELLAR_CS_ID_PATTERN = re.compile(r"^DOC_\d+$")
 
 # CELLAR production system pattern
 # format: {uuid}.{4-digits}.{2-digits}/DOC_{digits}
-CELLAR_PROD_PATTERN = re.compile(
+_CELLAR_PROD_PATTERN = re.compile(
     r"^(?P<work_id>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})"
     r"(?:\.(?P<expr_id>\d{4})"
     r"(?:\.(?P<man_id>\d{2})"
@@ -35,7 +34,7 @@ CELLAR_PROD_PATTERN = re.compile(
 
 # non-CELLAR production system pattern
 # format: {alphanumeric}.{3-char ISO-639-3}.{alphanumeric}.{alphanumeric}
-NON_CELLAR_PATTERN = re.compile(
+_NON_CELLAR_PATTERN = re.compile(
     r"^(?P<work_id>[A-Za-z0-9_-]+)"
     r"(?:\.(?P<expr_id>[A-Za-z]{3})"
     r"(?:\.(?P<man_id>[A-Za-z0-9_-]+)"
@@ -44,8 +43,8 @@ NON_CELLAR_PATTERN = re.compile(
     r")?$"
 )
 
-MAX_CS_SIZE = 9223372036854775807 # 2^63 - 1
 
+MAX_CS_SIZE = 9223372036854775807 # 2^63 - 1
 
 class CellarPS(Enum):
     """CELLAR production systems."""
@@ -166,13 +165,13 @@ class CellarResourceId:
         Raises:
             ValueError: If any ID parameter has invalid format.
         """
-        if not UUID_PATTERN.match(work_id):
+        if not _UUID_PATTERN.match(work_id):
             raise ValueError("Work ID must be a valid UUID.")
-        if expr_id and not CELLAR_EXPR_ID_PATTERN.match(expr_id):
+        if expr_id and not _CELLAR_EXPR_ID_PATTERN.match(expr_id):
             raise ValueError("Expression ID must be a 4-character numeric value.")
-        if man_id and not CELLAR_MAN_ID_PATTERN.match(man_id):
+        if man_id and not _CELLAR_MAN_ID_PATTERN.match(man_id):
             raise ValueError("Manifestation ID must be a 2-character numeric value.")
-        if cs_id and not CELLAR_CS_ID_PATTERN.match(cs_id):
+        if cs_id and not _CELLAR_CS_ID_PATTERN.match(cs_id):
             raise ValueError("Content stream ID must follow the pattern DOC_x where x is numeric.")
 
     @classmethod
@@ -226,7 +225,7 @@ class CellarResourceId:
             ps = CellarPS.from_string(ps_name)
 
             if ps == CellarPS.CELLAR:
-                cellar_match = CELLAR_PROD_PATTERN.match(resource_id)
+                cellar_match = _CELLAR_PROD_PATTERN.match(resource_id)
                 if not cellar_match:
                     raise ValueError("Invalid CELLAR resource ID format.")
                 work_id = cellar_match.group("work_id")
@@ -235,7 +234,7 @@ class CellarResourceId:
                 cs_id = cellar_match.group("cs_id")
                 return CellarResourceId(ps, work_id, expr_id, man_id, cs_id)
 
-            non_cellar_match = NON_CELLAR_PATTERN.match(resource_id)
+            non_cellar_match = _NON_CELLAR_PATTERN.match(resource_id)
             if not non_cellar_match:
                 raise ValueError("Invalid non-CELLAR resource ID format.")
             work_id = non_cellar_match.group("work_id")
@@ -267,7 +266,7 @@ class CellarAPI:
         Returns:
             The complete resource URI string.
         """
-        return f"{RESOURCE_BASE_URL}/{resource_id}"
+        return f"{_RESOURCE_BASE_URL}/{resource_id}"
 
     @classmethod
     def tree_notice_request(

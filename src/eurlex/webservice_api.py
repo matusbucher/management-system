@@ -9,23 +9,20 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 
 
-    
-SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
-SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
+_SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
+_SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
 
-TEMPLATE_FILENAME = "templates/eurlex-search.xml"
+_TEMPLATE_FILENAME = "templates/eurlex-search.xml"
 
-class SearchPlaceholder(Enum):
-    """Placeholders used in the EUR-Lex search XML template."""
-    QUERY = "query"
-    PAGE = "page"
-    PAGE_SIZE = "page_size"
-    LANGUAGE = "language"
-    EXCLUDE_CONSLEG = "exclude_consleg"
-    LATEST_CONSLEG = "latest_consleg"
-    AVAILABLE_IN = "available_in"
+_QUERY_PLACEHOLDER = "query"
+_PAGE_PLACEHOLDER = "page"
+_PAGE_SIZE_PLACEHOLDER = "page_size"
+_LANGUAGE_PLACEHOLDER = "language"
+_EXCLUDE_CONSLEG_PLACEHOLDER = "exclude_consleg"
+_LATEST_CONSLEG_PLACEHOLDER = "latest_consleg"
+_AVAILABLE_IN_PLACEHOLDER = "available_in"
 
-AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
+_AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 
 
 class WebserviceAPI:
@@ -34,7 +31,7 @@ class WebserviceAPI:
     """
     
     def __init__(self):
-        template_path = Path(__file__).parent.parent.parent / TEMPLATE_FILENAME
+        template_path = Path(__file__).parent.parent.parent / _TEMPLATE_FILENAME
         if not template_path.exists():
             raise FileNotFoundError(f"SOAP template file not found: {template_path}")
         self.template_text = template_path.read_text(encoding="utf-8")
@@ -65,13 +62,13 @@ class WebserviceAPI:
             str: The final SOAP payload as a string.
         """
         values = {
-            SearchPlaceholder.QUERY.value: query,
-            SearchPlaceholder.PAGE.value: str(page),
-            SearchPlaceholder.PAGE_SIZE.value: str(page_size),
-            SearchPlaceholder.LANGUAGE.value: language,
-            SearchPlaceholder.EXCLUDE_CONSLEG.value: "true" if exclude_consleg else "false",
-            SearchPlaceholder.LATEST_CONSLEG.value: "true" if latest_consleg else "false",
-            SearchPlaceholder.AVAILABLE_IN.value: available_in if available_in else "",
+            _QUERY_PLACEHOLDER: query,
+            _PAGE_PLACEHOLDER: str(page),
+            _PAGE_SIZE_PLACEHOLDER: str(page_size),
+            _LANGUAGE_PLACEHOLDER: language,
+            _EXCLUDE_CONSLEG_PLACEHOLDER: "true" if exclude_consleg else "false",
+            _LATEST_CONSLEG_PLACEHOLDER: "true" if latest_consleg else "false",
+            _AVAILABLE_IN_PLACEHOLDER: available_in if available_in else "",
         }
         
         payload = self.template_text
@@ -80,7 +77,7 @@ class WebserviceAPI:
         
         if not available_in:
             payload = re.sub(
-                rf"\s*<{re.escape(AVAILABLE_IN_TAG)}></{re.escape(AVAILABLE_IN_TAG)}>\s*",
+                rf"\s*<{re.escape(_AVAILABLE_IN_TAG)}></{re.escape(_AVAILABLE_IN_TAG)}>\s*",
                 "",
                 payload
             )
@@ -102,11 +99,11 @@ class WebserviceAPI:
             str: The response XML as a string.
         """
         request = Request(
-            url=SOAP_ENDPOINT,
+            url=_SOAP_ENDPOINT,
             data=payload.encode("utf-8"),
             method="POST",
             headers={
-                "Content-Type": f'application/soap+xml; charset=utf-8; action="{SOAP_ACTION}"',
+                "Content-Type": f'application/soap+xml; charset=utf-8; action="{_SOAP_ACTION}"',
                 "Accept": "application/soap+xml, text/xml, */*",
             },
         )

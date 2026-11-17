@@ -1,4 +1,4 @@
-"""Index of the CDM ontology (docs/cdm) used to place RDF terms into the WEMI hierarchy.
+"""Index of the CDM ontology (data/cdm) used to place RDF terms into the WEMI hierarchy.
 
 The index answers two questions for any CDM class / property:
   * which WEMI level (work / expression / manifestation / item) does it belong to,
@@ -20,7 +20,7 @@ CDM = "http://publications.europa.eu/ontology/cdm#"
 CDM_CMR = "http://publications.europa.eu/ontology/cdm/cmr#"
 ANNOTATION = "http://publications.europa.eu/ontology/annotation#"
 
-CDM_DIR = Path(__file__).resolve().parents[2] / "docs" / "cdm"
+CDM_DIR = Path(__file__).resolve().parents[2] / "data" / "cdm"
 CDM_FILES = ["cdm.rdf", "cdm_annotationproperties.rdf"]
 
 WEMI_ROOTS = {
@@ -104,7 +104,7 @@ class CdmIndex:
     Index of the CDM ontology: the parsed ontology graph and the properties with their WEMI levels.
 
     Args:
-        cdm_dir (Path): Directory with the CDM ontology files. Default ``docs/cdm``.
+        cdm_dir (Path): Directory with the CDM ontology files. Default ``data/cdm``.
         files (Optional[list[str]]): Names of the ontology files to parse. Default None (``CDM_FILES``).
     """
 

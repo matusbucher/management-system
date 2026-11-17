@@ -78,7 +78,7 @@ GDPR alone is 51 % of all triples; it is dominated by case-law and preparatory-a
 
 ## 3. Method
 
-* **CDM ontology index** ([cdm_ontology.py](../scripts/rdf_analysis/cdm_ontology.py)): loads [docs/cdm/cdm.rdf](cdm/cdm.rdf) and
+* **CDM ontology index** ([cdm_ontology.py](../scripts/rdf_analysis/cdm_ontology.py)): loads [data/cdm/cdm.rdf](../data/cdm/cdm.rdf) and
   `cdm_annotationproperties.rdf`; assigns every class and property a WEMI level from `rdfs:subClassOf` chains to
   `cdm:work|expression|manifestation|item` and from `rdfs:domain`; records super/sub-properties, inverses, and the CDM's own
   comment flag *"Relevant for legal analysis: true"* (336 properties; 78 of the 331 used ones).

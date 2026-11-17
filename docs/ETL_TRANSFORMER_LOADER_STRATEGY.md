@@ -178,7 +178,7 @@ class Neo4jWriter:           # ensure_schema(); write(batch) with UNWIND ... MER
 
 ## 6. Where n10s stays in the picture
 
-* **Ontologies** (CDM classes/properties, WEMI hierarchy – task 1/5): `n10s.onto.import.fetch` on the files in [docs/cdm/](cdm) into the same database; they live as
+* **Ontologies** (CDM classes/properties, WEMI hierarchy – task 1/5): `n10s.onto.import.fetch` on the files in [data/cdm/](../data/cdm) into the same database; they live as
   `:Class`/`:Relationship`/`:Property` nodes and do not collide with `:Work` data.
 * **Vocabularies** (EuroVoc, authority tables with labels – the dumps contain none): `n10s.skos.import` produces `:Resource:skos__Concept` nodes keyed by `uri`; our loader
   `MERGE`s on the same `uri`, so `IS_ABOUT` edges attach to labelled concepts once those are imported.

@@ -1,4 +1,4 @@
-"""Generate src/etlpipe/config/cdm_model.json from the CDM ontology files in docs/cdm.
+"""Generate src/etlpipe/config/cdm_model.json from the CDM ontology files in data/cdm.
 
 The ETL pipeline needs, at runtime, only three facts about the CDM ontology: the ancestor chain of every property (nearest super-property
 first), the WEMI level of every property and the depth/WEMI level of every class. Parsing 1.3 M ontology triples on every run is
@@ -126,7 +126,7 @@ def main() -> None:
         levels = [w for w in WEMI_ORDER if w in idx.class_levels(uri)]
         classes[local(uri)] = [depth, levels]
     model = {
-        "source": "docs/cdm/cdm.rdf + cdm_annotationproperties.rdf",
+        "source": "data/cdm/cdm.rdf + cdm_annotationproperties.rdf",
         "properties": dict(sorted(properties.items())),
         "classes": dict(sorted(classes.items())),
     }

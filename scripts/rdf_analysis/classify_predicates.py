@@ -1,6 +1,6 @@
 """Aggregate the per-file profiles and classify every RDF term for the work-level transformer.
 
-Inputs : data/analysis/profile/*.json (profile_rdf.py), docs/cdm ontology.
+Inputs : data/analysis/profile/*.json (profile_rdf.py), data/cdm ontology.
 Outputs: docs/rdf_analysis/predicate_classification.csv
          docs/rdf_analysis/type_classification.csv
          docs/rdf_analysis/summary.json   (numbers quoted in docs/RDF_METADATA_ANALYSIS.md)

@@ -1,8 +1,8 @@
-"""Profile the Cellar RDF/XML metadata dumps in data/ and write per-file JSON profiles.
+"""Profile the Cellar RDF/XML metadata dumps in data/analysis/documents/ and write per-file JSON profiles.
 
 Usage:
-    python scripts/rdf_analysis/profile_rdf.py                 # all data/*.rdf (cached results are reused)
-    python scripts/rdf_analysis/profile_rdf.py data/DORA.rdf    # selected files
+    python scripts/rdf_analysis/profile_rdf.py                 # all data/analysis/documents/*.rdf (cached results are reused)
+    python scripts/rdf_analysis/profile_rdf.py data/analysis/documents/DORA.rdf    # selected files
     python scripts/rdf_analysis/profile_rdf.py --force         # re-parse even if a profile exists
 
 Output: data/analysis/profile/<name>.json (consumed by classify_predicates.py).
@@ -25,8 +25,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from cdm_ontology import WEMI_ORDER, CdmIndex, load_cdm, short  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "data"
-OUT = DATA / "analysis" / "profile"
+DATA = ROOT / "data" / "analysis" / "documents"
+OUT = ROOT / "data" / "analysis" / "profile"
 
 RES = "http://publications.europa.eu/resource/"
 UUID = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"

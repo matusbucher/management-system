@@ -171,7 +171,7 @@ def main() -> None:
 
     all_edges: dict[tuple, set[str]] = defaultdict(set)
     per_file = {}
-    for path in sorted((ROOT / "data").glob("*.rdf")):
+    for path in sorted((ROOT / "data" / "analysis" / "documents").glob("*.rdf")):
         g = Graph()
         g.parse(path, format="xml")
         amap = alias_map(g)

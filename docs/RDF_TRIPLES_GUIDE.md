@@ -1,6 +1,6 @@
 # Guide to the RDF triples in the Cellar metadata dumps
 
-Short reference for reading the RDF/XML files in `data/` (output of `CellarAPI.metadata_request`). All examples are real triples taken
+Short reference for reading the RDF/XML files in `data/analysis/documents/` (output of `CellarAPI.metadata_request`). All examples are real triples taken
 from those files (NIS2, AI-Act, NIS1); long literals are cut. Statistics and the keep/drop decisions are in
 [RDF_METADATA_ANALYSIS.md](RDF_METADATA_ANALYSIS.md).
 

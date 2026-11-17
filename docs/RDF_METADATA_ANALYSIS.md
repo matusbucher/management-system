@@ -1,6 +1,6 @@
 # EUR-Lex Cellar RDF metadata – analysis for a work-level transformer
 
-Analysis of the RDF/XML dumps in `data/` (14 files, 1,030,506 triples, 125 MB) fetched by [cellar_base.py](../test/cellar_base.py)
+Analysis of the RDF/XML dumps in `data/analysis/documents/` (14 files, 1,030,506 triples, 125 MB) fetched by [cellar_base.py](../test/cellar_base.py)
 through `CellarAPI.metadata_request`. The goal is to decide which triples belong to the **Work level of the WEMI
 hierarchy** (and to the knowledge-management graph in Neo4j) and which can be dropped or folded before loading.
 No transformer is implemented here – only the analysis tooling and the rules a transformer should follow.
@@ -306,7 +306,7 @@ Sketch of the resulting graph: `(:Work {celex, cellarId, eli, docType, year, inF
 Python 3 with `rdflib` (already installed). From the repository root:
 
 ```powershell
-python scripts\rdf_analysis\profile_rdf.py          # parses data\*.rdf  -> data\analysis\profile\*.json (cached; --force to redo)
+python scripts\rdf_analysis\profile_rdf.py          # parses data\analysis\documents\*.rdf  -> data\analysis\profile\*.json (cached; --force to redo)
 python scripts\rdf_analysis\inspect_focal.py --json data\analysis\focal.json   # focal work per file, §2.2
 python scripts\rdf_analysis\edge_overlap.py         # edge folding experiment -> data\analysis\edges.json, §1/§5
 python scripts\rdf_analysis\classify_predicates.py  # -> docs\rdf_analysis\*.csv, summary.json

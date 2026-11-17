@@ -1,4 +1,4 @@
-"""Show what each data/*.rdf dump says about its *focal* resource (the Cellar ID requested in test/cellar_base.py).
+"""Show what each data/analysis/documents/*.rdf dump says about its *focal* resource (the Cellar ID requested in test/cellar_base.py).
 
 Answers: is the file really about the intended act, which aliases does it have, which predicates have the
 focal work as subject (its own attributes) and how many relations point at it.
@@ -62,13 +62,13 @@ def alias_group(
 
 
 def main() -> None:
-    """Print a summary of the focal resource of every data/*.rdf dump and optionally write it as JSON."""
+    """Print a summary of the focal resource of every data/analysis/documents/*.rdf dump and optionally write it as JSON."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", type=Path)
     args = ap.parse_args()
     report = {}
     for name, uuid in load_documents().items():
-        path = ROOT / "data" / f"{name}.rdf"
+        path = ROOT / "data" / "analysis" / "documents" / f"{name}.rdf"
         if not path.exists():
             continue
         g = Graph()

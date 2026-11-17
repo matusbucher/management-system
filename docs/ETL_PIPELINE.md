@@ -12,11 +12,11 @@ Extractor ──Graph──▶ TransformerChain (9 steps, Graph→Graph) ──c
 ## 1. Running it
 
 ```powershell
-python src\etl_cli.py data                                  # all data\*.rdf: transform + project, NO database (default)
-python src\etl_cli.py data\NIS2.rdf --log-level DEBUG       # one file, full breakdowns in the log
-python src\etl_cli.py data --load --password <pw>           # write to Neo4j (constraint + indexes are created automatically)
+python src\etl_cli.py data\analysis\documents                  # all *.rdf of the directory: transform + project, NO database (default)
+python src\etl_cli.py data\analysis\documents\NIS2.rdf --log-level DEBUG       # one file, full breakdowns in the log
+python src\etl_cli.py data\analysis\documents --load --password <pw>           # write to Neo4j (constraint + indexes are created automatically)
 python src\etl_cli.py --work-id 0caf473a-85bd-11ed-9887-01aa75ed71a1 --load      # fetch from Cellar instead of a file
-python src\etl_cli.py data --lifecycle                      # also track the document lifecycle: dossiers (procedures) and their events
+python src\etl_cli.py data\analysis\documents --lifecycle                      # also track the document lifecycle: dossiers (procedures) and their events
 python -m unittest test.test_etl_pipeline -v                # 31 tests, no database needed
 ```
 
@@ -100,7 +100,7 @@ How the pipeline handles it:
   OJ-collection membership stays excluded.
 * Loader: `:Dossier` / `:Event` nodes (plus a label from `docType`, e.g. `:ProcedureInterinstitutional`, `:EventLegal`); indexes on `Event.eventDate` and `Dossier.procedureId`.
 
-Result on the 14 sample documents (`python src\etl_cli.py data --lifecycle`, summed over documents before cross-document merging):
+Result on the 14 sample documents (`python src\etl_cli.py data\analysis\documents --lifecycle`, summed over documents before cross-document merging):
 
 | | |
 |---|---:|
@@ -118,7 +118,7 @@ Result on the 14 sample documents (`python src\etl_cli.py data --lifecycle`, sum
 * **Over documents** – `aggregate.json` (`aggregate_reports`): per step, triples in/out/time and all counters and breakdowns summed; nodes/edges by type; load counters.
 * `TransformerChain(..., snapshot_dir=...)` stores the graph after each step so any number can be traced to the triples behind it.
 
-### Result on the 14 sample documents (`python src\etl_cli.py data`)
+### Result on the 14 sample documents (`python src\etl_cli.py data\analysis\documents`)
 
 | | |
 |---|---:|

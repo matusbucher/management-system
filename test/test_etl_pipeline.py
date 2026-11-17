@@ -465,9 +465,9 @@ class TestPipelineReporting(unittest.TestCase):
 
 
 class TestRealData(unittest.TestCase):
-    DORA = workspace_root / "data" / "DORA.rdf"
+    DORA = workspace_root / "data" / "analysis" / "documents" / "DORA.rdf"
 
-    @unittest.skipUnless(DORA.exists(), "data/DORA.rdf not available")
+    @unittest.skipUnless(DORA.exists(), "data/analysis/documents/DORA.rdf not available")
     def test_dora_invariants(self):
         graph = FileExtractor().extract(self.DORA)
         ctx = TransformContext(source="DORA")

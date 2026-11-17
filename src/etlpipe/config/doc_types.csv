@@ -1,0 +1,9 @@
+name,role,note
+work,technical,CDM root class - carries no document type information
+resource_legal,technical,
+act_preparatory,technical,
+legislation_secondary,technical,
+evolutive_work,technical,
+serial_work,technical,
+complex_work,technical,
+official-journal-act,technical,publication formality; the legal type (regulation, directive...) is more informative

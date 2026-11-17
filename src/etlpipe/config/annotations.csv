@@ -1,0 +1,29 @@
+name,kms,identity,note
+article,article,1,location in the target act
+paragraph,paragraph,1,
+subparagraph,subparagraph,1,
+comment_on_legal_basis,legalBasisComment,0,
+eli_target,eliTarget,0,
+fragment_citing_source,fragmentCiting,1,citation fragment in the citing act
+fragment_cited_target,fragmentCited,1,citation fragment in the cited act
+reference_to_modified_location,modifiedLocation,1,amendment granularity
+reference_to_modifying_location,modifyingLocation,1,
+start_of_validity,startOfValidity,1,
+end_of_validity,endOfValidity,0,
+type_of_link_target,linkType,0,
+role2,role,0,
+impact,impact,0,
+type_instruction,instructionType,0,
+transposition_deadline_transmitted,transpositionDeadline,0,
+transposition_notification,notifiedOn,0,
+date,date,0,
+type_of_date,dateType,0,
+result_decision,resultDecision,0,
+language_list,,0,languages concerned by the link - expression level
+build_info,,0,Cellar ingestion provenance
+production_sequence,,0,
+error_message,,0,
+quality_issue,,0,
+order,,0,
+changed_to_identifier,,0,
+comment_on_date,,0,

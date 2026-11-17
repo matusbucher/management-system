@@ -1,0 +1,96 @@
+name,canonical,invert,symmetric,category,note
+cites,CITES,0,0,legal,acting document -> cited document
+cited_by,CITES,1,0,legal,
+amends,AMENDS,0,0,legal,
+amended_by,AMENDS,1,0,legal,
+repeals,REPEALS,0,0,legal,
+repealed_by,REPEALS,1,0,legal,
+implicitly_repeals,IMPLICITLY_REPEALS,0,0,legal,
+implicitly_repealed_by,IMPLICITLY_REPEALS,1,0,legal,
+adopts,ADOPTS,0,0,legal,
+adopted_by,ADOPTS,1,0,legal,
+partially_adopted_by,PARTIALLY_ADOPTS,1,0,legal,
+based_on,BASED_ON,0,0,legal,act -> its legal basis (act or treaty concept)
+basis_for,BASED_ON,1,0,legal,
+resource_legal_basis_for_dossier,BASED_ON,1,0,lifecycle,dossier -> its legal basis
+resource_legal_basis_for_procedure_code_interinstitutional,BASED_ON,1,0,lifecycle,
+consolidates,CONSOLIDATES,0,0,legal,consolidated text -> original act
+consolidated_by,CONSOLIDATES,1,0,legal,
+implements,IMPLEMENTS,0,0,legal,national implementing measure -> directive
+implemented_by,IMPLEMENTS,1,0,legal,
+country_implements_measure_national_implementing,,0,0,actor,country that notified a measure (agent role)
+measure_national_implementing_implemented_by_country,,0,0,actor,
+corrects,CORRECTS,0,0,legal,
+corrected_by,CORRECTS,1,0,legal,
+completes,COMPLETES,0,0,legal,
+completed_by,COMPLETES,1,0,legal,
+replaces,REPLACES,0,0,legal,
+replaced_by,REPLACES,1,0,legal,
+derogates,DEROGATES,0,0,legal,
+derogated_by,DEROGATES,1,0,legal,
+validity_extended_by,EXTENDS_VALIDITY_OF,1,0,legal,
+incorporated_by,INCORPORATES,1,0,legal,
+has_successor,SUCCEEDS,1,0,legal,
+dossier_has_successor_dossier,SUCCEEDS,1,0,lifecycle,successor procedure
+agent_responsible_for_dossier,RESPONSIBLE_AGENT,1,0,lifecycle,institution responsible for a procedure (dossier -> institution)
+is_logical_successor_of,SUCCEEDS,0,0,legal,
+amendment_proposed_by,PROPOSES_AMENDMENT_OF,1,0,legal,
+interpreted_by,INTERPRETS,1,0,legal,case-law -> act
+influenced_by,INFLUENCES,1,0,legal,
+confirmed_by,CONFIRMS,1,0,legal,
+declared_void_by,DECLARES_VOID,1,0,legal,
+declared_valid_by,DECLARES_VALID,1,0,legal,
+stated_by,STATES_FAILURE_OF,1,0,legal,failure of an obligation stated by case-law
+submitted_by,SUBMITS_PRELIMINARY_QUESTION_ON,1,0,legal,
+requested_by,REQUESTS_ACTION_ON,1,0,legal,annulment / failure proceedings
+associated_to,ASSOCIATED_WITH,0,0,legal,
+related_to,RELATED_TO,0,1,legal,symmetric
+is_another_publication_of,IS_ANOTHER_PUBLICATION_OF,0,0,legal,
+is_about,IS_ABOUT,0,0,classification,work -> concept (EuroVoc / subject matter / directory code)
+subject_of,IS_ABOUT,1,0,classification,
+has,,0,0,structural,hub property: resource type and domain links are covered by docType
+work_has_expression,,0,0,structural,work -> expression (WEMI plumbing)
+created_by,CREATED_BY,0,0,agent,work -> institution
+creates,CREATED_BY,1,0,agent,
+responsibility_of,RESPONSIBLE_AGENT,0,0,agent,
+responsible_for,RESPONSIBLE_AGENT,1,0,agent,
+addresses,ADDRESSES,0,0,agent,
+addressed_by,ADDRESSES,1,0,agent,
+contains,PART_OF,1,0,context,generic membership (collections, ...)
+part_of,PART_OF,0,0,context,
+work_part_of_dossier,IN_PROCEDURE,0,0,lifecycle,document belongs to a procedure (dossier)
+dossier_contains_work,IN_PROCEDURE,1,0,lifecycle,
+event_part_of_dossier,EVENT_OF,0,0,lifecycle,event belongs to a procedure
+dossier_contains_event,EVENT_OF,1,0,lifecycle,
+work_part_of_event,AT_EVENT,0,0,lifecycle,document was adopted/published/handled at an event
+event_contains_work,AT_EVENT,1,0,lifecycle,
+collection_document_contains_official-journal-act,,0,0,context,OJ collection membership
+collection_document_contains_work,,0,0,context,
+work_part_of_collection_document,,0,0,context,
+official-journal-act_part_of_collection_document,,0,0,context,
+produces,PRODUCED_BY,1,0,lifecycle,procedure -> the act it produced (act PRODUCED_BY dossier)
+produced_by,PRODUCED_BY,0,0,lifecycle,
+initiates,INITIATED_BY,1,0,lifecycle,proposal -> procedure it initiated (dossier INITIATED_BY proposal)
+initiated_by,INITIATED_BY,0,0,lifecycle,
+publishes,PUBLISHED_IN,1,0,context,
+published_in,PUBLISHED_IN,0,0,context,
+summarized_by,SUMMARIZED_BY,0,0,context,
+explained_by,EXPLAINED_BY,0,0,context,
+has_member,HAS_MEMBER,0,0,context,
+communicated_on_by,COMMUNICATED_ON_BY,0,0,context,
+subject_to_appeal_in,SUBJECT_TO_APPEAL_IN,0,0,context,
+ep_opinion_contained_in,EP_OPINION_CONTAINED_IN,0,0,context,
+eesc_opinion_contained_in,EESC_OPINION_CONTAINED_IN,0,0,context,
+cor_opinion_contained_in,COR_OPINION_CONTAINED_IN,0,0,context,
+delivers,DELIVERED_BY,1,0,actor,case-law participants
+comments,COMMENTED_BY,1,0,actor,
+defends,DEFENDED_BY,1,0,actor,
+defends_in,DEFENDED_BY,1,0,actor,
+requests,REQUESTED_BY,1,0,actor,
+reports_on,REPORTED_BY,1,0,actor,
+co-reports,CO_REPORTED_BY,1,0,actor,
+depositary_for,DEPOSITARY,1,0,actor,
+validates,VALIDATED_BY,1,0,actor,
+is_type_of,HAS_TYPE,1,0,lifecycle,event / procedure -> its type concept (e.g. authority/event/PUB_OJ)
+used_by,USES_LANGUAGE,1,0,language,language used by a work
+used_for_drafting,DRAFTED_IN,1,0,language,

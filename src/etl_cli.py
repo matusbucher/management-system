@@ -2,9 +2,9 @@
 Command-line runner of the ETL pipeline.
 
 Examples (from the repository root):
-    python src/etl_cli.py data                                  # transform every data/*.rdf, project to nodes/edges, no database
-    python src/etl_cli.py data/NIS2.rdf --log-level DEBUG       # one file, full per-step breakdowns in the log
-    python src/etl_cli.py data --load --password secret         # write to Neo4j
+    python src/etl_cli.py data/analysis/documents                  # transform every *.rdf in the directory, project to nodes/edges, no database
+    python src/etl_cli.py data/analysis/documents/NIS2.rdf --log-level DEBUG   # one file, full per-step breakdowns in the log
+    python src/etl_cli.py --work-ids-file data/work_ids.txt --lifecycle --load --password secret
     python src/etl_cli.py --work-id 0caf473a-85bd-11ed-9887-01aa75ed71a1 --load
 Reports are written to --report-dir (one JSON per document, runs.jsonl and aggregate.json).
 """
@@ -31,6 +31,7 @@ from src.etlpipe.extractor import CellarExtractor, FileExtractor  # noqa: E402
 from src.etlpipe.loader import Neo4jLoader  # noqa: E402
 from utils.logging import configure_logging  # noqa: E402
 from src.etlpipe.pipeline import EtlPipeline  # noqa: E402
+from src.etlpipe.work_ids import read_work_ids  # noqa: E402
 from src.etlpipe.transformer import TransformerChain  # noqa: E402
 from src.etlpipe.constants import WEMILevel  # noqa: E402
 
@@ -50,6 +51,8 @@ def parse_args(
     p = argparse.ArgumentParser(description="Run the ETL pipeline: RDF metadata -> canonical work graph -> Neo4j.")
     p.add_argument("inputs", nargs="*", type=Path, help="RDF/XML files or directories containing *.rdf files")
     p.add_argument("--work-id", action="append", default=[], metavar="UUID", help="fetch this Cellar work from the API (repeatable)")
+    p.add_argument("--work-ids-file", type=Path, metavar="FILE",
+                   help="fetch the Cellar works listed in this file, one UUID per line (see scripts/data_acquisition/gather_work_ids.py)")
     p.add_argument("--load", action="store_true", help="write to Neo4j (default: transform and project only)")
     p.add_argument("--report-dir", type=Path, default=ROOT / "tmp" / "etl_reports", help="where to write the statistics reports")
     p.add_argument("--snapshot-dir", type=Path, help="serialise the graph after every step (Turtle) for inspection")
@@ -129,8 +132,15 @@ def main(
     args = parse_args(argv)
     configure_logging(LOGGER_NAME, args.log_level, args.log_file)
     files = collect_files(args.inputs)
-    if not files and not args.work_id:
-        print("nothing to do: give RDF files/directories or --work-id", file=sys.stderr)
+    work_ids = list(args.work_id)
+    if args.work_ids_file:
+        try:
+            work_ids += [w for w in read_work_ids(args.work_ids_file) if w not in work_ids]
+        except (OSError, ValueError) as error:
+            print(f"cannot read the work IDs: {error}", file=sys.stderr)
+            return 2
+    if not files and not work_ids:
+        print("nothing to do: give RDF files/directories, --work-id or --work-ids-file", file=sys.stderr)
         return 2
 
     db: Optional[Neo4jDatabase] = None
@@ -148,10 +158,10 @@ def main(
         if files:
             pipelines.append(EtlPipeline(FileExtractor(), chain, loader, options, args.report_dir, args.top))
             reports += pipelines[-1].run_many(files, dry_run=not args.load)
-        if args.work_id:
+        if work_ids:
             from src.eurlex.cellar_api import CellarPS, CellarResourceId
             pipelines.append(EtlPipeline(CellarExtractor(), chain, loader, options, args.report_dir, args.top))
-            reports += pipelines[-1].run_many([CellarResourceId(CellarPS.CELLAR, w) for w in args.work_id], dry_run=not args.load)
+            reports += pipelines[-1].run_many([CellarResourceId(CellarPS.CELLAR, w) for w in work_ids], dry_run=not args.load)
     finally:
         if db is not None:
             db.close()

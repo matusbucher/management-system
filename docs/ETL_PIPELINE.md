@@ -1,7 +1,8 @@
 # ETL pipeline – usage, configuration and statistics
 
 Implementation of the strategy in [ETL_TRANSFORMER_LOADER_STRATEGY.md](ETL_TRANSFORMER_LOADER_STRATEGY.md); code in [src/etlpipe/](../src/etlpipe),
-runner [src/etl_cli.py](../src/etl_cli.py), tests in [test/test_etl_pipeline.py](../test/test_etl_pipeline.py).
+runner [src/etl_cli.py](../src/etl_cli.py), tests in [test/test_etl_pipeline.py](../test/test_etl_pipeline.py). The whole database population
+(configuration, ontology, loading a list of works, statistics) is a script around this pipeline: [DATABASE_POPULATION.md](DATABASE_POPULATION.md).
 
 ```
 Extractor ──Graph──▶ TransformerChain (9 steps, Graph→Graph) ──canonical graph──▶ Neo4jLoader (GraphProjector → UNWIND/MERGE)
@@ -16,6 +17,7 @@ python src\etl_cli.py data\analysis\documents                  # all *.rdf of th
 python src\etl_cli.py data\analysis\documents\NIS2.rdf --log-level DEBUG       # one file, full breakdowns in the log
 python src\etl_cli.py data\analysis\documents --load --password <pw>           # write to Neo4j (constraint + indexes are created automatically)
 python src\etl_cli.py --work-id 0caf473a-85bd-11ed-9887-01aa75ed71a1 --load      # fetch from Cellar instead of a file
+python src\etl_cli.py --work-ids-file data\work_ids.txt --lifecycle --load       # fetch the works listed by scripts\data_acquisition\gather_work_ids.py (see ACQUISITION_STRATEGY.md)
 python src\etl_cli.py data\analysis\documents --lifecycle                      # also track the document lifecycle: dossiers (procedures) and their events
 python -m unittest test.test_etl_pipeline -v                # 31 tests, no database needed
 ```

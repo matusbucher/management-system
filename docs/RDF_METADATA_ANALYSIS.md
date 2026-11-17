@@ -1,6 +1,6 @@
 # EUR-Lex Cellar RDF metadata – analysis for a work-level transformer
 
-Analysis of the RDF/XML dumps in `tmp/` (14 files, 1,030,506 triples, 125 MB) fetched by [cellar_base.py](../test/cellar_base.py)
+Analysis of the RDF/XML dumps in `data/` (14 files, 1,030,506 triples, 125 MB) fetched by [cellar_base.py](../test/cellar_base.py)
 through `CellarAPI.metadata_request`. The goal is to decide which triples belong to the **Work level of the WEMI
 hierarchy** (and to the knowledge-management graph in Neo4j) and which can be dropped or folded before loading.
 No transformer is implemented here – only the analysis tooling and the rules a transformer should follow.
@@ -21,8 +21,9 @@ Companion artefacts:
 
 1. **The dumps are almost purely Work-level.** No subject is a manifestation or item, and none of the 331 predicates is
    declared for the Expression, Manifestation or Item level (some hub properties have such sub-properties, see §5.4).
-   The only "other WEMI" content is 3,006 expression nodes that carry nothing but `owl:sameAs` (3,442 triples),
-   335 `cdm:work_has_expression` links and 40,699 `annot:language_list` values – 4.3 % of all triples, all droppable.
+   The only "other WEMI" content is the 335 language-suffixed expression URIs (`….LIT`) with their 335 `cdm:work_has_expression` links and
+   40,699 `annot:language_list` values – 4.0 % of all triples, all droppable. (The 3,006 `cellar/<uuid>.NNNN` nodes that look like expressions are
+   **events and sittings of legislative procedures**, see [ETL_PIPELINE.md §5](ETL_PIPELINE.md#5-document-lifecycle---lifecycle); they are kept when lifecycle tracking is on.)
 2. **The real size/noise problem is not WEMI, it is RDF plumbing:**
    * 39 % of the triples (400,382) sit in blank nodes – 53,210 `owl:Axiom` reification nodes that annotate relations;
    * 23 % (232,100 triples) are *materialised inference*: every relation is asserted twice (specific CDM property +
@@ -105,13 +106,13 @@ Distinct subjects, summed over files (the same work recurs across files):
 | `celex/…` | 42,831 | Work alias – carries most relations |
 | `eurovoc/…` (`http://eurovoc.europa.eu/…`) | 3,636 | vocabulary concept (not WEMI) |
 | `oj/…` | 3,424 | Work alias (Official Journal) |
-| `cellar/<uuid>.NNNN` | 3,006 | **Expression** – only `owl:sameAs` |
+| `cellar/<uuid>.NNNN` | 3,006 | **not an expression**: Cellar's id of an event / sitting of a procedure (`owl:sameAs` of `procedure-event/…`, `session-sitting/…`) |
 | `authority/<table>/<code>` | 2,013 (+14 tables) | reference data (institutions, countries, resource types…) |
 | `procedure-event`, `procedure`, `internal_proc*`, `session*`, `case*`, `dossier`, `intproc*` | ≈ 4,910 | non-WEMI CDM entities (procedure, event, dossier, case) – mostly untyped |
 | `comnat`, `immc`, `nim`, `consil`, `consolidation`, `ep`, … | ≈ 5,430 | Work aliases of specific document families (plus 236 `agent` URIs) |
 
 Subject levels after inference: **work 100,225** (48,550 by URI structure, 41,844 by predicate domain, 9,831 by `rdf:type`),
-vocabulary 5,663, untyped (events/dossiers/procedures) 5,161, expression 3,006, **manifestation 0, item 0**.
+vocabulary 5,663, untyped (events/dossiers/procedures) 5,161, URI-structure "expression" 3,006 (in fact events, see above), **manifestation 0, item 0**.
 
 ### 4.2 Alias groups (`owl:sameAs`)
 
@@ -163,7 +164,7 @@ Totals over all 14 files (1,030,506 triples):
 | Work ↔ institution (created by, responsible for) | 23,055 | 2.2 % | **KEEP** (links to institution nodes) |
 | Work attributes (id, dates, in-force, eli, year, type…) | 444 | <0.1 % | **KEEP** (node properties) |
 | Work ↔ dossier/event/procedure/OJ/case-actors context | 20,711 | 2.0 % | OPTIONAL (decide scope) |
-| `owl:sameAs` (141,798 on work URIs, 3,442 on expressions) | 145,240 | 14.1 % | **FOLD** into identifiers of one Work node |
+| `owl:sameAs` (141,798 on work URIs, 3,442 on cellar `.NNNN` event ids) | 145,240 | 14.1 % | **FOLD** into identifiers of one Work node (events: into the event node) |
 | `rdf:type` (53,210 are `owl:Axiom`) | 83,548 | 8.1 % | KEEP-FILTERED (document type only) |
 | Reification structure (`annotatedSource/Property/Target`) | 153,972 | 14.9 % | **FOLD** (becomes relationship properties) |
 | Edge annotations – semantic payload (§5.3) | 130,383 | 12.7 % | **KEEP** as relationship properties |
@@ -237,7 +238,7 @@ Together ≈ 132k of the 142.5k unique edges are in KEEP-type relations.
 
 | Content | Triples | Reason |
 |---|---:|---|
-| Expression nodes (`cellar/<uuid>.NNNN`) incl. `sameAs` | 3,442 | Expression level; no descriptive data in the dumps |
+| `cellar/<uuid>.NNNN` event id (with its `sameAs`) | 3,442 | looks like an Expression but is an event/sitting of a procedure; merged into the event node (kept with `--lifecycle`) |
 | `cdm:work_has_expression` | 335 | Work→Expression link |
 | `annot:language_list` | 40,699 | language availability of a link |
 | Manifestation / Item content | 0 | not present in these dumps |
@@ -305,9 +306,9 @@ Sketch of the resulting graph: `(:Work {celex, cellarId, eli, docType, year, inF
 Python 3 with `rdflib` (already installed). From the repository root:
 
 ```powershell
-python scripts\rdf_analysis\profile_rdf.py          # parses tmp\*.rdf  -> tmp\analysis\profile\*.json (cached; --force to redo)
-python scripts\rdf_analysis\inspect_focal.py --json tmp\analysis\focal.json   # focal work per file, §2.2
-python scripts\rdf_analysis\edge_overlap.py         # edge folding experiment -> tmp\analysis\edges.json, §1/§5
+python scripts\rdf_analysis\profile_rdf.py          # parses data\*.rdf  -> data\analysis\profile\*.json (cached; --force to redo)
+python scripts\rdf_analysis\inspect_focal.py --json data\analysis\focal.json   # focal work per file, §2.2
+python scripts\rdf_analysis\edge_overlap.py         # edge folding experiment -> data\analysis\edges.json, §1/§5
 python scripts\rdf_analysis\classify_predicates.py  # -> docs\rdf_analysis\*.csv, summary.json
 ```
 

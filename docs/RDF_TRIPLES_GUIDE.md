@@ -1,6 +1,6 @@
 # Guide to the RDF triples in the Cellar metadata dumps
 
-Short reference for reading the RDF/XML files in `tmp/` (output of `CellarAPI.metadata_request`). All examples are real triples taken
+Short reference for reading the RDF/XML files in `data/` (output of `CellarAPI.metadata_request`). All examples are real triples taken
 from those files (NIS2, AI-Act, NIS1); long literals are cut. Statistics and the keep/drop decisions are in
 [RDF_METADATA_ANALYSIS.md](RDF_METADATA_ANALYSIS.md).
 
@@ -42,7 +42,7 @@ One work is known under several URIs, one per identifier scheme:
 | `res:oj/<id>` | `res:oj/JOL_2022_333_R_0002` | Official Journal publication |
 | `res:eli/…` | `res:eli/dir/2022/2555/oj` | European Legislation Identifier |
 | `res:comnat/…`, `res:consil/…`, `res:nim/…`, `res:consolidation/…` | `res:comnat/SWD_2023_0697_FIN`, `res:nim/202503772` | Commission document, Council document, national implementing measure, consolidated version |
-| `res:cellar/<uuid>.0007` | `res:cellar/7e075fd8-34e9-11ed-9c68-01aa75ed71a1.0007` | an *expression* (`.NNNN` suffix = WEMI level 2) |
+| `res:cellar/<uuid>.0007` | `res:cellar/7e075fd8-34e9-11ed-9c68-01aa75ed71a1.0007` | looks like an expression, but in these dumps it is the id of an *event* or sitting of a procedure (alias of `procedure-event/…`); real expressions are `….LIT`-style language URIs |
 | `res:authority/<table>/<code>` | `res:authority/resource-type/DIR` | reference data (institutions, countries, resource types, subject matters) |
 | `http://eurovoc.europa.eu/<id>` | `http://eurovoc.europa.eu/4420` | EuroVoc thesaurus concept |
 
@@ -161,14 +161,26 @@ http://eurovoc.europa.eu/4420  cdm:concept_eurovoc_subject_of_work  res:comnat/C
 http://eurovoc.europa.eu/4420  cdm:subject_of                       res:comnat/COM_2023_0668_FIN
 ```
 
-### 4.7 Hierarchy links and expression nodes (not Work level)
+### 4.7 Hierarchy links (not Work level) and lifecycle events
 
 ```
 res:oj/JOL_2022_333_R_0002                         cdm:work_has_expression  res:oj/JOL_2022_333_R_0002.LIT
 res:cellar/7e075fd8-34e9-11ed-9c68-01aa75ed71a1.0007  owl:sameAs            res:procedure-event/2022_272.2022-12-14_OPI_byEESC
 ```
 
-Expression nodes carry nothing but `owl:sameAs`; manifestations and items do not occur in the dumps.
+The `….LIT` expression URIs carry nothing; manifestations and items do not occur in the dumps. The `cellar/<uuid>.NNNN` node is *not* an expression: it is
+Cellar's id of an **event of a legislative procedure** (here an EESC opinion on 2022-12-14). Events, their dossiers and the links between them look like this
+(the dossier/event nodes have no literals - date, code and body are only in the URI):
+
+```
+res:procedure/2020_359                                cdm:dossier_contains_event  res:procedure-event/2020_359.2022-12-27_PUB_OJ
+res:celex/32022L2555                                  cdm:work_part_of_event      res:procedure-event/2020_359.2022-12-27_PUB_OJ   # NIS2 published
+res:celex/32022L2555                                  cdm:resource_legal_produced_by_dossier  res:procedure/2020_359
+res:comnat/COM_2020_0823_FIN                          cdm:initiates               res:procedure/2020_359                            # the proposal
+res:authority/event/PUB_OJ                            cdm:is_type_of              res:procedure-event/2020_359.2022-12-27_PUB_OJ
+```
+
+The ETL pipeline keeps these with `--lifecycle` (see [ETL_PIPELINE.md §5](ETL_PIPELINE.md#5-document-lifecycle---lifecycle)).
 
 ### 4.8 Relation annotations – reification with `owl:Axiom`
 
@@ -236,6 +248,7 @@ Ingestion bookkeeping of the Cellar platform; no legal meaning.
 | reference-data link | OJ node / concept node | `cdm:work_is_about_concept_eurovoc`, `cdm:subject_of` | yes | edge to concept / institution |
 | relation annotation | blank node | `owl:annotatedSource` + `annot:article` | yes | relationship properties |
 | generic twin | same node as the specific one | `cdm:cited_by`, `cdm:date` | duplicate | dropped (fold) |
-| expression link / node | OJ node / `.NNNN` node | `cdm:work_has_expression`, `owl:sameAs` | no (Expression) | dropped |
+| expression link / `….LIT` node | OJ node | `cdm:work_has_expression` | no (Expression) | dropped |
+| procedure event / dossier | `procedure-event/…`, `procedure/…`, Cellar `.NNNN` alias | `cdm:work_part_of_event`, `cdm:dossier_contains_event` | no (lifecycle) | `:Event` / `:Dossier` with `--lifecycle`, else dropped |
 | language list | blank node | `annot:language_list` | no | dropped |
 | system metadata | Cellar node / blank node | `cmr:*`, `annot:build_info` | no | optional / dropped |

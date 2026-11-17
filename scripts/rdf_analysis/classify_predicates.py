@@ -1,6 +1,6 @@
 """Aggregate the per-file profiles and classify every RDF term for the work-level transformer.
 
-Inputs : tmp/analysis/profile/*.json (profile_rdf.py), docs/cdm ontology.
+Inputs : data/analysis/profile/*.json (profile_rdf.py), docs/cdm ontology.
 Outputs: docs/rdf_analysis/predicate_classification.csv
          docs/rdf_analysis/type_classification.csv
          docs/rdf_analysis/summary.json   (numbers quoted in docs/RDF_METADATA_ANALYSIS.md)
@@ -15,13 +15,14 @@ import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cdm_ontology import ANNOTATION, CDM, CDM_CMR, load_cdm, short  # noqa: E402
+from cdm_ontology import ANNOTATION, CDM, CDM_CMR, PropertyInfo, load_cdm, short  # noqa: E402
 from edge_overlap import root_of  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-PROFILES = ROOT / "tmp" / "analysis" / "profile"
+PROFILES = ROOT / "data" / "analysis" / "profile"
 OUT = ROOT / "docs" / "rdf_analysis"
 
 OWL = "http://www.w3.org/2002/07/owl#"
@@ -80,10 +81,27 @@ TIER_B_HINT = re.compile(
 
 
 def load_profiles() -> list[dict]:
+    """
+    Load the per-file profiles written by ``profile_rdf.py``.
+
+    Returns:
+        list[dict]: The profiles, ordered by file name.
+    """
     return [json.loads(p.read_text(encoding="utf-8")) for p in sorted(PROFILES.glob("*.json"))]
 
 
-def obj_class(kind: str) -> str:
+def obj_class(
+    kind: str
+) -> str:
+    """
+    Map an object kind from the profiles to a coarse object class.
+
+    Args:
+        kind (str): The object kind (e.g. ``literal:string``, ``bnode``, ``uri:eurovoc``).
+
+    Returns:
+        str: One of literal, bnode, vocabulary, expression, work, or the unchanged kind.
+    """
     if kind.startswith("literal"):
         return "literal"
     if kind == "bnode":
@@ -98,6 +116,7 @@ def obj_class(kind: str) -> str:
 
 
 def main() -> None:
+    """Aggregate the profiles and write the predicate/type classification CSVs and the summary JSON."""
     cdm = load_cdm()
     profiles = load_profiles()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -181,8 +200,30 @@ def main() -> None:
     print(f"{len(rows)} predicates, {len(type_rows)} classes written to {OUT}")
 
 
-def classify(pred, local, info, dom_subj, dom_obj, redundancy, root):
-    """Return (category, action, rationale) for a predicate."""
+def classify(
+    pred: str,
+    local: str,
+    info: Optional[PropertyInfo],
+    dom_subj: str,
+    dom_obj: str,
+    redundancy: float,
+    root: str
+) -> tuple[str, str, str]:
+    """
+    Classify a predicate for the work-level transformer.
+
+    Args:
+        pred (str): The URI of the predicate.
+        local (str): The local name of the predicate.
+        info (Optional[PropertyInfo]): The CDM property, None when it is not declared in the ontology.
+        dom_subj (str): The dominant subject level of the predicate.
+        dom_obj (str): The dominant object class of the predicate.
+        redundancy (float): Share of the triples duplicated by a more specific sub-property.
+        root (str): The URI of the root (most generic) property.
+
+    Returns:
+        tuple[str, str, str]: The category, the action and the rationale.
+    """
     if pred == RDF_TYPE:
         return "structural", "KEEP-FILTERED", "keep the most specific work class (regulation, directive...); drop technical classes"
     if pred == OWL + "sameAs":
@@ -233,7 +274,20 @@ def classify(pred, local, info, dom_subj, dom_obj, redundancy, root):
     return "work-relation-other", "OPTIONAL", "work-level relation of secondary legal value"
 
 
-def classify_type(cls: str, levels: list[str]):
+def classify_type(
+    cls: str,
+    levels: list[str]
+) -> tuple[str, str, str]:
+    """
+    Classify an ``rdf:type`` class for the work-level transformer.
+
+    Args:
+        cls (str): The URI of the class.
+        levels (list[str]): The WEMI levels of the class.
+
+    Returns:
+        tuple[str, str, str]: The category, the action and the rationale.
+    """
     local = cls.rsplit("#", 1)[-1]
     if cls == OWL + "Axiom":
         return "reification", "KEEP-FOLD", "container of edge annotations; flattened"
@@ -248,7 +302,19 @@ def classify_type(cls: str, levels: list[str]):
     return "other-entity", "OPTIONAL", "non-WEMI entity (agent, event, dossier, period...)"
 
 
-def write_summary(profiles, rows, type_rows):
+def write_summary(
+    profiles: list[dict],
+    rows: list[dict],
+    type_rows: list[dict]
+) -> None:
+    """
+    Write the summary numbers (quoted in docs/RDF_METADATA_ANALYSIS.md) to ``summary.json``.
+
+    Args:
+        profiles (list[dict]): The per-file profiles.
+        rows (list[dict]): The predicate classification rows.
+        type_rows (list[dict]): The type classification rows.
+    """
     by_action = Counter()
     by_category = Counter()
     for r in rows:

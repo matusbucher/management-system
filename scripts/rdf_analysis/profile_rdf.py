@@ -1,11 +1,11 @@
-"""Profile the Cellar RDF/XML metadata dumps in tmp/ and write per-file JSON profiles.
+"""Profile the Cellar RDF/XML metadata dumps in data/ and write per-file JSON profiles.
 
 Usage:
-    python scripts/rdf_analysis/profile_rdf.py                 # all tmp/*.rdf (cached results are reused)
-    python scripts/rdf_analysis/profile_rdf.py tmp/DORA.rdf    # selected files
+    python scripts/rdf_analysis/profile_rdf.py                 # all data/*.rdf (cached results are reused)
+    python scripts/rdf_analysis/profile_rdf.py data/DORA.rdf    # selected files
     python scripts/rdf_analysis/profile_rdf.py --force         # re-parse even if a profile exists
 
-Output: tmp/analysis/profile/<name>.json (consumed by classify_predicates.py).
+Output: data/analysis/profile/<name>.json (consumed by classify_predicates.py).
 """
 from __future__ import annotations
 
@@ -19,13 +19,14 @@ from pathlib import Path
 
 from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import OWL, RDF
+from rdflib.term import Node
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cdm_ontology import WEMI_ORDER, load_cdm, short  # noqa: E402
+from cdm_ontology import WEMI_ORDER, CdmIndex, load_cdm, short  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
-TMP = ROOT / "tmp"
-OUT = TMP / "analysis" / "profile"
+DATA = ROOT / "data"
+OUT = DATA / "analysis" / "profile"
 
 RES = "http://publications.europa.eu/resource/"
 UUID = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
@@ -35,10 +36,19 @@ LANG_EXPR_RE = re.compile(r"\.([A-Z]{3})$")
 LANG_MAN_RE = re.compile(r"\.([A-Z]{3})\.([A-Za-z0-9]+)$")
 
 
-def classify_uri(uri: str) -> tuple[str, str]:
-    """Return (uri_kind, uri_level) using only the URI structure.
+def classify_uri(
+    uri: str
+) -> tuple[str, str]:
+    """
+    Classify a URI using only its structure.
 
-    uri_level is one of work / expression / manifestation / item / vocabulary / other.
+    The level is one of work / expression / manifestation / item / vocabulary / other.
+
+    Args:
+        uri (str): The URI to classify.
+
+    Returns:
+        tuple[str, str]: The URI kind and the URI level.
     """
     m = CELLAR_RE.match(uri)
     if m:
@@ -66,7 +76,18 @@ def classify_uri(uri: str) -> tuple[str, str]:
     return "external:" + (host.group(1) if host else "?"), "other"
 
 
-def object_kind(o) -> str:
+def object_kind(
+    o: Node
+) -> str:
+    """
+    Classify the object of a triple.
+
+    Args:
+        o (Node): The object of the triple.
+
+    Returns:
+        str: ``bnode``, a ``literal:...`` kind or ``uri:<uri kind>``.
+    """
     if isinstance(o, BNode):
         return "bnode"
     if isinstance(o, Literal):
@@ -76,8 +97,24 @@ def object_kind(o) -> str:
     return "uri:" + classify_uri(str(o))[0]
 
 
-def subject_level(g: Graph, s, cdm, preds: set[str]) -> tuple[str, str]:
-    """Infer the WEMI level of subject `s`; returns (level, evidence)."""
+def subject_level(
+    g: Graph,
+    s: Node,
+    cdm: CdmIndex,
+    preds: set[str]
+) -> tuple[str, str]:
+    """
+    Infer the WEMI level of a subject.
+
+    Args:
+        g (Graph): The RDF graph.
+        s (Node): The subject.
+        cdm (CdmIndex): The CDM ontology index.
+        preds (set[str]): URIs of the predicates used with the subject.
+
+    Returns:
+        tuple[str, str]: The level and the evidence it was derived from.
+    """
     uri = str(s)
     uri_kind, uri_level = classify_uri(uri)
     if uri_kind.startswith("cellar:"):
@@ -96,7 +133,18 @@ def subject_level(g: Graph, s, cdm, preds: set[str]) -> tuple[str, str]:
     return "untyped", "none"
 
 
-def profile(path: Path) -> dict:
+def profile(
+    path: Path
+) -> dict:
+    """
+    Profile one RDF/XML dump: predicate and type usage per WEMI level, axioms, materialised inference and aliases.
+
+    Args:
+        path (Path): The RDF/XML file.
+
+    Returns:
+        dict: The JSON-serialisable profile of the file.
+    """
     cdm = load_cdm()
     t0 = time.time()
     g = Graph()
@@ -160,7 +208,18 @@ def profile(path: Path) -> dict:
     # sameAs equivalence classes (identifier aliases)
     parent: dict = {}
 
-    def find(x):
+    def find(
+        x: Node
+    ) -> Node:
+        """
+        Find the root of an alias group (union-find with path halving).
+
+        Args:
+            x (Node): The node to look up.
+
+        Returns:
+            Node: The root node of the group.
+        """
         while parent.setdefault(x, x) != x:
             parent[x] = parent[parent[x]]
             x = parent[x]
@@ -202,11 +261,12 @@ def profile(path: Path) -> dict:
 
 
 def main() -> None:
+    """Profile the selected (or all) RDF dumps and write one JSON profile per file."""
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="*", type=Path)
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
-    files = args.files or sorted(TMP.glob("*.rdf"))
+    files = args.files or sorted(DATA.glob("*.rdf"))
     OUT.mkdir(parents=True, exist_ok=True)
     for f in files:
         target = OUT / (f.stem + ".json")

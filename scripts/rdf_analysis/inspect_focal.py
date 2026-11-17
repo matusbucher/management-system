@@ -1,4 +1,4 @@
-"""Show what each tmp/*.rdf dump says about its *focal* resource (the Cellar ID requested in test/cellar_base.py).
+"""Show what each data/*.rdf dump says about its *focal* resource (the Cellar ID requested in test/cellar_base.py).
 
 Answers: is the file really about the intended act, which aliases does it have, which predicates have the
 focal work as subject (its own attributes) and how many relations point at it.
@@ -25,13 +25,32 @@ CELLAR = "http://publications.europa.eu/resource/cellar/"
 
 
 def load_documents() -> dict[str, str]:
+    """
+    Load the ``DOCUMENTS`` mapping (document name to Cellar ID) from ``test/cellar_base.py``.
+
+    Returns:
+        dict[str, str]: Mapping of document name to Cellar ID.
+    """
     spec = importlib.util.spec_from_file_location("cellar_base", ROOT / "test" / "cellar_base.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module.DOCUMENTS
 
 
-def alias_group(g: Graph, start: URIRef) -> set[URIRef]:
+def alias_group(
+    g: Graph,
+    start: URIRef
+) -> set[URIRef]:
+    """
+    Get all URIs connected to ``start`` through ``owl:sameAs`` (in either direction).
+
+    Args:
+        g (Graph): The RDF graph.
+        start (URIRef): The URI to start from.
+
+    Returns:
+        set[URIRef]: The alias group, including ``start``.
+    """
     seen, stack = {start}, [start]
     while stack:
         node = stack.pop()
@@ -43,12 +62,13 @@ def alias_group(g: Graph, start: URIRef) -> set[URIRef]:
 
 
 def main() -> None:
+    """Print a summary of the focal resource of every data/*.rdf dump and optionally write it as JSON."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", type=Path)
     args = ap.parse_args()
     report = {}
     for name, uuid in load_documents().items():
-        path = ROOT / "tmp" / f"{name}.rdf"
+        path = ROOT / "data" / f"{name}.rdf"
         if not path.exists():
             continue
         g = Graph()

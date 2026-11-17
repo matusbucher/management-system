@@ -5,7 +5,7 @@ Steps per file:
   2. map every CDM relation to its root (most generic) super-property and fold inverse pairs into one direction;
   3. collapse duplicates created by materialised inference (specific + generic property, both directions).
 
-Usage: python scripts/rdf_analysis/edge_overlap.py [--json tmp/analysis/edges.json]
+Usage: python scripts/rdf_analysis/edge_overlap.py [--json data/analysis/edges.json]
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import OWL
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cdm_ontology import CDM, load_cdm, short  # noqa: E402
+from cdm_ontology import CDM, CdmIndex, load_cdm, short  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = "http://publications.europa.eu/resource/"
@@ -34,14 +34,35 @@ CELEX_SECTORS = {
 }
 
 
-def node_kind(key: str) -> str:
-    """Coarse document kind of a canonical node key (CELEX sector, otherwise the identifier scheme)."""
+def node_kind(
+    key: str
+) -> str:
+    """
+    Get the coarse document kind of a canonical node key (CELEX sector, otherwise the identifier scheme).
+
+    Args:
+        key (str): The canonical node key (e.g. ``celex:32022L2555``).
+
+    Returns:
+        str: The kind of the node.
+    """
     if key.startswith("celex:"):
         return "celex-" + CELEX_SECTORS.get(key[6], "other")
     return key.split(":", 1)[0].split("/", 1)[0]
 
 
-def canonical_key(group: set[str]) -> str:
+def canonical_key(
+    group: set[str]
+) -> str:
+    """
+    Choose the canonical key of an alias group (CELEX > Cellar UUID > first URI).
+
+    Args:
+        group (set[str]): URIs of one ``owl:sameAs`` alias group.
+
+    Returns:
+        str: The canonical key of the group.
+    """
     celex = sorted(u for u in group if "/celex/" in u)
     if celex:
         return "celex:" + celex[0].rsplit("/", 1)[-1]
@@ -51,10 +72,32 @@ def canonical_key(group: set[str]) -> str:
     return sorted(group)[0].replace(RES, "")
 
 
-def alias_map(g: Graph) -> dict[str, str]:
+def alias_map(
+    g: Graph
+) -> dict[str, str]:
+    """
+    Map every URI of the graph that takes part in ``owl:sameAs`` to the canonical key of its alias group.
+
+    Args:
+        g (Graph): The RDF graph.
+
+    Returns:
+        dict[str, str]: Mapping of alias URI to canonical key.
+    """
     parent: dict[str, str] = {}
 
-    def find(x: str) -> str:
+    def find(
+        x: str
+    ) -> str:
+        """
+        Find the root of an alias group (union-find with path halving).
+
+        Args:
+            x (str): The URI to look up.
+
+        Returns:
+            str: The root URI of the group.
+        """
         while parent.setdefault(x, x) != x:
             parent[x] = parent[parent[x]]
             x = parent[x]
@@ -73,16 +116,29 @@ def alias_map(g: Graph) -> dict[str, str]:
     return mapping
 
 
-def root_of(cdm, uri: str) -> str:
-    """Most generic cdm: ancestor (property itself when it has none)."""
+def root_of(
+    cdm: CdmIndex,
+    uri: str
+) -> str:
+    """
+    Get the most generic cdm: ancestor of a property (the property itself when it has none).
+
+    Args:
+        cdm (CdmIndex): The CDM ontology index.
+        uri (str): The URI of the property.
+
+    Returns:
+        str: The URI of the root property.
+    """
     anc = {a for a in cdm.ancestors(uri) if a in cdm.properties}
     roots = [a for a in anc if not any(s in cdm.properties for s in cdm.properties[a].super_props)]
     return sorted(roots)[0] if roots else uri
 
 
 def main() -> None:
+    """Count the unique relation edges per file and overall after de-duplication, and write the summary JSON."""
     ap = argparse.ArgumentParser()
-    ap.add_argument("--json", type=Path, default=ROOT / "tmp" / "analysis" / "edges.json")
+    ap.add_argument("--json", type=Path, default=ROOT / "data" / "analysis" / "edges.json")
     args = ap.parse_args()
     cdm = load_cdm()
 
@@ -94,8 +150,19 @@ def main() -> None:
                 root_inverse[root_of(cdm, uri)].add(root_of(cdm, inv))
     fwd: dict[str, tuple[str, bool]] = {}
 
-    def direction(p: str) -> tuple[str, bool]:
-        """(canonical root property, inverted?) - the lexicographically smaller root of an inverse pair is forward."""
+    def direction(
+        p: str
+    ) -> tuple[str, bool]:
+        """
+        Get the canonical root property and direction of a property; the lexicographically smaller root of an
+        inverse pair is forward.
+
+        Args:
+            p (str): The URI of the property.
+
+        Returns:
+            tuple[str, bool]: The canonical root property and whether the edge must be inverted.
+        """
         if p not in fwd:
             r = root_of(cdm, p)
             inv_roots = root_inverse.get(r, set()) - {r}
@@ -104,7 +171,7 @@ def main() -> None:
 
     all_edges: dict[tuple, set[str]] = defaultdict(set)
     per_file = {}
-    for path in sorted((ROOT / "tmp").glob("*.rdf")):
+    for path in sorted((ROOT / "data").glob("*.rdf")):
         g = Graph()
         g.parse(path, format="xml")
         amap = alias_map(g)

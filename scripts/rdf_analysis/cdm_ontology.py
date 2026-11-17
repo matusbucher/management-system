@@ -6,8 +6,10 @@ The index answers two questions for any CDM class / property:
 """
 from __future__ import annotations
 
-import re
+from typing import Optional
 from dataclasses import dataclass, field
+
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -41,8 +43,18 @@ _PREFIXES = (
 )
 
 
-def short(uri: str) -> str:
-    """Compact prefix form of a URI for tables."""
+def short(
+    uri: str
+) -> str:
+    """
+    Get the compact prefix form of a URI for tables.
+
+    Args:
+        uri (str): The full URI.
+
+    Returns:
+        str: The URI with a known namespace replaced by its prefix, or the unchanged URI.
+    """
     for ns, prefix in _PREFIXES:
         if uri.startswith(ns):
             return prefix + uri[len(ns):]
@@ -51,6 +63,26 @@ def short(uri: str) -> str:
 
 @dataclass
 class PropertyInfo:
+    """
+    Information about one CDM property.
+
+    Attributes:
+        uri (str): The URI of the property.
+        label (str): The ``rdfs:label`` of the property.
+        kind (str): Kind of the property - object, datatype, annotation or unknown.
+        domains (set[str]): URIs of the ``rdfs:domain`` classes.
+        ranges (set[str]): URIs of the ``rdfs:range`` classes.
+        super_props (set[str]): URIs of the direct super-properties.
+        sub_props (set[str]): URIs of the direct sub-properties.
+        inverse (set[str]): URIs of the inverse properties.
+        legal_flag (Optional[str]): "true" / "false" flag "Relevant for legal analysis", None when the comment has no flag.
+        domain_levels (set[str]): WEMI levels of the domain classes.
+        range_levels (set[str]): WEMI levels of the range classes.
+        level (str): WEMI level of the property - work, expression, manifestation, item, a "+" combination of them,
+            generic, other or unknown.
+        level_source (str): How the level was determined (domain, domain-non-wemi, super-property of ..., name-prefix,
+            no-domain).
+    """
     uri: str
     label: str = ""
     kind: str = "unknown"  # object | datatype | annotation | unknown
@@ -59,7 +91,7 @@ class PropertyInfo:
     super_props: set[str] = field(default_factory=set)  # direct
     sub_props: set[str] = field(default_factory=set)  # direct
     inverse: set[str] = field(default_factory=set)
-    legal_flag: str | None = None  # "true" / "false" / None when the comment carries no flag
+    legal_flag: Optional[str] = None  # "true" / "false" / None when the comment carries no flag
     domain_levels: set[str] = field(default_factory=set)  # WEMI levels of the domain classes
     range_levels: set[str] = field(default_factory=set)  # WEMI levels of the range classes
     # work | expression | manifestation | item | "work+expression"... | generic | other | unknown
@@ -68,7 +100,19 @@ class PropertyInfo:
 
 
 class CdmIndex:
-    def __init__(self, cdm_dir: Path = CDM_DIR, files: list[str] | None = None):
+    """
+    Index of the CDM ontology: the parsed ontology graph and the properties with their WEMI levels.
+
+    Args:
+        cdm_dir (Path): Directory with the CDM ontology files. Default ``docs/cdm``.
+        files (Optional[list[str]]): Names of the ontology files to parse. Default None (``CDM_FILES``).
+    """
+
+    def __init__(
+        self,
+        cdm_dir: Path = CDM_DIR,
+        files: Optional[list[str]] = None
+    ) -> None:
         self.graph = Graph()
         for name in files or CDM_FILES:
             self.graph.parse(cdm_dir / name)
@@ -76,8 +120,19 @@ class CdmIndex:
         self.properties: dict[str, PropertyInfo] = {}
         self._build_properties()
 
-    def class_levels(self, cls: str) -> set[str]:
-        """WEMI levels of a class, or {'other:<root>'} for classes outside WEMI (agents, locations...)."""
+    def class_levels(
+        self,
+        cls: str
+    ) -> set[str]:
+        """
+        Get the WEMI levels of a class, or {'other:<root>'} for classes outside WEMI (agents, locations...).
+
+        Args:
+            cls (str): The URI of the class.
+
+        Returns:
+            set[str]: The WEMI levels of the class.
+        """
         if cls in self._class_levels:
             return self._class_levels[cls]
         self._class_levels[cls] = set()  # cycle guard
@@ -93,10 +148,23 @@ class CdmIndex:
         self._class_levels[cls] = result
         return result
 
-    def wemi_levels_of_classes(self, classes: set[str]) -> set[str]:
+    def wemi_levels_of_classes(
+        self,
+        classes: set[str]
+    ) -> set[str]:
+        """
+        Get the WEMI levels (work, expression, manifestation, item) of a set of classes.
+
+        Args:
+            classes (set[str]): URIs of the classes.
+
+        Returns:
+            set[str]: The WEMI levels the classes belong to.
+        """
         return {l for c in classes for l in self.class_levels(c) if l in WEMI_ORDER}
 
     def _build_properties(self) -> None:
+        """Collect all CDM properties from the graph and fill in their labels, relations, flags and WEMI levels."""
         g = self.graph
         for t in (OWL.ObjectProperty, OWL.DatatypeProperty, OWL.AnnotationProperty, RDF.Property):
             for p in g.subjects(RDF.type, t):
@@ -131,7 +199,19 @@ class CdmIndex:
         for info in self.properties.values():
             self._assign_level(info)
 
-    def descendants(self, uri: str) -> set[str]:
+    def descendants(
+        self,
+        uri: str
+    ) -> set[str]:
+        """
+        Get all direct and indirect sub-properties of a property.
+
+        Args:
+            uri (str): The URI of the property.
+
+        Returns:
+            set[str]: URIs of the descendant properties.
+        """
         out: set[str] = set()
         stack = [uri]
         while stack:
@@ -142,7 +222,19 @@ class CdmIndex:
                     stack.append(sub)
         return out
 
-    def ancestors(self, uri: str) -> set[str]:
+    def ancestors(
+        self,
+        uri: str
+    ) -> set[str]:
+        """
+        Get all direct and indirect super-properties of a property.
+
+        Args:
+            uri (str): The URI of the property.
+
+        Returns:
+            set[str]: URIs of the ancestor properties.
+        """
         out: set[str] = set()
         stack = [uri]
         while stack:
@@ -153,7 +245,16 @@ class CdmIndex:
                     stack.append(sup)
         return out
 
-    def _assign_level(self, info: PropertyInfo) -> None:
+    def _assign_level(
+        self,
+        info: PropertyInfo
+    ) -> None:
+        """
+        Set the WEMI level of a property (and how it was determined) from its domain, sub-properties or name.
+
+        Args:
+            info (PropertyInfo): The property to update.
+        """
         if info.domain_levels:
             info.level = "+".join(w for w in WEMI_ORDER if w in info.domain_levels)
             info.level_source = "domain"
@@ -177,6 +278,12 @@ class CdmIndex:
 
 @lru_cache(maxsize=1)
 def load_cdm() -> CdmIndex:
+    """
+    Get the (cached) index of the CDM ontology.
+
+    Returns:
+        CdmIndex: The CDM ontology index.
+    """
     return CdmIndex()
 
 

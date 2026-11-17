@@ -1,0 +1,5683 @@
+{
+  "generated": "2026-11-17T19:36:27+00:00",
+  "parameters": {
+    "min_links": 3,
+    "rounds": 1,
+    "webservice": true
+  },
+  "stats": {
+    "seeds": {
+      "requested": 14,
+      "resolved": 14,
+      "unresolved": []
+    },
+    "topic": {
+      "descriptors": 10,
+      "sparql": 206,
+      "webservice": 206,
+      "both": 206,
+      "sparql_only": 0,
+      "webservice_only": 0
+    },
+    "expansion": [
+      {
+        "round": 1,
+        "added": 282
+      }
+    ],
+    "works": 491,
+    "by_stage": {
+      "seed": 14,
+      "topic": 206,
+      "expansion": 282
+    },
+    "coherence": {
+      "edges": 2695,
+      "edges_by_relation": {
+        "work_cites_work": 2316,
+        "resource_legal_based_on_resource_legal": 208,
+        "resource_legal_amends_resource_legal": 145,
+        "resource_legal_repeals_resource_legal": 26
+      },
+      "linked_works": 486,
+      "isolated": [
+        "42be716f-31a9-444f-afe0-56c6929f78b3",
+        "724bdba2-3236-11ed-975d-01aa75ed71a1",
+        "79fdead4-2c9c-11f1-906d-01aa75ed71a1",
+        "ae53ef8b-2c9d-11f1-906d-01aa75ed71a1",
+        "b3a4e2a8-35dc-11f0-8a44-01aa75ed71a1"
+      ]
+    }
+  },
+  "works": [
+    {
+      "work_id": "115852e8-30ac-496e-8015-d580366ff059",
+      "celex": "31958R0001",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "9db0c354-c67a-45ff-97b7-668090975afb",
+      "celex": "31968R0259",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "d4f9428e-0436-43a8-b09b-412a13df03fc",
+      "celex": "31994R2894",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "f3043374-a2d2-483d-a4a1-14e60264573a",
+      "celex": "31995H0144",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "775a4724-2086-4a06-9213-1a4e6489053b",
+      "celex": "31995L0046",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "7b4a2174-0293-457a-9bdc-fe2d298d8d79",
+      "celex": "31995R2988",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "b48976b5-b31a-4dba-a052-87133e17d65e",
+      "celex": "31996L0009",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "adc86f79-268e-4ac4-8ae5-85c70ade888f",
+      "celex": "31996R2185",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "f37cd7cb-c869-4550-b648-9a55aee621b4",
+      "celex": "31999D0437",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "42be716f-31a9-444f-afe0-56c6929f78b3",
+      "celex": "31999F0364",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "5456910f-06ec-46dc-80e6-545a5f5ecc9b",
+      "celex": "31999L0093",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "a1d46ec9-e62b-4593-9214-182c9f6db594",
+      "celex": "31999Q0531",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "05d93cd4-6bdc-4ee6-a0eb-69750b4366c5",
+      "celex": "31999R1073",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "b244164f-dd29-48e9-9063-a86ef4ea7ad9",
+      "celex": "32000L0031",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "0177e751-7cb7-404b-98d8-79a564ddc629",
+      "celex": "32001R0045",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 9
+    },
+    {
+      "work_id": "2063659d-65fc-4956-b086-8f5a0a2cb9d1",
+      "celex": "32001R1049",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 9
+    },
+    {
+      "work_id": "be5fb69e-961e-4335-b8ed-1e4d76f365b5",
+      "celex": "32002D0192",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "aab5b35a-5fb4-4ab0-8a48-104bdb252fc4",
+      "celex": "32002L0021",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "cb5af945-9d9f-40e6-acee-bd0c5bb4ed0a",
+      "celex": "32002L0058",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 46
+    },
+    {
+      "work_id": "6ca8d655-126b-4a42-ada4-e9058fa45155",
+      "celex": "32003H0361",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 10
+    },
+    {
+      "work_id": "96d49a9c-1316-42da-8c99-ce64d3706754",
+      "celex": "32004D0541",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "6887d0c9-1bf4-47a0-aba3-fcb9d3829d4e",
+      "celex": "32004R0460",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "708d86d8-ab9a-4e18-9bda-ac37405a3185",
+      "celex": "32005F0222",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7fecf696-5eda-47b3-b838-0202aca4f2dd",
+      "celex": "32005L0029",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "ffb36add-fa42-4da4-9988-7ac8ba5551f4",
+      "celex": "32006L0024",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "9a83fd27-402f-43bd-8b3f-1ebba1aed357",
+      "celex": "32006L0123",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "a0b0cd96-6a38-46d3-a0ad-2a5d6b04bc69",
+      "celex": "32006R1987",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "64814c7c-de12-4d72-a6c2-b0c8e3c53bb4",
+      "celex": "32007D0533",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "4a2ea03b-1112-4634-89be-45028919975a",
+      "celex": "32008D0146",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "da2fe35d-3d49-414c-84d3-b9a409b57071",
+      "celex": "32008D0602",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "493403fe-dd8d-4178-9297-1b324d5b140a",
+      "celex": "32008D0768",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "5126fa85-7965-4309-98eb-cbdff13821a7",
+      "celex": "32008F0977",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "ba51b03f-66f4-4807-bf7d-c66244414b10",
+      "celex": "32008L0114",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "da45f838-cc98-4788-be3b-2ac0a9768ae1",
+      "celex": "32008R0300",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "fdd70f57-7032-4121-92ae-ccf8ef68c15b",
+      "celex": "32008R0765",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 10
+    },
+    {
+      "work_id": "4de2b1b9-645c-44b2-8097-540d85bdd115",
+      "celex": "32008R0767",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "963e031f-0e0c-41ee-86da-64804205ceda",
+      "celex": "32008R1007",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "be6f8698-9fe8-423e-8678-b347f1611d6a",
+      "celex": "32009D0371",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "11c24427-4de4-47ad-a710-a46cee7316a9",
+      "celex": "32009D0767",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "a2a1dc42-4190-4d9c-b957-687116f1faa7",
+      "celex": "32009F0948",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "dd24ed73-eac5-4aea-9ca0-8fed50e345b5",
+      "celex": "32009H0387",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "262eb3fa-5832-4990-9e21-a0924e8b1f7f",
+      "celex": "32009L0136",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b11ac130-fd92-46f8-a63a-940b0663bd79",
+      "celex": "32009L0138",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "d3a247f3-7458-4c24-a96a-7b5670defd10",
+      "celex": "32009R0223",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "37b96ce1-0134-4d2f-88be-da88505a3c3b",
+      "celex": "32010D0260",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "8c908384-6179-48eb-bd7b-fb31ff2a250f",
+      "celex": "32010D0261",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c2d58141-334a-4cd8-be0f-b9b9840d2efd",
+      "celex": "32010L0040",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c2eecef2-5a33-4525-931e-53cf6e6f96c7",
+      "celex": "32010R1093",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 14
+    },
+    {
+      "work_id": "4bd6de5a-ce58-4243-a5ad-bdd19d7cd556",
+      "celex": "32010R1094",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 11
+    },
+    {
+      "work_id": "d6206116-a910-4ffa-b6cd-f14b1b503568",
+      "celex": "32010R1095",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 11
+    },
+    {
+      "work_id": "59a801cb-fb56-4308-bd41-50a5f3469edc",
+      "celex": "32011D0130",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "fd249fe6-fa66-4386-830e-5bea488591bc",
+      "celex": "32011D0350",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "377ab800-836b-4fde-85ff-2e4aac7dee94",
+      "celex": "32011L0024",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "c6eb347a-16c8-4705-869f-d1b25ca3cb39",
+      "celex": "32011L0093",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "cccf5222-feb3-4dc3-a4ca-9a5ec75e49af",
+      "celex": "32011R0182",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 14
+    },
+    {
+      "work_id": "044279af-8f45-41fb-a0d7-70c2a2e71d2e",
+      "celex": "32011R0580",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "adf71e82-6a1f-11e2-9294-01aa75ed71a1",
+      "celex": "32012O0027",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "665d41b1-2085-4584-af8a-45c605d62b94",
+      "celex": "32012R0648",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "de093874-a22d-40ef-a7bf-5998d8920152",
+      "celex": "32012R0748",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "08e6cf53-2e33-11e2-ad46-01aa75ed71a1",
+      "celex": "32012R1025",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 13
+    },
+    {
+      "work_id": "d43001e3-356d-11e3-806a-01aa75ed71a1",
+      "celex": "32013D0488",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "600ee81c-6c06-11e3-9afb-01aa75ed71a1",
+      "celex": "32013D1313",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "2ff66fd7-df0b-11e2-9165-01aa75ed71a1",
+      "celex": "32013L0036",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 7
+    },
+    {
+      "work_id": "959ded30-04ba-11e3-a352-01aa75ed71a1",
+      "celex": "32013L0040",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "11d954b5-8256-11e2-89d6-01aa75ed71a1",
+      "celex": "32013R0168",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "a227aef3-d802-11e2-bfa7-01aa75ed71a1",
+      "celex": "32013R0526",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ccd31733-df06-11e2-9165-01aa75ed71a1",
+      "celex": "32013R0575",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "d1866152-203f-11e3-8d1c-01aa75ed71a1",
+      "celex": "32013R0883",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "80502785-3178-11e3-8d1c-01aa75ed71a1",
+      "celex": "32013R0952",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "aa61f069-b654-11e3-86f9-01aa75ed71a1",
+      "celex": "32014L0024",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 8
+    },
+    {
+      "work_id": "3c100e84-b654-11e3-86f9-01aa75ed71a1",
+      "celex": "32014L0025",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "1b79e176-e181-11e3-8cd4-01aa75ed71a1",
+      "celex": "32014L0053",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "056587cf-f1f8-11e3-8cd4-01aa75ed71a1",
+      "celex": "32014L0065",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "3cc00bdc-955e-11e3-8c34-01aa75ed71a1",
+      "celex": "32014R0139",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3b729ddf-f1f7-11e3-8cd4-01aa75ed71a1",
+      "celex": "32014R0600",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 7
+    },
+    {
+      "work_id": "23b61856-2e82-11e4-8c3c-01aa75ed71a1",
+      "celex": "32014R0910",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "11666062-d157-11e5-a4b5-01aa75ed71a1",
+      "celex": "32015D0046",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "f3914e9a-bcbb-11e4-bbe1-01aa75ed71a1",
+      "celex": "32015D0296",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "1ec52f4a-cc70-11e4-ab4d-01aa75ed71a1",
+      "celex": "32015D0443",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "41a6eeeb-cc70-11e4-ab4d-01aa75ed71a1",
+      "celex": "32015D0444",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 7
+    },
+    {
+      "work_id": "ef4cce0f-56b7-11e5-afbf-01aa75ed71a1",
+      "celex": "32015D1505",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "226fee30-56b8-11e5-afbf-01aa75ed71a1",
+      "celex": "32015D1506",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "3f2c00e1-8387-11e5-b8b7-01aa75ed71a1",
+      "celex": "32015D1984",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "a857b646-5cfd-11e5-afbf-01aa75ed71a1",
+      "celex": "32015L1535",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "dd85ef2e-a953-11e5-b528-01aa75ed71a1",
+      "celex": "32015L2366",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 9
+    },
+    {
+      "work_id": "0f9c8d98-56b7-11e5-afbf-01aa75ed71a1",
+      "celex": "32015R1501",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "4735575a-56b7-11e5-afbf-01aa75ed71a1",
+      "celex": "32015R1502",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c38f361d-8a99-11e5-b8b7-01aa75ed71a1",
+      "celex": "32015R1998",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "ed0fe62d-ae35-11e5-b528-01aa75ed71a1",
+      "celex": "32015R2447",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "b6b7cf13-0b74-11e6-b713-01aa75ed71a1",
+      "celex": "32016D0650",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "c183d956-57a6-11e6-89bd-01aa75ed71a1",
+      "celex": "32016D1250",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "6d85ee37-5b94-11e6-89bd-01aa75ed71a1",
+      "celex": "32016D1345",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "182703d1-11bd-11e6-ba9a-01aa75ed71a1",
+      "celex": "32016L0680",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 13
+    },
+    {
+      "work_id": "dc0eda0f-32bc-11e6-b497-01aa75ed71a1",
+      "celex": "32016L0943",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "d2912aca-4d75-11e6-89bd-01aa75ed71a1",
+      "celex": "32016L1148",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ce26d769-b85d-11e6-9e3c-01aa75ed71a1",
+      "celex": "32016L2102",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3dbea47a-c8a2-11e6-a6db-01aa75ed71a1",
+      "celex": "32016L2341",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3e485e15-11bd-11e6-ba9a-01aa75ed71a1",
+      "celex": "32016R0679",
+      "stages": [
+        "seed"
+      ],
+      "sources": [
+        "cellar"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "afbd1e10-216c-11e6-86d0-01aa75ed71a1",
+      "celex": "32016R0794",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "f9fd8acf-d7c9-11e6-ad7c-01aa75ed71a1",
+      "celex": "32017D0046",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "fea53056-e8d7-11e6-ad7c-01aa75ed71a1",
+      "celex": "32017D0179",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2160ed93-df1f-11e7-9749-01aa75ed71a1",
+      "celex": "32017D2288",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e7f7a728-9cff-11e7-b92d-01aa75ed71a1",
+      "celex": "32017H1584",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "34a6d237-15d3-11e7-808e-01aa75ed71a1",
+      "celex": "32017L0541",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "29f12e83-4051-11e7-a9b0-01aa75ed71a1",
+      "celex": "32017L0853",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b1c12097-7363-11e7-b2f2-01aa75ed71a1",
+      "celex": "32017L1371",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "5b8745bb-d593-11e7-a5b9-01aa75ed71a1",
+      "celex": "32017L2109",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "a321f718-607d-11e7-954d-01aa75ed71a1",
+      "celex": "32017R1185",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "cd90f4d7-b61f-11e7-837e-01aa75ed71a1",
+      "celex": "32017R1926",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "e8568219-bdd0-11e7-a7f8-01aa75ed71a1",
+      "celex": "32017R1939",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "1b35a7a3-0bd9-11e8-966a-01aa75ed71a1",
+      "celex": "32018D0180",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7ec299cb-3d15-11e8-b5fe-01aa75ed71a1",
+      "celex": "32018D0559",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "f83276f5-5a6a-11e8-ab41-01aa75ed71a1",
+      "celex": "32018D0743",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "7b243b6f-75e6-11e8-ac6a-01aa75ed71a1",
+      "celex": "32018D0893",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "f0c7bfc9-d1d2-11e8-9424-01aa75ed71a1",
+      "celex": "32018D1553",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "4e667a01-fc1d-11e8-a96d-01aa75ed71a1",
+      "celex": "32018D1927",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "dbd28536-fda8-11e8-a96d-01aa75ed71a1",
+      "celex": "32018D1961",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "17fd3328-fda9-11e8-a96d-01aa75ed71a1",
+      "celex": "32018D1962",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "8d904f17-01d4-11e9-adde-01aa75ed71a1",
+      "celex": "32018D1993",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "bc900edb-01d5-11e9-adde-01aa75ed71a1",
+      "celex": "32018D1996",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "4bb873d0-01d2-11e9-adde-01aa75ed71a1",
+      "celex": "32018L1972",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 10
+    },
+    {
+      "work_id": "e0fee9ac-0651-11e8-b8f5-01aa75ed71a1",
+      "celex": "32018R0151",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "28c2f705-268d-11e8-ac73-01aa75ed71a1",
+      "celex": "32018R0389",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d828c80f-6f9d-11e8-9483-01aa75ed71a1",
+      "celex": "32018R0858",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "c9bbbd2a-8990-11e8-ac6a-01aa75ed71a1",
+      "celex": "32018R1001",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "5e3c1d89-93bd-11e8-8bc1-01aa75ed71a1",
+      "celex": "32018R1046",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 9
+    },
+    {
+      "work_id": "b401f250-99ca-11e8-a408-01aa75ed71a1",
+      "celex": "32018R1091",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "71e4e668-a5cf-11e8-99ee-01aa75ed71a1",
+      "celex": "32018R1139",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 10
+    },
+    {
+      "work_id": "efa9c4e5-c703-11e8-9424-01aa75ed71a1",
+      "celex": "32018R1240",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "796b405c-ed62-11e8-b690-01aa75ed71a1",
+      "celex": "32018R1724",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "999029ee-ed62-11e8-b690-01aa75ed71a1",
+      "celex": "32018R1725",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 77
+    },
+    {
+      "work_id": "bac6d1a0-ed62-11e8-b690-01aa75ed71a1",
+      "celex": "32018R1726",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "be137a33-f2e5-11e8-9982-01aa75ed71a1",
+      "celex": "32018R1807",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "afc82ea1-f9ec-11e8-a96d-01aa75ed71a1",
+      "celex": "32018R1860",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "e4787e73-f9ec-11e8-a96d-01aa75ed71a1",
+      "celex": "32018R1861",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "75ca2f4f-f9ed-11e8-a96d-01aa75ed71a1",
+      "celex": "32018R1862",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "a0256aee-01d1-11e9-adde-01aa75ed71a1",
+      "celex": "32018R1971",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "a2a0ff72-09a3-11e9-81b4-01aa75ed71a1",
+      "celex": "32018R2056",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "6821926b-283c-11e9-8d04-01aa75ed71a1",
+      "celex": "32019D0165",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "acef55ee-2b68-11e9-8d04-01aa75ed71a1",
+      "celex": "32019D0236",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "23870fe5-4a25-11e9-a8ed-01aa75ed71a1",
+      "celex": "32019D0419",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "d6b33e8c-6ca7-11e9-9f05-01aa75ed71a1",
+      "celex": "32019D0682",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "d4a1c3c8-78ac-11e9-9f05-01aa75ed71a1",
+      "celex": "32019D0797",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c9eb30cd-b1c8-11e9-9d01-01aa75ed71a1",
+      "celex": "32019D1269",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "01613305-00b1-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1765",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "54f406a0-013e-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1862",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "eb43e2ed-0208-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1874",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "37791fd1-14cc-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1961",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "802eb5f3-14cc-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1962",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c69971b6-14cc-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D1963",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "16f93285-1b5d-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019D2107",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "cf529e8a-2dcb-11e9-8d04-01aa75ed71a1",
+      "celex": "32019H0243",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "6b7b992c-51ea-11e9-a8ed-01aa75ed71a1",
+      "celex": "32019H0534",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "370b898e-576f-11e9-a8ed-01aa75ed71a1",
+      "celex": "32019H0553",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "326b72c2-72f4-11e9-9f05-01aa75ed71a1",
+      "celex": "32019L0713",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "c426ed23-7c64-11e9-9f05-01aa75ed71a1",
+      "celex": "32019L0770",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "214471fe-786e-11e9-9f05-01aa75ed71a1",
+      "celex": "32019L0790",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "6eb3ceb5-8905-11e9-9369-01aa75ed71a1",
+      "celex": "32019L0882",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "8594f013-8e7c-11e9-9369-01aa75ed71a1",
+      "celex": "32019L0944",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "a6ef4c41-97eb-11e9-9369-01aa75ed71a1",
+      "celex": "32019L1024",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "cc54a8ef-1036-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019L1937",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "956a80ac-4ba6-11e9-a8ed-01aa75ed71a1",
+      "celex": "32019R0452",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "0e1c8aa8-505e-11e9-a8ed-01aa75ed71a1",
+      "celex": "32019R0493",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "10ad1eb7-786d-11e9-9f05-01aa75ed71a1",
+      "celex": "32019R0788",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "6f00c435-78ac-11e9-9f05-01aa75ed71a1",
+      "celex": "32019R0796",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "17d265c8-7c60-11e9-9f05-01aa75ed71a1",
+      "celex": "32019R0817",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "6692765c-7c60-11e9-9f05-01aa75ed71a1",
+      "celex": "32019R0818",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "35e93bb4-8905-11e9-9369-01aa75ed71a1",
+      "celex": "32019R0881",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9cd24c60-8e7b-11e9-9369-01aa75ed71a1",
+      "celex": "32019R0941",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "e848b031-8e7b-11e9-9369-01aa75ed71a1",
+      "celex": "32019R0942",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "48b32722-8e7c-11e9-9369-01aa75ed71a1",
+      "celex": "32019R0943",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "819291ca-8c1c-11e9-9369-01aa75ed71a1",
+      "celex": "32019R0947",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "903d90ee-9712-11e9-9369-01aa75ed71a1",
+      "celex": "32019R1020",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "5eb7512b-9646-11e9-9369-01aa75ed71a1",
+      "celex": "32019R1026",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9eacb0fa-a474-11e9-9d01-01aa75ed71a1",
+      "celex": "32019R1157",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "b4cf0abe-ae8d-11e9-9d01-01aa75ed71a1",
+      "celex": "32019R1239",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "04a97d60-e02c-11e9-9c4e-01aa75ed71a1",
+      "celex": "32019R1583",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9c53922a-eed8-11e9-a32c-01aa75ed71a1",
+      "celex": "32019R1700",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "7e80eac2-f17b-11e9-a32c-01aa75ed71a1",
+      "celex": "32019R1735",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "de7c14e5-f732-11e9-8c1f-01aa75ed71a1",
+      "celex": "32019R1777",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "437366f6-f733-11e9-8c1f-01aa75ed71a1",
+      "celex": "32019R1778",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c02ed5cc-f952-11e9-8c1f-01aa75ed71a1",
+      "celex": "32019R1799",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "a62cb387-0519-11ea-8c1f-01aa75ed71a1",
+      "celex": "32019R1889",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "bfd5eba8-2058-11ea-95ab-01aa75ed71a1",
+      "celex": "32019R2144",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "5670ef2b-8aa5-11ea-812f-01aa75ed71a1",
+      "celex": "32020D0589",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "303e90bb-9678-11ea-aac4-01aa75ed71a1",
+      "celex": "32020D0651",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f4f2f826-9677-11ea-aac4-01aa75ed71a1",
+      "celex": "32020D0655",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "0598be71-c73d-11ea-adf7-01aa75ed71a1",
+      "celex": "32020D1023",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "9a5f1f21-d26b-11ea-adf7-01aa75ed71a1",
+      "celex": "32020D1127",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "360fd436-0ead-11eb-bc07-01aa75ed71a1",
+      "celex": "32020D1479",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "5d259108-0f77-11eb-bc07-01aa75ed71a1",
+      "celex": "32020D1502",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "ee837866-1473-11eb-b57e-01aa75ed71a1",
+      "celex": "32020D1537",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2be210f5-2d63-11eb-b27b-01aa75ed71a1",
+      "celex": "32020D1748",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "75e23f65-4b5f-11eb-b59f-01aa75ed71a1",
+      "celex": "32020D2252",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "1e8b1520-7e0c-11ea-aea8-01aa75ed71a1",
+      "celex": "32020H0518",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "64784e3f-5c56-11ea-8b81-01aa75ed71a1",
+      "celex": "32020L0284",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b5ff45c2-35f4-11eb-b27b-01aa75ed71a1",
+      "celex": "32020L1828",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "dfb66ca7-38fc-11ea-ba6e-01aa75ed71a1",
+      "celex": "32020R0038",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "0a0f4def-d26b-11ea-adf7-01aa75ed71a1",
+      "celex": "32020R1125",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a73a6a95-1473-11eb-b57e-01aa75ed71a1",
+      "celex": "32020R1536",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ec15c7a8-2d61-11eb-b27b-01aa75ed71a1",
+      "celex": "32020R1744",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a5d95f17-4454-11eb-b59f-01aa75ed71a1",
+      "celex": "32020R2093",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "72311782-56d3-11eb-b59f-01aa75ed71a1",
+      "celex": "32021D0027",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "92d51211-65c2-11eb-aeb5-01aa75ed71a1",
+      "celex": "32021D0121",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "e89ef5e7-726f-11eb-9ac9-01aa75ed71a1",
+      "celex": "32021D0259",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b02dc8bf-8c43-11eb-b85c-01aa75ed71a1",
+      "celex": "32021D0509",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "5e07a1c5-a99d-11eb-9585-01aa75ed71a1",
+      "celex": "32021D0689",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9eac7f54-b312-11eb-8aca-01aa75ed71a1",
+      "celex": "32021D0698",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fde1e224-b7b3-11eb-8aca-01aa75ed71a1",
+      "celex": "32021D0796",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "55862dbf-c72b-11eb-a925-01aa75ed71a1",
+      "celex": "32021D0914",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2b85eb9d-c72b-11eb-a925-01aa75ed71a1",
+      "celex": "32021D0915",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "051333a2-d487-11eb-895a-01aa75ed71a1",
+      "celex": "32021D1026",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "4f8f3aea-1689-11ec-b4fe-01aa75ed71a1",
+      "celex": "32021D1486",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "9ba8f9ab-2a2d-11ec-bd8e-01aa75ed71a1",
+      "celex": "32021D1772",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c3b55b0f-2a2d-11ec-bd8e-01aa75ed71a1",
+      "celex": "32021D1773",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "d5e2e55a-5318-11ec-91ac-01aa75ed71a1",
+      "celex": "32021D2121",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "7b2effc9-5e13-11ec-9c6c-01aa75ed71a1",
+      "celex": "32021D2243",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "1ff9f224-62cb-11ec-a033-01aa75ed71a1",
+      "celex": "32021D2293",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "db5be7e4-ccf1-11eb-ac72-01aa75ed71a1",
+      "celex": "32021H0946",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "887cd7da-dd2a-11eb-895a-01aa75ed71a1",
+      "celex": "32021H1086",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a3b55d94-263f-11ec-bd8e-01aa75ed71a1",
+      "celex": "32021O1759",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "66a2c066-71c5-11eb-9ac9-01aa75ed71a1",
+      "celex": "32021R0241",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "2e2c9b8c-807b-11eb-9ac9-01aa75ed71a1",
+      "celex": "32021R0414",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "8f86d365-90ff-11eb-b85c-01aa75ed71a1",
+      "celex": "32021R0547",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2a639336-9b36-11eb-b85c-01aa75ed71a1",
+      "celex": "32021R0581",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "d6a2aff1-b1f2-11eb-8aca-01aa75ed71a1",
+      "celex": "32021R0694",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "8d9e2751-b311-11eb-8aca-01aa75ed71a1",
+      "celex": "32021R0695",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "eba0ed12-b311-11eb-8aca-01aa75ed71a1",
+      "celex": "32021R0696",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 16
+    },
+    {
+      "work_id": "d8e79ebf-ca4e-11eb-84ce-01aa75ed71a1",
+      "celex": "32021R0821",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "1f335a13-c82b-11eb-a925-01aa75ed71a1",
+      "celex": "32021R0887",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a0dfa793-d98d-11eb-895a-01aa75ed71a1",
+      "celex": "32021R1060",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "68218285-e374-11eb-895a-01aa75ed71a1",
+      "celex": "32021R1134",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "77b8dba5-e506-11eb-a1a5-01aa75ed71a1",
+      "celex": "32021R1149",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "10613289-e43f-11eb-895a-01aa75ed71a1",
+      "celex": "32021R1153",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "8bd08018-ef3e-11eb-a71c-01aa75ed71a1",
+      "celex": "32021R1224",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "23166324-f0d2-11eb-a71c-01aa75ed71a1",
+      "celex": "32021R1232",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "7775b3c8-2a2d-11ec-bd8e-01aa75ed71a1",
+      "celex": "32021R1783",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "00903c15-524b-11ec-91ac-01aa75ed71a1",
+      "celex": "32021R2103",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "eb813177-524b-11ec-91ac-01aa75ed71a1",
+      "celex": "32021R2104",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7e7bef6d-62ca-11ec-a033-01aa75ed71a1",
+      "celex": "32021R2289",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "02b74f07-9551-11ec-b4e4-01aa75ed71a1",
+      "celex": "32022D0254",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "e2dce7c5-abde-11ec-83e1-01aa75ed71a1",
+      "celex": "32022D0480",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3ba5bc23-bf7c-11ec-b6f4-01aa75ed71a1",
+      "celex": "32022D0640",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "50b74c99-d0c4-11ec-a95f-01aa75ed71a1",
+      "celex": "32022D0722",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d9170823-d5a8-11ec-a95f-01aa75ed71a1",
+      "celex": "32022D0754",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f701f8d8-e6c5-11ec-a534-01aa75ed71a1",
+      "celex": "32022D0895",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a189b04d-f6a3-11ec-b976-01aa75ed71a1",
+      "celex": "32022D1014",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "f9a72ed1-0bb6-11ed-b11c-01aa75ed71a1",
+      "celex": "32022D1297",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2399ce93-2cf7-11ed-975d-01aa75ed71a1",
+      "celex": "32022D1462",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "724bdba2-3236-11ed-975d-01aa75ed71a1",
+      "celex": "32022D1506",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a1fe91ed-37ef-11ed-9c68-01aa75ed71a1",
+      "celex": "32022D1612",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "f8fa3468-63c4-11ed-92ed-01aa75ed71a1",
+      "celex": "32022D2206",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "40ca135a-7218-11ed-9887-01aa75ed71a1",
+      "celex": "32022D2352",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "26514cb9-7f40-11ed-9887-01aa75ed71a1",
+      "celex": "32022D2481",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "63d50b0b-8652-11ed-9887-01aa75ed71a1",
+      "celex": "32022D2574",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b2f9a423-92ba-11ec-b4e4-01aa75ed71a1",
+      "celex": "32022L0228",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "9b84d482-85bd-11ed-9887-01aa75ed71a1",
+      "celex": "32022L2555",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e2e67364-85bd-11ed-9887-01aa75ed71a1",
+      "celex": "32022L2556",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c4d36f49-85bc-11ed-9887-01aa75ed71a1",
+      "celex": "32022L2557",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d38cbdfb-95dd-11ec-b4e4-01aa75ed71a1",
+      "celex": "32022O0311",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7a54fc31-c77a-11ec-b6f4-01aa75ed71a1",
+      "celex": "32022O0688",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "5f9d2be0-734b-11ec-9136-01aa75ed71a1",
+      "celex": "32022R0030",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "29aa673e-e14c-11ec-a534-01aa75ed71a1",
+      "celex": "32022R0850",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "b3c148c3-e2d6-11ec-a534-01aa75ed71a1",
+      "celex": "32022R0868",
+      "stages": [
+        "seed"
+      ],
+      "sources": [
+        "cellar"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ab0ac1a6-ec45-11ec-a534-01aa75ed71a1",
+      "celex": "32022R0922",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "fead3720-f138-11ec-a534-01aa75ed71a1",
+      "celex": "32022R0960",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "3c6a406a-f5b3-11ec-b976-01aa75ed71a1",
+      "celex": "32022R0991",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "92f641ce-17a8-11ed-8fa0-01aa75ed71a1",
+      "celex": "32022R1380",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "d88eacdc-1f5a-11ed-8fa0-01aa75ed71a1",
+      "celex": "32022R1409",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c69535b7-2d7e-11ed-975d-01aa75ed71a1",
+      "celex": "32022R1463",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c70ade80-3d36-11ed-9c68-01aa75ed71a1",
+      "celex": "32022R1645",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "b4326c28-49cd-11ed-92ed-01aa75ed71a1",
+      "celex": "32022R1925",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3ff67256-55c4-11ed-92ed-01aa75ed71a1",
+      "celex": "32022R2065",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "8cb2ed6b-64c3-11ed-92ed-01aa75ed71a1",
+      "celex": "32022R2240",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2506ba15-7440-11ed-9887-01aa75ed71a1",
+      "celex": "32022R2360",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "747a2577-7532-11ed-9887-01aa75ed71a1",
+      "celex": "32022R2371",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "e93c0014-776c-11ed-9887-01aa75ed71a1",
+      "celex": "32022R2399",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "0caf473a-85bd-11ed-9887-01aa75ed71a1",
+      "celex": "32022R2554",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "069ffebf-a842-11ed-b508-01aa75ed71a1",
+      "celex": "32023D0271",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2ee5e6b0-a842-11ed-b508-01aa75ed71a1",
+      "celex": "32023D0272",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "5d999ec1-a842-11ed-b508-01aa75ed71a1",
+      "celex": "32023D0273",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a10d9b45-b70b-11ed-8912-01aa75ed71a1",
+      "celex": "32023D0436",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2a8cab71-c46b-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0598",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f6960fb7-e303-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0855",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "aca08517-eae3-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0920",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9846c23c-f384-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0964",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "87a57cca-f46f-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0975",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2c22bcbb-f905-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D0993",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "cfe17ff7-ff4d-11ed-a05c-01aa75ed71a1",
+      "celex": "32023D1053",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "3bd0b3ab-2764-11ee-839d-01aa75ed71a1",
+      "celex": "32023D1515",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f634b3b7-2a85-11ee-839d-01aa75ed71a1",
+      "celex": "32023D1534",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "abb0ba05-5750-11ee-9220-01aa75ed71a1",
+      "celex": "32023D1795",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "9521dc31-8423-11ee-99ba-01aa75ed71a1",
+      "celex": "32023D2582",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "25d6bbd9-8e58-11ee-8aa6-01aa75ed71a1",
+      "celex": "32023D2702",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "532bb8b0-9ed9-11ee-b164-01aa75ed71a1",
+      "celex": "32023H2829",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "3a2d3206-2ce4-11ee-95a2-01aa75ed71a1",
+      "celex": "32023L1544",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "b235b0cd-9d54-11ed-b508-01aa75ed71a1",
+      "celex": "32023R0170",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "cdc4a365-a29b-11ed-b508-01aa75ed71a1",
+      "celex": "32023R0203",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "110fffa9-c467-11ed-a05c-01aa75ed71a1",
+      "celex": "32023R0588",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e5587bf5-f383-11ed-a05c-01aa75ed71a1",
+      "celex": "32023R0956",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "b5f5fb53-f906-11ed-a05c-01aa75ed71a1",
+      "celex": "32023R0988",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "d89921cf-0111-11ee-87ec-01aa75ed71a1",
+      "celex": "32023R1070",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "01d55833-0660-11ee-b12e-01aa75ed71a1",
+      "celex": "32023R1114",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "1b9e472a-2ce3-11ee-95a2-01aa75ed71a1",
+      "celex": "32023R1543",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "025dba3d-4150-11ee-b2f2-01aa75ed71a1",
+      "celex": "32023R1650",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "05b5a9f7-55bf-11ee-9220-01aa75ed71a1",
+      "celex": "32023R1781",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "6cb0e380-6961-11ee-9220-01aa75ed71a1",
+      "celex": "32023R2117",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "cd77a049-7462-11ee-99ba-01aa75ed71a1",
+      "celex": "32023R2444",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "6e1f36df-76c8-11ee-99ba-01aa75ed71a1",
+      "celex": "32023R2450",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "de05eb3c-8e58-11ee-8aa6-01aa75ed71a1",
+      "celex": "32023R2674",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "aca5f4e8-9d47-11ee-b164-01aa75ed71a1",
+      "celex": "32023R2841",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d1ca88af-a459-11ee-b164-01aa75ed71a1",
+      "celex": "32023R2844",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "ef51c6ab-a06c-11ee-b164-01aa75ed71a1",
+      "celex": "32023R2854",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "e3cb73db-9ed8-11ee-b164-01aa75ed71a1",
+      "celex": "32023R2859",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "a90951c7-fb8b-11ee-a251-01aa75ed71a1",
+      "celex": "32024D1067",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7915e41b-08e7-11ef-a251-01aa75ed71a1",
+      "celex": "32024D1213",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "10e19351-145c-11ef-a251-01aa75ed71a1",
+      "celex": "32024D1391",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9e393b90-3209-11ef-a61b-01aa75ed71a1",
+      "celex": "32024D1779",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "b5a5d6bb-7f8f-11ef-a67d-01aa75ed71a1",
+      "celex": "32024D2586",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "723ae8ab-8c20-11ef-a130-01aa75ed71a1",
+      "celex": "32024D2709",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a868e506-c64e-11ef-91ed-01aa75ed71a1",
+      "celex": "32024D3226",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d9532331-dcf0-11ee-b9d9-01aa75ed71a1",
+      "celex": "32024H0779",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c7056d4f-f869-11ee-a251-01aa75ed71a1",
+      "celex": "32024H1101",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7759ec4a-118c-11ef-a251-01aa75ed71a1",
+      "celex": "32024H1238",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "9818446d-8b56-11ef-a67d-01aa75ed71a1",
+      "celex": "32024H2659",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "10bdc8d8-a54e-11ef-85f0-01aa75ed71a1",
+      "celex": "32024L2853",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "be8bb436-c64e-11ef-91ed-01aa75ed71a1",
+      "celex": "32024L3237",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "687c0d05-c580-11ee-95d9-01aa75ed71a1",
+      "celex": "32024R0482",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f6f56c36-cc6b-11ee-b9d9-01aa75ed71a1",
+      "celex": "32024R0607",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "0d7432b4-d1ec-11ee-b9d9-01aa75ed71a1",
+      "celex": "32024R0741",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "825b8717-e65c-11ee-8b2b-01aa75ed71a1",
+      "celex": "32024R0900",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "c008bcb6-e7ec-11ee-9ea8-01aa75ed71a1",
+      "celex": "32024R0903",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 8
+    },
+    {
+      "work_id": "fcf7d696-f2e4-11ee-8e14-01aa75ed71a1",
+      "celex": "32024R0982",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "17cd5d0e-05c7-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1028",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "c15c7ea1-f79b-11ee-a251-01aa75ed71a1",
+      "celex": "32024R1061",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "4fcfd942-f869-11ee-a251-01aa75ed71a1",
+      "celex": "32024R1084",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "2583b2a7-fde5-11ee-a251-01aa75ed71a1",
+      "celex": "32024R1180",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "459993a1-068e-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1183",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "765a80d9-0cd3-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1309",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "625f4a41-1968-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1366",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "79543f8a-1453-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1390",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c4751d72-1967-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1417",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c4af9503-1e21-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1502",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f1655a4b-1e21-11ef-a251-01aa75ed71a1",
+      "celex": "32024R1505",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "dc8116a1-3fe6-11ef-865a-01aa75ed71a1",
+      "celex": "32024R1689",
+      "stages": [
+        "seed"
+      ],
+      "sources": [
+        "cellar"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fa35ec94-328d-11ef-a61b-01aa75ed71a1",
+      "celex": "32024R1772",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "67edcd9e-328d-11ef-a61b-01aa75ed71a1",
+      "celex": "32024R1773",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "dc25b21e-328d-11ef-a61b-01aa75ed71a1",
+      "celex": "32024R1774",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "62877c45-320b-11ef-a61b-01aa75ed71a1",
+      "celex": "32024R1778",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "46242b27-7ad6-11ef-bbbe-01aa75ed71a1",
+      "celex": "32024R2104",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "4b6b7cad-7ad6-11ef-bbbe-01aa75ed71a1",
+      "celex": "32024R2510",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "28f15de8-8ce9-11ef-a130-01aa75ed71a1",
+      "celex": "32024R2690",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "1fb79315-9d7a-11ef-85f0-01aa75ed71a1",
+      "celex": "32024R2747",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "21b7d4eb-a6e2-11ef-85f0-01aa75ed71a1",
+      "celex": "32024R2847",
+      "stages": [
+        "seed",
+        "topic"
+      ],
+      "sources": [
+        "cellar",
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "504165c2-b050-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2956",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "acccd446-b1e0-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2977",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 7
+    },
+    {
+      "work_id": "a7576de1-b1e0-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2979",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e331b1f3-b1e0-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2980",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 5
+    },
+    {
+      "work_id": "049b9eb6-b1e1-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2981",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "0c2d7c7b-b1e1-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R2982",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "05628be8-b373-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R3018",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "39282db6-b373-11ef-acb1-01aa75ed71a1",
+      "celex": "32024R3084",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "129e2a4f-bdaa-11ef-91ed-01aa75ed71a1",
+      "celex": "32024R3143",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "12c401d0-bdaa-11ef-91ed-01aa75ed71a1",
+      "celex": "32024R3144",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c69be9bc-c64e-11ef-91ed-01aa75ed71a1",
+      "celex": "32024R3210",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "16a8f500-deab-11ef-be2a-01aa75ed71a1",
+      "celex": "32025D0138",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ae1547eb-dcbb-11ef-be2a-01aa75ed71a1",
+      "celex": "32025D0171",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a60a70b5-fa7e-11ef-b7db-01aa75ed71a1",
+      "celex": "32025D0381",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f1e11ae0-0851-11f0-b1a3-01aa75ed71a1",
+      "celex": "32025D0538",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "948d0e7e-0919-11f0-b1a3-01aa75ed71a1",
+      "celex": "32025D0554",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "6a52d2e7-216d-11f0-af23-01aa75ed71a1",
+      "celex": "32025D0799",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "60e3ae77-2f92-11f0-8a44-01aa75ed71a1",
+      "celex": "32025D0887",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "219dc469-35dc-11f0-8a44-01aa75ed71a1",
+      "celex": "32025D0943",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "b3a4e2a8-35dc-11f0-8a44-01aa75ed71a1",
+      "celex": "32025D0967",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9a8dff4a-5225-11f0-a9d0-01aa75ed71a1",
+      "celex": "32025D1226",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "5e0fbe12-5614-11f0-a9d0-01aa75ed71a1",
+      "celex": "32025D1274",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e9e23150-636f-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025D1382",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "34ac4fa2-6370-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025D1458",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "db3e1b89-a24c-11f0-97c8-01aa75ed71a1",
+      "celex": "32025D1992",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "57be885c-aaf1-11f0-89c6-01aa75ed71a1",
+      "celex": "32025D2128",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "8f6925cf-b39f-11f0-b37f-01aa75ed71a1",
+      "celex": "32025D2164",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "e7471ece-c0fa-11f0-a612-01aa75ed71a1",
+      "celex": "32025D2281",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "8cb847c9-be9f-11f0-a612-01aa75ed71a1",
+      "celex": "32025D2307",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c310c771-dfa5-11f0-8439-01aa75ed71a1",
+      "celex": "32025D2571",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c33195e2-dfa5-11f0-8439-01aa75ed71a1",
+      "celex": "32025D2574",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "086465f8-dc7f-11f0-8da2-01aa75ed71a1",
+      "celex": "32025D2640",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "3def3caa-cef6-11ef-be2a-01aa75ed71a1",
+      "celex": "32025L0025",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "5ae85a87-b9ed-11f0-b37f-01aa75ed71a1",
+      "celex": "32025L2205",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "14587d2b-cd61-11ef-be2a-01aa75ed71a1",
+      "celex": "32025R0012",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "ffe92a5f-cd60-11ef-be2a-01aa75ed71a1",
+      "celex": "32025R0013",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "15b1465b-faf7-11ef-b7db-01aa75ed71a1",
+      "celex": "32025R0022",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "68c0442e-d2e1-11ef-be2a-01aa75ed71a1",
+      "celex": "32025R0037",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "647c31d8-d2e1-11ef-be2a-01aa75ed71a1",
+      "celex": "32025R0038",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "42abae58-dcba-11ef-be2a-01aa75ed71a1",
+      "celex": "32025R0173",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "de480339-e9ad-11ef-b5e9-01aa75ed71a1",
+      "celex": "32025R0295",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "36795cde-ef2b-11ef-981b-01aa75ed71a1",
+      "celex": "32025R0301",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e91f75d5-ef2b-11ef-981b-01aa75ed71a1",
+      "celex": "32025R0302",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "531b8c37-f962-11ef-b7db-01aa75ed71a1",
+      "celex": "32025R0327",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 9
+    },
+    {
+      "work_id": "370d3157-0851-11f0-b1a3-01aa75ed71a1",
+      "celex": "32025R0420",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "931c24dd-570a-11f0-a9d0-01aa75ed71a1",
+      "celex": "32025R0532",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "cf9aac3c-2adb-11f0-8a44-01aa75ed71a1",
+      "celex": "32025R0846",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "574269fb-2adb-11f0-8a44-01aa75ed71a1",
+      "celex": "32025R0847",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "a6ba31dd-2adb-11f0-8a44-01aa75ed71a1",
+      "celex": "32025R0848",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "6cc3a1f7-2adb-11f0-8a44-01aa75ed71a1",
+      "celex": "32025R0849",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "769f0950-2f92-11f0-8a44-01aa75ed71a1",
+      "celex": "32025R0886",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "34cef789-4bdd-11f0-85ba-01aa75ed71a1",
+      "celex": "32025R1190",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2f6f899a-4d70-11f0-a9d0-01aa75ed71a1",
+      "celex": "32025R1208",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "56c0f4f9-b468-11f0-b37f-01aa75ed71a1",
+      "celex": "32025R1455",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "5dd0aa6c-b468-11f0-b37f-01aa75ed71a1",
+      "celex": "32025R1535",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9a0b56bf-6c16-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1550",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9738ce8b-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1566",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "8a505cff-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1567",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e85cbfd7-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1568",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "990be0dd-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1569",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fdc40733-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1570",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "3dd3fad4-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1571",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e4955790-6cdd-11f0-bf4e-01aa75ed71a1",
+      "celex": "32025R1572",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "bfd30e22-814d-11f0-9af8-01aa75ed71a1",
+      "celex": "32025R1759",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "31a2d4ad-9d98-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1929",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fb634c13-9db7-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1942",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c3d31ae8-9d97-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1943",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d8575546-9d97-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1944",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "dead57ac-9d97-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1945",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2fa94e9a-9d98-11f0-97c8-01aa75ed71a1",
+      "celex": "32025R1946",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "99582d76-b39f-11f0-b37f-01aa75ed71a1",
+      "celex": "32025R2160",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "99b393e7-b39f-11f0-b37f-01aa75ed71a1",
+      "celex": "32025R2162",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ca0223e9-ca69-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2263",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "407740e8-be9f-11f0-a612-01aa75ed71a1",
+      "celex": "32025R2293",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2d4a6388-ce5f-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2392",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "2c67eedf-d4c5-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2462",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f2294563-d703-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2509",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "96d99c7a-d704-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2518",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "97a07e59-daec-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2527",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "79adb6f5-daec-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2530",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "cbd048d0-daeb-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2531",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d3945a29-daeb-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2532",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "3cd33181-d704-11f0-8da2-01aa75ed71a1",
+      "celex": "32025R2540",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "7c6e02b5-defa-11f0-8439-01aa75ed71a1",
+      "celex": "32025R2550",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "72260a6d-df3d-11f0-8439-01aa75ed71a1",
+      "celex": "32025R2653",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "c5ae831f-fbeb-11f0-8da5-01aa75ed71a1",
+      "celex": "32026D0179",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "6df5325c-105b-11f1-8870-01aa75ed71a1",
+      "celex": "32026D0434",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f751ba01-16a1-11f1-8870-01aa75ed71a1",
+      "celex": "32026D0442",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "aa053642-21a3-11f1-8c3a-01aa75ed71a1",
+      "celex": "32026D0587",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "712f5bb2-212d-11f1-8c3a-01aa75ed71a1",
+      "celex": "32026D0588",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "ae53ef8b-2c9d-11f1-906d-01aa75ed71a1",
+      "celex": "32026D0777",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "79fdead4-2c9c-11f1-906d-01aa75ed71a1",
+      "celex": "32026D0778",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "12463a17-6466-11f1-9b18-01aa75ed71a1",
+      "celex": "32026D1064",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "72a8d7ef-4e64-11f1-b3e2-01aa75ed71a1",
+      "celex": "32026D1069",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "26e44604-4d9b-11f1-8095-01aa75ed71a1",
+      "celex": "32026D1079",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "b3fcde93-6b77-11f1-ae88-01aa75ed71a1",
+      "celex": "32026D1347",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f8eb8389-6920-11f1-9b18-01aa75ed71a1",
+      "celex": "32026D1354",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d6b94807-74e7-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026D1416",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "228c23bf-74e8-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026D1460",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "093bae33-7e9c-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026D1713",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "f3bb51d8-7e57-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026D1725",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c81b2d6f-9778-11f1-9262-01aa75ed71a1",
+      "celex": "32026D1942",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "98bf8299-c8fb-11f1-97f3-01aa75ed71a1",
+      "celex": "32026D2308",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "dac932e5-cc1e-11f1-8b4c-01aa75ed71a1",
+      "celex": "32026D2322",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e11c1cd8-cdb0-11f1-8b4c-01aa75ed71a1",
+      "celex": "32026D2351",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c1d158d5-e1a2-11f1-aefc-01aa75ed71a1",
+      "celex": "32026D2546",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "658ea796-4a76-11f1-8095-01aa75ed71a1",
+      "celex": "32026H1035",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fea1d35a-d982-11f1-8501-01aa75ed71a1",
+      "celex": "32026H2394",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "b83b8484-f27c-11f0-8d3c-01aa75ed71a1",
+      "celex": "32026R0102",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "bece1ebb-00a1-11f1-825d-01aa75ed71a1",
+      "celex": "32026R0247",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c539cc01-00a1-11f1-825d-01aa75ed71a1",
+      "celex": "32026R0248",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "9553e1dd-33ac-11f1-be39-01aa75ed71a1",
+      "celex": "32026R0255",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d0c9bec3-33ac-11f1-be39-01aa75ed71a1",
+      "celex": "32026R0256",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d8611ecc-4364-11f1-8095-01aa75ed71a1",
+      "celex": "32026R0339",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "fc0064c4-69e4-11f1-ae88-01aa75ed71a1",
+      "celex": "32026R0544",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c034b2a4-212d-11f1-8c3a-01aa75ed71a1",
+      "celex": "32026R0589",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "d4397f2e-5ee7-11f1-aa6d-01aa75ed71a1",
+      "celex": "32026R0699",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "200995a3-32e3-11f1-be39-01aa75ed71a1",
+      "celex": "32026R0771",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "371b31a8-32e3-11f1-be39-01aa75ed71a1",
+      "celex": "32026R0798",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "e117d914-3c51-11f1-814f-01aa75ed71a1",
+      "celex": "32026R0881",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "0d8d27cd-4d9b-11f1-8095-01aa75ed71a1",
+      "celex": "32026R1078",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "c93870f1-5af6-11f1-aa6d-01aa75ed71a1",
+      "celex": "32026R1144",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "60d5b929-70fa-11f1-9800-01aa75ed71a1",
+      "celex": "32026R1386",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "0af0ff54-7e9c-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1714",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "933ea5f2-856a-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1730",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "802ddc72-856b-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1731",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 4
+    },
+    {
+      "work_id": "f0386031-856a-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1735",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "b459c07f-86fb-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1744",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "56aaf918-8178-11f1-bf5e-01aa75ed71a1",
+      "celex": "32026R1778",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "6856476f-8a1f-11f1-8e61-01aa75ed71a1",
+      "celex": "32026R1821",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "6244f9e9-8a20-11f1-8e61-01aa75ed71a1",
+      "celex": "32026R1881",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "5a79d49d-b554-11f1-81de-01aa75ed71a1",
+      "celex": "32026R2083",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    },
+    {
+      "work_id": "dff777d4-b61d-11f1-81de-01aa75ed71a1",
+      "celex": "32026R2099",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 2
+    },
+    {
+      "work_id": "2ca62864-b3c2-11f1-81de-01aa75ed71a1",
+      "celex": "32026R2108",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 6
+    },
+    {
+      "work_id": "77ea6a99-c76d-11f1-a77b-01aa75ed71a1",
+      "celex": "32026R2266",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 3
+    },
+    {
+      "work_id": "e1722c19-cdb0-11f1-8b4c-01aa75ed71a1",
+      "celex": "32026R2354",
+      "stages": [
+        "expansion"
+      ],
+      "sources": [
+        "sparql"
+      ],
+      "links": 1
+    },
+    {
+      "work_id": "c9f600b7-e1a2-11f1-aefc-01aa75ed71a1",
+      "celex": "32026R2550",
+      "stages": [
+        "topic"
+      ],
+      "sources": [
+        "sparql",
+        "webservice"
+      ],
+      "links": 0
+    }
+  ]
+}

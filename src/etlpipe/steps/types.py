@@ -10,9 +10,8 @@ from ..constants import (K_CELEX, K_CODE, K_DOC_TYPE, K_SCHEME, K_STUB, KMS_CONC
                           KMS_INSTITUTION, KMS_WORK, NODE_CLASSES)
 from ..context import TransformContext
 from ..policy import Policy, load_policy
-from ..transformer import TransformStep
 from ..uris import LEVEL_CONCEPT, LEVEL_INSTITUTION, celex_doc_type, classify_uri, lifecycle_kind
-from .base import uri_nodes
+from .base import uri_nodes, TransformStep
 
 
 class TypeReducer(TransformStep):

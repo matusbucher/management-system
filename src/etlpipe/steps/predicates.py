@@ -9,7 +9,7 @@ from rdflib.term import Node
 from ..constants import ANNOT, CMR, KMS, SKOS
 from ..context import TransformContext, TransformOptions
 from ..policy import Policy, load_policy
-from ..transformer import TransformStep
+from .base import TransformStep
 
 
 class PredicateFilter(TransformStep):

@@ -15,7 +15,8 @@ from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import OWL, RDF, XSD
 
 from src.etlpipe.constants import WEMILevel, KMS
-from src.etlpipe.context import CATEGORY_CONTEXT, CATEGORY_LIFECYCLE, DEFAULT_CATEGORIES, LoadContext, TransformContext, TransformOptions
+from src.etlpipe.context import (DEFAULT_CATEGORIES, CanonicalScheme, Category, LoadContext, TransformContext,
+                                 TransformOptions)
 from src.etlpipe.extractor import FileExtractor
 from src.etlpipe.loader import Neo4jLoader
 from src.etlpipe.pipeline import EtlPipeline
@@ -23,7 +24,7 @@ from src.etlpipe.projector import GraphProjector, doc_type_label
 from src.etlpipe.report import aggregate_reports
 from src.etlpipe.steps import AliasResolver, WemiLevelFilter
 from src.etlpipe.summary import summarize_graph
-from etlpipe.transformer import TransformerChain
+from src.etlpipe.transformer import TransformerChain
 from src.etlpipe.uris import (celex_doc_type, celex_source_kind, classify_uri, event_attributes, identifiers_of,
                               lifecycle_kind)
 
@@ -169,7 +170,7 @@ class TestSteps(unittest.TestCase):
         self.assertEqual(ctx.stats.counters["alias_groups"], 3)
 
     def test_cellar_canonical_scheme(self):
-        ctx = TransformContext(options=TransformOptions(canonical_scheme="cellar"))
+        ctx = TransformContext(options=TransformOptions(canonical_scheme=CanonicalScheme.CELLAR))
         out = AliasResolver().transform(fixture_graph(), ctx)
         canonical = URIRef(RES + "cellar/9b84d482-85bd-11ed-9887-01aa75ed71a1")
         self.assertIn((canonical, KMS.celex, Literal("32022L2555")), out)
@@ -202,7 +203,7 @@ class TestSteps(unittest.TestCase):
         out = WemiLevelFilter().transform(Graph() + resolved, TransformContext())
         self.assertFalse(any(True for _ in out.triples((dossier, None, None))))
         self.assertFalse(any(True for _ in out.triples((event, None, None))))
-        opts = TransformOptions(include_categories=DEFAULT_CATEGORIES | {CATEGORY_LIFECYCLE})
+        opts = TransformOptions(include_categories=DEFAULT_CATEGORIES | {Category.LIFECYCLE})
         out = WemiLevelFilter().transform(Graph() + resolved, TransformContext(options=opts))
         self.assertTrue(any(True for _ in out.triples((dossier, None, None))))
         self.assertTrue(any(True for _ in out.triples((event, None, None))))  # not mistaken for an expression
@@ -215,7 +216,7 @@ class TestSteps(unittest.TestCase):
         self.assertEqual(classify_uri(str(event)).level, "work")
 
 
-LIFECYCLE = TransformOptions(include_categories=DEFAULT_CATEGORIES | {CATEGORY_LIFECYCLE})
+LIFECYCLE = TransformOptions(include_categories=DEFAULT_CATEGORIES | {Category.LIFECYCLE})
 PROCEDURE = URIRef(RES + "procedure/2020_359")
 EVENT = URIRef(RES + "procedure-event/2020_359.2022-12-27_PUB_OJ")
 PROPOSAL = URIRef(RES + "comnat/COM_2020_0823_FIN")
@@ -355,7 +356,7 @@ class TestChain(unittest.TestCase):
         self.assertEqual(steps["predicate_filter"].breakdowns["dropped_by_reason"]["system_metadata"], 1)
 
     def test_context_category_alone_does_not_load_lifecycle_entities(self):
-        g, _ = run_chain(TransformOptions(include_categories=DEFAULT_CATEGORIES | {CATEGORY_CONTEXT}))
+        g, _ = run_chain(TransformOptions(include_categories=DEFAULT_CATEGORIES | {Category.CONTEXT}))
         self.assertFalse(any(True for _ in g.triples((URIRef(RES + "dossier/2020_1"), None, None))))
 
     def test_citation_scope_filter(self):

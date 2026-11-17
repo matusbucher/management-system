@@ -9,8 +9,8 @@ from rdflib.namespace import OWL
 from ..constants import K_ALIAS, K_CELEX, K_CELLAR_ID, K_ELI, K_OJ_ID, KMS
 from ..context import CanonicalScheme, TransformContext
 from ..report import StepReport
-from ..transformer import TransformStep
 from ..uris import LEVEL_WORK, classify_uri, identifiers_of, is_structural_cellar, lifecycle_kind
+from .base import TransformStep
 
 
 _IDENTIFIER_PROPERTIES = frozendict({

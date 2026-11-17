@@ -5,9 +5,8 @@ from rdflib.namespace import RDF
 
 from ..constants import K_CELEX, K_SOURCE_KIND, KMS, KMS_WORK
 from ..context import TransformContext
-from ..transformer import TransformStep
 from ..uris import celex_source_kind
-from .base import axiom_parts, axioms
+from .base import axiom_parts, axioms, TransformStep
 
 
 _CITES = KMS.CITES

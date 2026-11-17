@@ -1,11 +1,19 @@
 from __future__ import annotations
 
+from abc import ABC
 from typing import Iterator, Optional
 
 from rdflib import BNode, Graph, URIRef, Literal
 from rdflib.namespace import OWL, RDF, XSD
 
 from ..constants import KMS
+from ..interfaces import Transformer
+
+
+class TransformStep(Transformer, ABC):
+    """
+    Interface for transformer steps in transformer chain. Inherits from ``Transformer``.
+    """
 
 
 # placeholder values used by Cellar for "unknown" / "no end"

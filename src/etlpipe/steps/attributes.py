@@ -8,9 +8,8 @@ from rdflib.namespace import XSD
 from ..constants import KMS
 from ..context import TransformContext
 from ..policy import Policy, load_policy
-from ..transformer import TransformStep
 
-from .base import is_sentinel
+from .base import is_sentinel, TransformStep
 
 
 class AttributeMapper(TransformStep):

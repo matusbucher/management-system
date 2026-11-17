@@ -26,13 +26,13 @@ if str(ROOT) not in sys.path:
 LOGGER_NAME = "etlpipe"
 
 from src.etlpipe.neo4j_database import NEO4J_DEFAULT_HOST, NEO4J_DEFAULT_PASSWORD, NEO4J_DEFAULT_PORT, NEO4J_DEFAULT_USER  # noqa: E402
-from src.etlpipe.context import ALL_CATEGORIES, DEFAULT_CATEGORIES, Category, TransformOptions  # noqa: E402
+from src.etlpipe.context import ALL_CATEGORIES, DEFAULT_CATEGORIES, CanonicalScheme, Category, TransformOptions  # noqa: E402
 from src.etlpipe.extractor import CellarExtractor, FileExtractor  # noqa: E402
 from src.etlpipe.loader import Neo4jLoader  # noqa: E402
 from utils.logging import configure_logging  # noqa: E402
 from src.etlpipe.pipeline import EtlPipeline  # noqa: E402
-from etlpipe.transformer import TransformerChain  # noqa: E402
-from etlpipe.constants import WEMILevel  # noqa: E402
+from src.etlpipe.transformer import TransformerChain  # noqa: E402
+from src.etlpipe.constants import WEMILevel  # noqa: E402
 
 
 def parse_args(
@@ -109,7 +109,7 @@ def build_options(
     return TransformOptions(
         wemi_levels=frozenset(WEMILevel(v.strip()) for v in args.wemi_levels.split(",") if v.strip()),
         include_categories=frozenset(categories),
-        canonical_scheme=args.canonical_scheme,
+        canonical_scheme=CanonicalScheme(args.canonical_scheme),
         citation_source_kinds=frozenset(k.strip() for k in args.citation_sources.split(",")) if args.citation_sources else None,
     )
 

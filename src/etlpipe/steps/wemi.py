@@ -8,9 +8,8 @@ from rdflib.namespace import RDF
 
 from ..context import Category, TransformContext
 from ..policy import WEMI_LEVELS, Policy, load_policy
-from ..transformer import TransformStep
 from ..uris import LEVEL_ITEM, LEVEL_EXPRESSION, LEVEL_MANIFESTATION, classify_uri, lifecycle_kind
-from .base import axioms, axiom_parts, uri_nodes
+from .base import axioms, axiom_parts, uri_nodes, TransformStep
 
 LEVEL_ENTITY = "entity"  # CDM entity that is not a WEMI resource: agent, period ...
 LEVEL_DOSSIER = "dossier"  # legislative procedure / case / session

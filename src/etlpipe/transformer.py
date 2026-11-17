@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from abc import ABC
 import logging
 import time
 from pathlib import Path
@@ -33,12 +32,6 @@ _TRANSFORM_LOGGER_NAME = "etlpipe.transform"
 
 logger = logging.getLogger(_TRANSFORM_LOGGER_NAME)
 
-
-class TransformStep(Transformer, ABC):
-    """
-    Interface for transformer steps in transformer chain. Inherits from ``Transformer``.
-    """
-    
 
 class TransformerChain(Transformer):
     """

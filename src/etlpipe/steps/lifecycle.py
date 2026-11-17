@@ -8,8 +8,8 @@ from rdflib.namespace import RDF, XSD
 from ..constants import RESOURCE_BASE, KMS, KMS_DOSSIER, KMS_EVENT
 from ..context import TransformContext
 from ..report import StepReport
-from ..transformer import TransformStep
 from ..uris import classify_uri, dossier_attributes, event_attributes
+from .base import TransformStep
 
 _DATE_PROPERTIES = frozenset({"eventDate"})
 

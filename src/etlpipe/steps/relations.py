@@ -9,8 +9,7 @@ from ..constants import KMS
 from ..context import TransformContext, TransformOptions
 from ..policy import Policy, RelationRule, load_policy
 from ..report import StepReport
-from ..transformer import TransformStep
-from .base import axiom_parts, axioms
+from .base import axiom_parts, axioms, TransformStep
 
 
 _AXIOM_STRUCTURE = frozenset({RDF.type, OWL.annotatedSource, OWL.annotatedProperty, OWL.annotatedTarget})

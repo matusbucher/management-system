@@ -10,8 +10,7 @@ from rdflib.namespace import OWL, RDF
 from ..constants import ANNOT, K_LOCATOR, KMS
 from ..context import TransformContext
 from ..policy import Policy, load_policy
-from ..transformer import TransformStep
-from .base import axiom_parts, axioms, is_sentinel
+from .base import axiom_parts, axioms, is_sentinel, TransformStep
 
 
 _CODE_WITH_URI = re.compile(r"\{([^|{}]+)\|[^{}]*\}")  # "{AR|http://.../fd_370/AR} 32" -> "AR 32"

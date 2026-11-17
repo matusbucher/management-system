@@ -1,7 +1,8 @@
 from enum import Enum
+from frozendict import frozendict
 
 
-ISO_639_3_CODES = {
+ISO_639_3_CODES = frozendict({
     "BUL": "Bulgarian",
     "CES": "Czech",
     "DAN": "Danish",
@@ -28,9 +29,9 @@ ISO_639_3_CODES = {
     "SLV": "Slovene",
     "SPA": "Spanish, Castillian",
     "SWE": "Swedish",
-}
+})
 
-ISO_639_3_TO_639_1 = {
+ISO_639_3_TO_639_1 = frozendict({
     "bul": "bg",
     "ces": "cs",
     "dan": "da",
@@ -57,10 +58,15 @@ ISO_639_3_TO_639_1 = {
     "slv": "sl",
     "spa": "es",
     "swe": "sv",
-}
+})
 
-MANIFESTATION_FORMATS = ("pdf", "html", "xml", "fmx", "fmx4")
-
+MANIFESTATION_FORMATS = frozenset({
+    "pdf",
+    "html",
+    "xml",
+    "fmx",
+    "fmx4"
+})
 
 class MimeType(Enum):
     """MIME types for different document formats."""
@@ -103,7 +109,6 @@ class MimeType(Enum):
     GIF = "image/gif"
     PNG = "image/png"
     GZIP = "application/x-gzip"
-
 
 class CollectionType(Enum):
     """Types of content stream collection formats."""

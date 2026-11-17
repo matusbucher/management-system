@@ -101,14 +101,14 @@ class CellarPS(Enum):
         raise ValueError(f"Unknown CellarPS value: {ps_value}")
 
 
-@dataclass
+@dataclass(frozen=True)
 class CellarResourceId:
     """
     Represents a CELLAR resource's unique identifier.
 
     The structure of the identifier depends on the production system (CELLAR or other).
 
-    Args:
+    Attributes:
         ps (CellarPS): The production system name
         work_id (str): Work ID
         expr_id (Optional[str]): Expression ID (optional)
@@ -145,9 +145,8 @@ class CellarResourceId:
                 uri += f".{self.cs_id}"
         return uri
 
-    @classmethod
+    @staticmethod
     def _check_cellar_uri(
-        cls,
         work_id: str,
         expr_id: Optional[str] = None,
         man_id: Optional[str] = None,
@@ -174,9 +173,8 @@ class CellarResourceId:
         if cs_id and not _CELLAR_CS_ID_PATTERN.match(cs_id):
             raise ValueError("Content stream ID must follow the pattern DOC_x where x is numeric.")
 
-    @classmethod
+    @staticmethod
     def _check_other_uri(
-        cls,
         work_id: str,
         expr_id: Optional[str] = None,
         man_id: Optional[str] = None,
@@ -203,9 +201,8 @@ class CellarResourceId:
         if cs_id and not cs_id.isalnum():
             raise ValueError("Content stream ID must be an alphanumeric value.")
 
-    @classmethod
+    @staticmethod
     def from_string(
-        cls,
         uri: str
     ) -> CellarResourceId:
         """
@@ -252,9 +249,8 @@ class CellarAPI:
     Wrapper class for CELLAR API services.
     """
 
-    @classmethod
+    @staticmethod
     def construct_resource_uri(
-        cls,
         resource_id: CellarResourceId
     ) -> str:
         """

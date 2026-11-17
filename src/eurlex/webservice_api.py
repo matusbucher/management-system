@@ -12,8 +12,6 @@ from urllib.request import Request, urlopen
 _SOAP_ENDPOINT = "https://eur-lex.europa.eu/EURLexWebService"
 _SOAP_ACTION = "https://eur-lex.europa.eu/EURLexWebService/doQuery"
 
-_TEMPLATE_FILENAME = "templates/eurlex-search.xml"
-
 _QUERY_PLACEHOLDER = "query"
 _PAGE_PLACEHOLDER = "page"
 _PAGE_SIZE_PLACEHOLDER = "page_size"
@@ -24,14 +22,25 @@ _AVAILABLE_IN_PLACEHOLDER = "available_in"
 
 _AVAILABLE_IN_TAG = "sear:showDocumentsAvailableIn"
 
+_TEMPLATE_FILENAME = "templates/eurlex-search.xml"
+
 
 class WebserviceAPI:
     """
     Wrapper class for EUR-Lex SOAP webservice.
+
+    Default template path is "./templates/eurlex-search.xml".
+
+    Args:
+        template_path (Optional[Path]): The path to the SOAP template file. If None, the default template path is used.
     """
     
-    def __init__(self):
-        template_path = Path(__file__).parent.parent.parent / _TEMPLATE_FILENAME
+    def __init__(
+        self,
+        template_path: Optional[Path] = None
+    ):
+        if template_path is None:
+            template_path = Path(__file__).parent.parent.parent / _TEMPLATE_FILENAME
         if not template_path.exists():
             raise FileNotFoundError(f"SOAP template file not found: {template_path}")
         self.template_text = template_path.read_text(encoding="utf-8")
@@ -84,9 +93,8 @@ class WebserviceAPI:
 
         return payload
 
-    @classmethod
+    @staticmethod
     def call_eurlex_webservice(
-        cls,
         payload: str
     ) -> str:
         """
@@ -111,9 +119,8 @@ class WebserviceAPI:
         with urlopen(request, timeout=60) as response:
             return response.read().decode("utf-8", errors="replace")
 
-    @classmethod
+    @staticmethod
     def extract_references(
-        cls,
         response_xml: str
     ) -> list[str]:
         """

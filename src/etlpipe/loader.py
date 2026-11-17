@@ -159,7 +159,7 @@ class Neo4jLoader(Loader):
             self._write_nodes(batch, ctx, report)
             self._write_relationships(batch, report)
             if self.reconcile_aliases:
-                self._reconcile(report)
+                self.reconcile(report)
         report.duration_s = time.perf_counter() - started
         logger.info("[%s] load: %s nodes, %s relationships%s %s in %.2fs", ctx.source or "-", f"{report.nodes_projected:,}",
                     f"{report.relationships_projected:,}", " (dry run)" if ctx.dry_run else "",
@@ -276,7 +276,7 @@ class Neo4jLoader(Loader):
             if value:
                 report.db_counters[key] += value
 
-    def _reconcile(
+    def reconcile(
         self,
         report: LoadReport
     ) -> None:

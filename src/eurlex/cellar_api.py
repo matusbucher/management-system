@@ -4,6 +4,7 @@ from enum import Enum
 from typing import Optional
 
 import re
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from urllib.parse import urlencode
 from urllib.request import Request
@@ -50,6 +51,7 @@ class CellarPS(Enum):
     """CELLAR production systems."""
     CELLAR = "cellar"
     CELLEX = "cellex"
+    CELEX = "celex"
     OJ = "oj"
     COM = "com"
     GENPUB = "genpub"
@@ -414,6 +416,28 @@ class CellarAPI:
         }
 
         return Request(url=url, headers=headers, method="GET")
+
+    @staticmethod
+    def extract_identifiers(
+        notice_xml: str
+    ) -> dict[str, str]:
+        """
+        Extract the identifiers (the resource itself and all its synonyms) from an identifiers notice.
+
+        Args:
+            notice_xml (str): The identifiers notice XML as a string.
+
+        Returns:
+            dict[str, str]: Identifier of the resource per production system (e.g. ``cellar``, ``celex``, ``oj``, ``eli``).
+        """
+        root = ET.fromstring(notice_xml)
+        identifiers: dict[str, str] = {}
+        for uri in root.iter("URI"):
+            system = uri.findtext("TYPE")
+            identifier = uri.findtext("IDENTIFIER")
+            if system and identifier:
+                identifiers.setdefault(system.strip(), identifier.strip())
+        return identifiers
 
     @classmethod
     def metadata_request(

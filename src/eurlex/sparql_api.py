@@ -78,6 +78,9 @@ class SparqlAPI:
         Use the RDF formats (``RDF_XML``, ``TURTLE``) for CONSTRUCT and DESCRIBE queries and the result formats
         (``JSON``, ``XML``, ``CSV``, ``TSV``) for SELECT and ASK queries.
 
+        The public endpoint rejects large requests with HTTP 403 (the limit is somewhere above 6 KB), so a long list of
+        URIs in a query has to be split into several queries.
+
         Args:
             query (str): The SPARQL query string.
             response_format (SparqlFormat): The requested format of the response. Default ``SparqlFormat.JSON``.
